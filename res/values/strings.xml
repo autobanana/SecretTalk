@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SecretTalk</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <color name="yellow_Banana">#FFFF66</color>
+    <color name="Brown_Banana">#731a1a</color>
+
+    <string name="title_activity_talking_my_fragment">Talking_Activity</string>
+    <string name="title_activity_setting_my_fragment">Setting_MyFragment</string>
+    <string name="title_activity_listening_my_fragment">Listening_MyFragment</string>
+
+    <color name="Blue">#1719ff</color>
+    <color name="Green">#19ff1c</color>
+    <color name="Red">#FF1c19</color>
+
+    <string name="open">open</string>
+    <string name="close">close</string>
+    <string name="action_refresh">重新整理</string>
+    <string name="action_edit">編輯</string>
+    <string name="action_search">搜尋</string>
+    <string name="action_info">軟體資訊</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="yes">確定</string>
+    <string name="no">取消</string>
+    <string name="leavingprogram">確定要離開 SecretTalk？</string>
+    <string name="leave">離開程式</string>
+    <string name="title_activity_about_program">AboutProgram</string>
+    <string name="aboutprogram">關於 SecretTalk ...</string>
+    <string name="Home">Home</string>
+    <string name="Setting">設定</string>
+    <string name="Talking">Talking(圖)</string>
+    <string name="Listening">Listeming(圖)</string>
+
+</resources>
