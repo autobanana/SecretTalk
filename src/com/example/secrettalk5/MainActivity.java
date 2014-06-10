@@ -266,15 +266,24 @@ public class MainActivity extends  FragmentActivity{
 		t1.setOnClickListener(new MyOnClickListener(0));
 		t2.setOnClickListener(new MyOnClickListener(1));
 		t3.setOnClickListener(new MyOnClickListener(2));
+		Bundle bundle0311 = this.getIntent().getExtras();
+		if(bundle0311 != null){
+			//int num = bundle0311.getInt("viewpager_num");
+			//t2.setText(num);
+			//mViewPager_main.setCurrentItem(num);
+			
+		}
+		
 	}
 	
 	private class MyOnClickListener implements View.OnClickListener {
 		private int index = 0;
-
+		
 		public MyOnClickListener(int i) {
 			index = i;
 		}		
 		public void onClick(View v) {
+			
 			mViewPager_main.setCurrentItem(index);
 		}
 	}
