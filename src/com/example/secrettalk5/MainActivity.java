@@ -50,7 +50,7 @@ public class MainActivity extends  FragmentActivity{
 	public int currIndex = 0,currIndex2 =0;
 	public int bmpW;
     public int one,two;
-	
+    private static final int A=1,B=2,C=3,D=4,E=5;
 	
 	public MyFragmentPageAdapter mAdapter_main;
     public ListView myListview;
@@ -90,12 +90,23 @@ public class MainActivity extends  FragmentActivity{
         initial_ListView();
         //initial_Preference(); 保留 for偏好設定
         
+        //mViewPager_main.setCurrentItem(2);
        /* if (savedInstanceState == null) {
         	getSupportFragmentManager().beginTransaction().add(R.id.container, new PlaceholderFragment()).commit();
         }*/
-    
+        
     }
     
+    //當街到notification後會直接進入 並跳轉調正確的頁面
+    public void onResume() {   
+        Bundle bundle = this.getIntent().getExtras();
+        if( bundle != null) {
+            int n = bundle.getInt("viewpager_num");
+            mViewPager_main.setCurrentItem(n);
+            
+        }       
+        super.onResume();
+    }
     
   	public boolean onCreateOptionsMenu(Menu menu) {
   		getMenuInflater().inflate(R.menu.main, menu);
@@ -260,20 +271,14 @@ public class MainActivity extends  FragmentActivity{
 	//TextView 在本layout為Button用
 	public void initial_TextView() {  
 		// TODO Auto-generated method stub
+		int n;
+		
 		t1 = (TextView) findViewById(R.id.textView1);
 		t2 = (TextView) findViewById(R.id.textView2);
 		t3 = (TextView) findViewById(R.id.textView3);
 		t1.setOnClickListener(new MyOnClickListener(0));
 		t2.setOnClickListener(new MyOnClickListener(1));
 		t3.setOnClickListener(new MyOnClickListener(2));
-		Bundle bundle0311 = this.getIntent().getExtras();
-		if(bundle0311 != null){
-			//int num = bundle0311.getInt("viewpager_num");
-			//t2.setText(num);
-			//mViewPager_main.setCurrentItem(num);
-			
-		}
-		
 	}
 	
 	private class MyOnClickListener implements View.OnClickListener {

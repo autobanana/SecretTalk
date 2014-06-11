@@ -39,17 +39,24 @@ public class Listening_MyFragment extends Fragment {
     }
     //建立新的 通知 
     public void newMessage(String detail_of_message,int count){
+    	
+    	
     	NotificationCompat.Builder mBuilder =
     	        new NotificationCompat.Builder(getActivity())
     	        .setSmallIcon(R.drawable.ic_launcher)
     	        .setContentTitle("New Message!")
     	        .setContentText(detail_of_message);
+    	mBuilder.setAutoCancel(true);  //點擊後自動不見
+    	
+    	
+    	
     	Intent resultIntent = new Intent(getActivity(), MainActivity.class);
-    	Bundle bundle = new Bundle();
+    	resultIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    	
+    	Bundle bundle = new Bundle();      //notificatioin會告訴 Mainactivity去哪一個viewpager
         bundle.putInt("viewpager_num",1);
         resultIntent.putExtras(bundle);
         
-    	
     	//resultIntent.putExtra("viewpager_num",);      //傳直告訴程式是哪一個viewpager 這裡假設為1 : listening
     	
     	
@@ -61,6 +68,7 @@ public class Listening_MyFragment extends Fragment {
     	PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0,PendingIntent.FLAG_UPDATE_CURRENT);
     	mBuilder.setContentIntent(resultPendingIntent);
     	NotificationManager mNotificationManager =(NotificationManager)getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+    	
     	// mId allows you to update the notification later on.
     	mNotificationManager.notify(count, mBuilder.build());
     
