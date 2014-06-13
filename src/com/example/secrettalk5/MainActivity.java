@@ -273,8 +273,8 @@ public class MainActivity extends  FragmentActivity{
 		// TODO Auto-generated method stub
 		int n;
 		
-		t1 = (TextView) findViewById(R.id.textView1);
-		t2 = (TextView) findViewById(R.id.textView2);
+		t1 = (TextView) findViewById(R.id.Login_TitleTextView);
+		t2 = (TextView) findViewById(R.id.Login_UsernameTextView);
 		t3 = (TextView) findViewById(R.id.textView3);
 		t1.setOnClickListener(new MyOnClickListener(0));
 		t2.setOnClickListener(new MyOnClickListener(1));

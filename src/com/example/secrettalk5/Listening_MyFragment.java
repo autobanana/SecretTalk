@@ -80,8 +80,8 @@ public class Listening_MyFragment extends Fragment {
     	
     	count =0;
     	View view = inflater.inflate(R.layout.fragment_listening_my, container,false);
-    	t1 = (TextView) view.findViewById(R.id.textView1);
-    	test_for_notification = (Button) view.findViewById(R.id.button1);
+    	t1 = (TextView) view.findViewById(R.id.Login_TitleTextView);
+    	test_for_notification = (Button) view.findViewById(R.id.Login_LoginButton);
     	
     	test_for_notification.setOnClickListener(new View.OnClickListener() {
     		

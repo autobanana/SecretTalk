@@ -34,5 +34,10 @@
     <string name="Setting">設定</string>
     <string name="Talking">Talking(圖)</string>
     <string name="Listening">Listeming(圖)</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="Login_LoginTitle">Login Page</string>
+    <string name="Login_Username">Username</string>
+    <string name="Login_Password">Password</string>
+    <string name="Login_LoginButton">Login</string>
 
 </resources>
