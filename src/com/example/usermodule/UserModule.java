@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.connection.HttpRequest;
 import com.example.secrettalk5.LoginActivity;
+import com.example.secrettalk5.RegisterActivity;
 
 public class UserModule extends AsyncTask<String,Void,String> {
 
@@ -19,6 +20,7 @@ public class UserModule extends AsyncTask<String,Void,String> {
 	private String url="http://140.116.234.174:8131/users/";
 	private String RequestOption;
 	public LoginActivity LA;
+	public RegisterActivity RA;
 	
 	@Override
 	protected String doInBackground(String... params) {
@@ -28,18 +30,18 @@ public class UserModule extends AsyncTask<String,Void,String> {
 			RequestOption=params[0];
 			
 			//Register Option
-			if(RequestOption.equals("Register"))
-			{
+			if(RequestOption.equals("Register")){
 				String parameter =params[1];
-				String requestURL=url+"create?request="+parameter;
+				String requestURL=url+"create?request="+java.net.URLEncoder.encode(parameter,"UTF-8");
 				HttpRequest request=new HttpRequest();
-
+				
+				Log.v("UserModule","Send Request:"+requestURL);
+				
 				return request.GET(requestURL);
 			}
 			
 			//Login Option
-			else if(RequestOption.equals("Login"))
-			{	
+			else if(RequestOption.equals("Login")){	
 				String parameter =params[1];
 				String requestURL;
 				
@@ -70,7 +72,7 @@ public class UserModule extends AsyncTask<String,Void,String> {
 			
 			JSONObject resultObject = new JSONObject(result);
 			
-			
+			Log.v("UserModule","Get result:"+result.toString());
 			
 			ExecuteResult(resultObject);
 			
@@ -85,8 +87,13 @@ public class UserModule extends AsyncTask<String,Void,String> {
 	private void ExecuteResult(JSONObject resultObject){
 		
 		if(RequestOption.equals("Login")){
-			
 			LoginFinish(resultObject);
+		}
+		
+		if(RequestOption.equals("Register")){
+			Log.v("UserModule","Start RegisterFinish");
+			RegisterFinish(resultObject);
+			
 			
 		}
 		
@@ -121,12 +128,34 @@ public class UserModule extends AsyncTask<String,Void,String> {
 		
 		
 		
-		
+	}
+	
+	private void RegisterFinish(JSONObject resultObject){
+		try {
+			
+			//Get Response
+			String response=resultObject.getString("Response");
+			
+			//Get Server Message
+			String message=resultObject.getString("Message");
+			
+			if(response.equals("0")){
+				RA.RegisterSuccessEvent();
+			}
+			
+			Toast.makeText(context, message , Toast.LENGTH_LONG).show();
+			
+			
+			Log.v("UserModule",message);
+			
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			Toast.makeText(context, e.toString() , Toast.LENGTH_LONG).show();
+			e.printStackTrace();
+		}
 		
 		
 	}
-	
-	
 	
 	
 	

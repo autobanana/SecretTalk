@@ -39,5 +39,14 @@
     <string name="Login_Username">Username</string>
     <string name="Login_Password">Password</string>
     <string name="Login_LoginButton">Login</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="Register_TitleText">Register Page</string>
+    <string name="Login_RegisterButtonText">Register</string>
+    <string name="Register_UsernameText">Username</string>
+    <string name="Register_PasswordText">Password</string>
+    <string name="Register_NicknameTextView">Nickname</string>
+    <string name="Register_RealnameText">Realname</string>
+    <string name="Register_BirthdayText">Birthday</string>
+    <string name="Register_RegisterButtonText">Register</string>
 
 </resources>

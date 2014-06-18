@@ -275,7 +275,7 @@ public class MainActivity extends  FragmentActivity{
 		
 		t1 = (TextView) findViewById(R.id.Login_TitleTextView);
 		t2 = (TextView) findViewById(R.id.Login_UsernameTextView);
-		t3 = (TextView) findViewById(R.id.textView3);
+		t3 = (TextView) findViewById(R.id.Register_NicknameTextView);
 		t1.setOnClickListener(new MyOnClickListener(0));
 		t2.setOnClickListener(new MyOnClickListener(1));
 		t3.setOnClickListener(new MyOnClickListener(2));
