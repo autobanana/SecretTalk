@@ -255,7 +255,7 @@ public class MainActivity extends  FragmentActivity{
     	if (item.getItemId() == R.id.action_refresh) {
             //Toast.makeText(context, "action_edit", Toast.LENGTH_SHORT).show();
             getSupportFragmentManager().popBackStack( null , FragmentManager.POP_BACK_STACK_INCLUSIVE);
-    		title = "SecretTalk";
+    		getActionBar().setTitle("SecretTalk");  
             return true;
         }
         // Handle your other action bar items...
@@ -273,8 +273,8 @@ public class MainActivity extends  FragmentActivity{
 		// TODO Auto-generated method stub
 		int n;
 		
-		t1 = (TextView) findViewById(R.id.textView1);
-		t2 = (TextView) findViewById(R.id.textView2);
+		t1 = (TextView) findViewById(R.id.content_talking);
+		t2 = (TextView) findViewById(R.id.Time);
 		t3 = (TextView) findViewById(R.id.textView3);
 		t1.setOnClickListener(new MyOnClickListener(0));
 		t2.setOnClickListener(new MyOnClickListener(1));
@@ -358,6 +358,7 @@ public class MainActivity extends  FragmentActivity{
 		public void onPageScrollStateChanged(int arg0) {
 		}
 	}
+	
     // A placeholder fragment containing a simple view.
 /*    public static class PlaceholderFragment extends Fragment {
 

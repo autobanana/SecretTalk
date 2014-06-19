@@ -9,7 +9,7 @@
     tools:context="com.example.secrettalk5.Listening_MyFragment$PlaceholderFragment" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/content_talking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hello_world" />
@@ -18,8 +18,8 @@
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/textView1"
+        android:layout_alignLeft="@+id/content_talking"
+        android:layout_below="@+id/content_talking"
         android:text="Button" />
 
 </RelativeLayout>
