@@ -3,13 +3,15 @@
     android:id="@+id/a"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/Red"
+    android:background="@color/Banana_White"
     tools:context="com.example.secrettalk5.Listening_MyFragment$PlaceholderFragment" >
 
     <ListView
         android:id="@+id/Talking_ListView1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:background="@color/Banana_Gray" >
+
     </ListView>
 
 </FrameLayout>

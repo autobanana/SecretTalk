@@ -16,6 +16,9 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.support.v4.widget.DrawerLayout;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ImageSpan;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -23,6 +26,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.KeyEvent;
@@ -62,13 +66,19 @@ public class MainActivity extends  FragmentActivity{
     public ActionBarDrawerToggle drawerToggle;
     public ArrayAdapter<String> adapter;
     public ActionBarDrawerToggle mDrawerToggle;
-    private static final String[] mStrings = new String[] {"回到首頁","偏好設定", "程式導覽", "成就系統介紹", "關於本程式", "結束程式"};
+    private static final String[] mStrings = new String[] {"回到首頁","偏好設定", "程式導覽", "成就系統介紹", "關於本程式","登出", "結束程式"};
 
+    //testforbutton 
+    SpannableString viewpager_s1,viewpager_s2,viewpager_s3;
+    SpannableString viewpager_s1_press,viewpager_s2_press,viewpager_s3_press;
+    
+    
     //ListView中的各個Fragmet宣告 用以幫助remove
     public AboutProgram_Fragment aboutprogram; //關於本程式
     public PreferenceSetting_Fragment preferencesetting; //偏好設定
     public Navigation_Fragment navigation;
     public Achievement_Fragment achievement;
+    public SignOut_Fragment signout;
     
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -115,7 +125,9 @@ public class MainActivity extends  FragmentActivity{
   	
     public void initial_ListView() {
 		    	
-    	myListview.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, mStrings));
+    	
+    	myListview.setAdapter(new ListviewAdapter(this));
+    	//myListview.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, mStrings));
     	drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_main);
         mDrawerToggle = new ActionBarDrawerToggle(
                 this,                  /* host Activity */
@@ -187,6 +199,13 @@ public class MainActivity extends  FragmentActivity{
                     title = mStrings[position];
             	
             	}
+            	else if(position == 5){
+            		signout =  new  SignOut_Fragment();  
+                    FragmentTransaction transaction4 = getSupportFragmentManager().beginTransaction();
+                    transaction4.addToBackStack(null);   //保留先前的Fragment
+                    transaction4.add(R.id.drawer_layout_second, signout).commit();
+                    title = mStrings[position];
+            	}
             	else{
             		//離開程式?            		
             		Leave_program();
@@ -200,7 +219,7 @@ public class MainActivity extends  FragmentActivity{
             	Toast.makeText(MainActivity.this, "" + position, Toast.LENGTH_SHORT).show();
             	myListview.setItemChecked(position, true );  
                 drawerLayout.closeDrawer(myListview);  
-  
+                
             }
 
         });  
@@ -279,6 +298,53 @@ public class MainActivity extends  FragmentActivity{
 		t1.setOnClickListener(new MyOnClickListener(0));
 		t2.setOnClickListener(new MyOnClickListener(1));
 		t3.setOnClickListener(new MyOnClickListener(2));
+		
+		//###########  t1
+		viewpager_s1 = new SpannableString("abc");
+		Drawable img = getResources().getDrawable(R.drawable.viewpager_talking2);
+		img.setBounds(0, 0, 92, 50);
+		//img.setBounds(0, 0, img.getIntrinsicWidth(), img.getIntrinsicHeight());
+		viewpager_s1.setSpan(new ImageSpan(img, ImageSpan.ALIGN_BASELINE), 0, 3, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+		
+		viewpager_s1_press = new SpannableString("abc");
+		Drawable img1_1 = getResources().getDrawable(R.drawable.viewpager_talking_press2);
+		img1_1.setBounds(0, 0, 92, 50);
+		//img.setBounds(0, 0, img.getIntrinsicWidth(), img.getIntrinsicHeight());
+		viewpager_s1_press.setSpan(new ImageSpan(img1_1, ImageSpan.ALIGN_BASELINE), 0, 3, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+		
+		t1.setText(viewpager_s1_press); 
+		
+		//###########  t2
+		viewpager_s2 = new SpannableString("abc");
+		Drawable img2 = getResources().getDrawable(R.drawable.viewpager_listening2);
+		img2.setBounds(0, 0, 90, 57);
+		//img.setBounds(0, 0, img.getIntrinsicWidth(), img.getIntrinsicHeight());
+		viewpager_s2.setSpan(new ImageSpan(img2, ImageSpan.ALIGN_BASELINE), 0, 3, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+		
+		viewpager_s2_press = new SpannableString("abc");
+		Drawable img2_1 = getResources().getDrawable(R.drawable.viewpager_listening_press2);
+		img2_1.setBounds(0, 0, 90, 57);
+		//img.setBounds(0, 0, img.getIntrinsicWidth(), img.getIntrinsicHeight());
+		viewpager_s2_press.setSpan(new ImageSpan(img2_1, ImageSpan.ALIGN_BASELINE), 0, 3, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+		
+		t2.setText(viewpager_s2);
+		
+		//###########  t3
+		viewpager_s3 = new SpannableString("abc");
+		Drawable img3 = getResources().getDrawable(R.drawable.viewpager_setting);
+		img3.setBounds(0, 0, 90, 57);
+		//img.setBounds(0, 0, img.getIntrinsicWidth(), img.getIntrinsicHeight());
+		viewpager_s3.setSpan(new ImageSpan(img3, ImageSpan.ALIGN_BASELINE), 0, 3, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+		
+		viewpager_s3_press = new SpannableString("abc");
+		Drawable img3_1 = getResources().getDrawable(R.drawable.viewpager_settinga_press);
+		img3_1.setBounds(0, 0, 90, 57);
+		//img.setBounds(0, 0, img.getIntrinsicWidth(), img.getIntrinsicHeight());
+		viewpager_s3_press.setSpan(new ImageSpan(img3_1, ImageSpan.ALIGN_BASELINE), 0, 3, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+
+		t3.setText(viewpager_s3);
+		
+		
 	}
 	
 	private class MyOnClickListener implements View.OnClickListener {
@@ -321,24 +387,38 @@ public class MainActivity extends  FragmentActivity{
 				//t1.setTextColor(0x00000000);
 				if (currIndex == 1) {
 					animation = new TranslateAnimation(one, 0, 0, 0);
+					t1.setText(viewpager_s1_press); 
+					t2.setText(viewpager_s2);
+				
 				} else if (currIndex == 2) {
 					animation = new TranslateAnimation(two, 0, 0, 0);
+					t1.setText(viewpager_s1_press); 
+					t3.setText(viewpager_s3);
 				}
 				break;
 			case 1:
 				//t2.setTextColor(0x00000000);
 				if (currIndex == 0) {
 					animation = new TranslateAnimation(offset,one, 0, 0);
+					t1.setText(viewpager_s1);
+					t2.setText(viewpager_s2_press);
+					
 				} else if (currIndex == 2) {
 					animation = new TranslateAnimation(two, one, 0, 0);
+					t3.setText(viewpager_s3);
+					t2.setText(viewpager_s2_press);
 				}
 				break;
 			case 2:
 				//t3.setTextColor(0x00000000);
 				if (currIndex == 0) {
 					animation = new TranslateAnimation(offset, two, 0, 0);
+					t1.setText(viewpager_s1);
+					t3.setText(viewpager_s3_press);
 				} else if (currIndex == 1) {
 					animation = new TranslateAnimation(one, two, 0, 0);
+					t2.setText(viewpager_s2);
+					t3.setText(viewpager_s3_press);
 				}
 				break;
 			}

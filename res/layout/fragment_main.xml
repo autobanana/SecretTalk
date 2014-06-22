@@ -48,7 +48,9 @@
             android:id="@+id/cursor"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
+            android:background="@color/Banana_White"
             android:src="@drawable/abc_ab_bottom_solid_light_holo" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -63,8 +65,10 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="7"
+            android:background="@color/Banana_White"
             android:flipInterval="30"
             android:persistentDrawingCache="animation" >
+
         </android.support.v4.view.ViewPager>
 
     </LinearLayout>
