@@ -3,14 +3,16 @@
     android:id="@+id/drawer_layout_main"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="@color/Banana"
     android:orientation="vertical"
     tools:context="com.example.secrettalk5.MainActivity$PlaceholderFragment" >
 		
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/drawer_layout_second"
         android:layout_width="fill_parent"
-    	android:layout_height="fill_parent"
-   		android:orientation="vertical">
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
     <LinearLayout
         android:id="@+id/L_main"
         android:layout_width="match_parent"
@@ -50,7 +52,7 @@
                 android:layout_weight="1"
                 android:background="@color/textview_background"
                 android:gravity="center"
-                android:paddingTop="6dp"
+                android:paddingTop="8dp"
                 android:textColor="@color/textview_viewpager_color" />
         </LinearLayout>
 
@@ -91,6 +93,7 @@
             </android.support.v4.view.ViewPager>
         </LinearLayout>
     </LinearLayout>
+
 </android.support.v4.widget.DrawerLayout>
     <ListView
         android:id="@+id/listview_main"

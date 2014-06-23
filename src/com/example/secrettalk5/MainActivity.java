@@ -2,45 +2,35 @@ package com.example.secrettalk5;
 
 
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import android.support.v4.app.ActionBarDrawerToggle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.support.v4.widget.DrawerLayout;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ImageSpan;
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -66,13 +56,18 @@ public class MainActivity extends  FragmentActivity{
     public ActionBarDrawerToggle drawerToggle;
     public ArrayAdapter<String> adapter;
     public ActionBarDrawerToggle mDrawerToggle;
+    private static final String[] viewpagertitle = new String[]{"說-Talking","聽-Listening","你 ? Who am I ?"};
     private static final String[] mStrings = new String[] {"回到首頁","偏好設定", "程式導覽", "成就系統介紹", "關於本程式","登出", "結束程式"};
 
     //testforbutton 
     SpannableString viewpager_s1,viewpager_s2,viewpager_s3;
     SpannableString viewpager_s1_press,viewpager_s2_press,viewpager_s3_press;
     
-    
+    //開場動畫
+    public DrawerLayout layouta;
+	public int check;
+    public ActionBar actionBar2;
+	
     //ListView中的各個Fragmet宣告 用以幫助remove
     public AboutProgram_Fragment aboutprogram; //關於本程式
     public PreferenceSetting_Fragment preferencesetting; //偏好設定
@@ -81,7 +76,36 @@ public class MainActivity extends  FragmentActivity{
     public SignOut_Fragment signout;
     
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        
+        
+        /*
+        Handler myHandler3 = new Handler();
+        myHandler3.postDelayed(fordelay,2000);
+        */
+        //消除標題列
+        //requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //消除狀態列
+        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        
+        //開場動畫
+    	//actionBar2 = getActionBar(); 
+        //actionBar2.hide();
+        /*layouta=(DrawerLayout)findViewById(R.id.drawer_layout_second);
+        ImageView myImageView= (ImageView)findViewById(R.id.imageView1);
+        Animation myFadeInAnimation = AnimationUtils.loadAnimation(this, R.anim.fade_out);
+        myImageView.startAnimation(myFadeInAnimation); 
+                
+		SharedPreferences checking = getSharedPreferences("Check",MODE_PRIVATE);
+		check = checking.getInt("Check", (int)1);
+		
+		Handler myHandler = new Handler();
+        myHandler.postDelayed(mMyRunnable,2000);
+        Handler myHandler2 = new Handler();
+        myHandler2.postDelayed(mMyRunnable2,3000);
+        */
+    	setTheme(R.style.CustomActionBarTheme);
+    	super.onCreate(savedInstanceState);
+    	
         setContentView(R.layout.fragment_main2);
         
         //fragment_main2 首頁
@@ -332,13 +356,13 @@ public class MainActivity extends  FragmentActivity{
 		//###########  t3
 		viewpager_s3 = new SpannableString("abc");
 		Drawable img3 = getResources().getDrawable(R.drawable.viewpager_setting);
-		img3.setBounds(0, 0, 90, 57);
+		img3.setBounds(0, 0, 95, 53);
 		//img.setBounds(0, 0, img.getIntrinsicWidth(), img.getIntrinsicHeight());
 		viewpager_s3.setSpan(new ImageSpan(img3, ImageSpan.ALIGN_BASELINE), 0, 3, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
 		
 		viewpager_s3_press = new SpannableString("abc");
 		Drawable img3_1 = getResources().getDrawable(R.drawable.viewpager_settinga_press);
-		img3_1.setBounds(0, 0, 90, 57);
+		img3_1.setBounds(0, 0, 95, 53);
 		//img.setBounds(0, 0, img.getIntrinsicWidth(), img.getIntrinsicHeight());
 		viewpager_s3_press.setSpan(new ImageSpan(img3_1, ImageSpan.ALIGN_BASELINE), 0, 3, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
 
@@ -354,7 +378,7 @@ public class MainActivity extends  FragmentActivity{
 			index = i;
 		}		
 		public void onClick(View v) {
-			
+			title = viewpagertitle[index];
 			mViewPager_main.setCurrentItem(index);
 		}
 	}
@@ -426,6 +450,7 @@ public class MainActivity extends  FragmentActivity{
 			//currIndex2 = arg0;
 			currIndex = arg0;
 			animation.setFillAfter(true);
+			getActionBar().setTitle(title);  
 			animation.setDuration(300);
 			cursor.startAnimation(animation);
 		}
@@ -440,7 +465,7 @@ public class MainActivity extends  FragmentActivity{
 	}
 	
     // A placeholder fragment containing a simple view.
-/*    public static class PlaceholderFragment extends Fragment {
+/*	    public static class PlaceholderFragment extends Fragment {
 
         public PlaceholderFragment() {
         }
