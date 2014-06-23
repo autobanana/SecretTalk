@@ -46,7 +46,7 @@ public class UserModule extends AsyncTask<String,Void,String> {
 				String requestURL;
 				
 				requestURL = url+"login?request="+java.net.URLEncoder.encode(parameter,"UTF-8");
-				Log.v("REQUEST", requestURL);
+				Log.v("UserModule", requestURL);
 				HttpRequest request=new HttpRequest();
 				return request.GET(requestURL);
 				
@@ -71,15 +71,17 @@ public class UserModule extends AsyncTask<String,Void,String> {
 		try {
 			
 			JSONObject resultObject = new JSONObject(result);
-			
 			Log.v("UserModule","Get result:"+result.toString());
 			
 			ExecuteResult(resultObject);
 			
 			
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
+			Log.v("UserModule","Get result:"+result.toString());
+			
+			
 		}
 		
 	}
@@ -111,8 +113,8 @@ public class UserModule extends AsyncTask<String,Void,String> {
 						
 			//Change Page To MainActivity
 			if(response.equals("0")){
+				UserInformation.Username=resultObject.getString("Username");
 				LA.StartMainActivity();	
-					
 			}
 			
 			else{
@@ -122,7 +124,7 @@ public class UserModule extends AsyncTask<String,Void,String> {
 			
 			
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 		
@@ -150,8 +152,9 @@ public class UserModule extends AsyncTask<String,Void,String> {
 			
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
-			Toast.makeText(context, e.toString() , Toast.LENGTH_LONG).show();
 			e.printStackTrace();
+			Toast.makeText(context, e.toString() , Toast.LENGTH_LONG).show();
+			
 		}
 		
 		
