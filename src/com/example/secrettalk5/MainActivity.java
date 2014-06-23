@@ -1,8 +1,5 @@
 package com.example.secrettalk5;
 
-
-
-
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -315,10 +312,11 @@ public class MainActivity extends  FragmentActivity{
 	public void initial_TextView() {  
 		// TODO Auto-generated method stub
 		int n;
-		
+
 		t1 = (TextView) findViewById(R.id.content_talking);
 		t2 = (TextView) findViewById(R.id.Time);
 		t3 = (TextView) findViewById(R.id.textView3);
+
 		t1.setOnClickListener(new MyOnClickListener(0));
 		t2.setOnClickListener(new MyOnClickListener(1));
 		t3.setOnClickListener(new MyOnClickListener(2));

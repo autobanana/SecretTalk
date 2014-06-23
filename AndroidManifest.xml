@@ -7,7 +7,12 @@
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="15" />
-    <uses-permission android:name="android.permission.VIBRATE"/>
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <!-- Use Internet -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -45,15 +50,10 @@
         </activity>
         <activity
             android:name="com.example.secrettalk5.AboutProgram"
-            android:label="@string/aboutprogram" 
             android:icon="@drawable/ic_launcher"
-            >
+            android:label="@string/aboutprogram" >
         </activity>
-       
-        
-        
-        
+
     </application>
-    
 
 </manifest>
