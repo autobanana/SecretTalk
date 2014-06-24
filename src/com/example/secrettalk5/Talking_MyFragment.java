@@ -40,10 +40,10 @@ public class Talking_MyFragment extends Fragment {
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super .onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState);
         //這裡我只是簡單的用num區別標籤，其實具體應用中可以使用真實的fragment對象來作為葉片
         //mNum = getArguments() != null ? getArguments().getInt( "num" ) : 0 ;
-        GetArticle();
+        
     }
     /**為Fragment加載佈局時調用**/
     @Override
@@ -53,7 +53,7 @@ public class Talking_MyFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_talking_my, container,false);
         
         talking_listView = (ListView) view.findViewById(R.id.Talking_ListView1);
-
+        GetArticle();
         return view;
     }
     
