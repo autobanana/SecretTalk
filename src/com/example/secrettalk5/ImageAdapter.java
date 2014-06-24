@@ -1,5 +1,9 @@
 package com.example.secrettalk5;
 
+import java.util.ArrayList;
+
+import com.example.articlemodule.Article;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,28 +14,24 @@ import android.widget.TextView;
 public class ImageAdapter extends BaseAdapter {
 
 	public LayoutInflater myInflater;
-    CharSequence[] title = null;
-    CharSequence[] info = null;
-	
+	public ArrayList<Article> articleList=new ArrayList<Article>();
     
     Context context2;  
-    //String [] str = new String[]{"NO.01","No.02","No.03"};  
-	
     
-    public ImageAdapter(Context ctxt, CharSequence[] title, CharSequence[] info) {
-		// TODO Auto-generated constructor stub
+    public ImageAdapter(Context ctxt, ArrayList<Article> articleList) {
+
 		context2 = ctxt;
 		myInflater = LayoutInflater.from(ctxt);
-        this.title = title;
-        this.info = info;
+		this.articleList=articleList;
+
 	}
     @Override  
     public int getCount() {  
-        return title.length;  
+        return articleList.size();  
     }  
     @Override  
     public Object getItem(int position) {  
-        return title[position];  
+        return articleList.get(position);  
     }  
     @Override  
     public long getItemId(int position) {  
@@ -76,9 +76,14 @@ public class ImageAdapter extends BaseAdapter {
 //       }
          
         //設定標題文字
-        viewTag.username.setText(title[position]);
+        Article article=articleList.get(position);
+        
+        String author=article.author;
+        viewTag.username.setText(author);
+        
         //設定內容文字
-        viewTag.content.setText(info[position]);
+        String content=article.content;
+        viewTag.content.setText(content);
          
         return convertView;
     	///

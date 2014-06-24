@@ -1,10 +1,13 @@
 package com.example.articlemodule;
 
+import java.util.ArrayList;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.example.connection.HttpRequest;
+import com.example.secrettalk5.Talking_MyFragment;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -16,6 +19,8 @@ public class ArticleModule extends AsyncTask<String,Void,String> {
 	private String url="http://140.116.234.174:8131/article/";
 	private String RequestOption;
 	public Context context=null;
+	public Talking_MyFragment talkingFragment;
+	
 	
 	@Override
 	protected String doInBackground(String... params) {
@@ -126,6 +131,8 @@ public class ArticleModule extends AsyncTask<String,Void,String> {
 			if(response.equals("0")){
 				String getArticleList=resultObject.getString("ArticleList");
 				JSONArray articleList=new JSONArray(getArticleList);
+				
+				ArrayList<Article> article_ArrayList=new ArrayList<Article>();
 				for(int i=0;i<articleList.length();i++){
 					//Get Article From Article List
 					JSONObject article =articleList.getJSONObject(i);
@@ -137,9 +144,17 @@ public class ArticleModule extends AsyncTask<String,Void,String> {
 					//Get Create Time
 					String created_Time=article.getString("created_at");
 					
+					Article articleInstance=new Article();
+					
+					articleInstance.author=author_id;
+					articleInstance.content=content;
+					articleInstance.created_Time=created_Time;
+					
+					article_ArrayList.add(articleInstance);
 				}
 				
 				Log.v("ArticleModule", getArticleList);
+				talkingFragment.SetArticleList(article_ArrayList);
 			}
 			else{
 				
