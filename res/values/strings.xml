@@ -67,6 +67,8 @@
     <string name="Login_GetArtilceList">Get</string>
     <string name="Login_GetNewArticle">GetNewArticle</string>
     <string name="Register_SignText">Sign</string>
+    <string name="Register_GenderText">Gender</string>
+    <string name="Register_BloodTypeText">BloodType</string>
 
 
 </resources>

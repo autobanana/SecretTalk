@@ -146,9 +146,47 @@
                 android:text="@string/Register_SignText" />
 
             <Spinner
-                android:id="@+id/spinner1"
+                android:id="@+id/Register_SignSpinner"
                 android:layout_width="wrap_content"
-                android:layout_height="20dp" />
+                android:layout_height="wrap_content" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/Register_GenderRow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"  >
+
+            <TextView
+                android:id="@+id/Register_GenderTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Register_GenderText" />
+
+            <Spinner
+                android:id="@+id/Register_GenderSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/Register_BloodTypeRow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center" >
+
+            <TextView
+                android:id="@+id/Register_BloodTypeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Register_BloodTypeText" />
+
+            <Spinner
+                android:id="@+id/Register_BloodTypeSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
         </TableRow>
 
