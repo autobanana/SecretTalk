@@ -1,18 +1,21 @@
 package com.example.articlemodule;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.example.connection.HttpRequest;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 public class ArticleModule extends AsyncTask<String,Void,String> {
 	
 	private String url="http://140.116.234.174:8131/article/";
 	private String RequestOption;
-	
+	public Context context=null;
 	
 	@Override
 	protected String doInBackground(String... params) {
@@ -40,6 +43,7 @@ public class ArticleModule extends AsyncTask<String,Void,String> {
 		}
 		catch(Exception ex){
 			
+			Toast.makeText(context, "Error In Send", Toast.LENGTH_LONG).show();
 			return ex.toString();	
 		}
 		
@@ -57,6 +61,7 @@ public class ArticleModule extends AsyncTask<String,Void,String> {
 			
 		} catch (JSONException e) {
 			
+			Toast.makeText(context, "Error In Post Execute", Toast.LENGTH_LONG).show();
 			e.printStackTrace();
 			Log.v("ArticleModule","Get result:"+result.toString());
 		}
@@ -96,8 +101,12 @@ public class ArticleModule extends AsyncTask<String,Void,String> {
 				
 				
 			}
+			
+			Toast.makeText(context, message, Toast.LENGTH_LONG).show();
 		}
 		catch(JSONException e){
+			
+			Toast.makeText(context, "Error In Create Finish", Toast.LENGTH_LONG).show();
 			e.printStackTrace();
 			
 		}
@@ -115,15 +124,32 @@ public class ArticleModule extends AsyncTask<String,Void,String> {
 			
 			//If Success
 			if(response.equals("0")){
-			
+				String getArticleList=resultObject.getString("ArticleList");
+				JSONArray articleList=new JSONArray(getArticleList);
+				for(int i=0;i<articleList.length();i++){
+					//Get Article From Article List
+					JSONObject article =articleList.getJSONObject(i);
+										
+					//Get Author ID
+					String author_id=article.getString("author_id");
+					//Get Content
+					String content=article.getString("content");
+					//Get Create Time
+					String created_Time=article.getString("created_at");
+					
+				}
+				
+				Log.v("ArticleModule", getArticleList);
 			}
 			else{
 				
 				
 			}
+			Toast.makeText(context, message, Toast.LENGTH_LONG).show();
 		}
 		catch(JSONException e){
 			
+			Toast.makeText(context, "Error In Get List Finish", Toast.LENGTH_LONG).show();
 			e.printStackTrace();
 		}
 		
@@ -140,16 +166,20 @@ public class ArticleModule extends AsyncTask<String,Void,String> {
 			
 			//If Success
 			if(response.equals("0")){
-			
+				String article=resultObject.getString("article");
+				
 			}
 			else{
 				
 				
 			}
+			
+			Toast.makeText(context, message, Toast.LENGTH_LONG).show();
 		}
 		catch(JSONException e){
 			
 			e.printStackTrace();
+			
 		}
 		
 	}

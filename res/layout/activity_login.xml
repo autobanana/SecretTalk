@@ -98,6 +98,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.35" >
+
+        <Button
+            android:id="@+id/Login_PostButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.33"
+            android:text="@string/Login_PostArticle" />
+
+        <Button
+            android:id="@+id/Login_GetArticleList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.33"
+            android:text="@string/Login_GetArtilceList" />
+
+        <Button
+            android:id="@+id/Login_GetNewArticle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.33"
+            android:text="@string/Login_GetNewArticle" />
+
     </LinearLayout>
 
 </LinearLayout>

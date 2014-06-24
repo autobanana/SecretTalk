@@ -10,6 +10,10 @@ import org.json.JSONObject;
 
 
 
+
+
+import com.example.articlemodule.ArticleModule;
+import com.example.usermodule.UserInformation;
 import com.example.usermodule.UserModule;
 
 import android.app.Activity;
@@ -48,6 +52,42 @@ public class LoginActivity extends Activity {
 				StartRegiserActivity();
 			}
 		});
+		
+		//Post Article Button OnClick Event
+		Button PostButton=(Button)findViewById(R.id.Login_PostButton);
+		PostButton.setOnClickListener(new Button.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				String content="123";
+				PostArticle(content);
+			}
+		});
+		
+		
+		//Get Article Button OnClick Event
+		Button GetArticleButton=(Button)findViewById(R.id.Login_GetArticleList);
+		GetArticleButton.setOnClickListener(new Button.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				GetArticle();
+				
+			}
+		});
+		
+		//Get New Article OnClick Event
+		Button GetNewArticleButton=(Button)findViewById(R.id.Login_GetNewArticle);
+		GetNewArticleButton.setOnClickListener(new Button.OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				
+				GetNewArticle();
+			}
+			
+		});
+		
 	}
 	
 	private void LoginEvent(){
@@ -71,6 +111,57 @@ public class LoginActivity extends Activity {
 		
 	}
 	
+	private void PostArticle(String content){
+		//Initial HashMap 
+		HashMap hm=new HashMap<String, String>();
+		//hm.put("username", UserInformation.Username);
+		hm.put("username", "123");
+		hm.put("content", content);
+		
+		//Convert HashMap to JSONObject
+		JSONObject jo=new JSONObject(hm);
+		
+		//Send Article Post Request
+		ArticleModule am=new ArticleModule();
+		am.context=this;
+		am.execute("Create",jo.toString());
+		
+		
+	} 
+	
+	private void GetArticle(){
+		//Initial HashMap 
+		HashMap hm=new HashMap<String, String>();
+		//hm.put("username", UserInformation.Username);
+		hm.put("username", "123");
+		
+		//Convert HashMap to JSONObject
+		JSONObject jo=new JSONObject(hm);
+		
+		//Send Article Post Request
+		ArticleModule am=new ArticleModule();
+		am.context=this;
+		am.execute("List",jo.toString());
+		
+	}
+	
+	private void GetNewArticle(){
+		//Initial HashMap 
+		HashMap hm=new HashMap<String, String>();
+		//hm.put("username", UserInformation.Username);
+		hm.put("username", "123");
+		
+		
+		//Convert HashMap to JSONObject
+		JSONObject jo=new JSONObject(hm);
+		
+		//Send Article Post Request
+		ArticleModule am=new ArticleModule();
+		am.context=this;
+		am.execute("NewArticle",jo.toString());
+		
+	}
+	
 	public void StartMainActivity(){
 		Intent intent = new Intent();
 		Bundle bundle = new Bundle();
@@ -91,6 +182,7 @@ public class LoginActivity extends Activity {
 		//Start new Activity
 		startActivity(intent);
 	}
-
+	
+	
 
 }

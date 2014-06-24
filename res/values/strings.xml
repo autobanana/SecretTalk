@@ -63,6 +63,10 @@
     <string name="Register_RealnameText">Realname</string>
     <string name="Register_BirthdayText">Birthday</string>
     <string name="Register_RegisterButtonText">Register</string>
+    <string name="Login_PostArticle">"Post "</string>
+    <string name="Login_GetArtilceList">Get</string>
+    <string name="Login_GetNewArticle">GetNewArticle</string>
+    <string name="Register_SignText">Sign</string>
 
 
 </resources>
