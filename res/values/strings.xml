@@ -19,9 +19,75 @@
     <color name="Banana_White">#FFFFFF</color>
     <color name="Banana_Gray">#E8E8E8</color>
     <color name="Banana_Gray_dark">#D4D4D4</color>
+    <color name="Banana_light">#FFFFBB</color>
+    <color name="Banana_Setting_Gray">#666666</color>
+    <color name="Banana_Setting_Gray_light">#F5F5F5</color>
+    
+    
+    <!-- Setting 的標題 與內容  -->
+    <string name="Setting_text_size">20dp</string>
+    <!-- 性別 -->
+    <string name="Setting_sex">性別 :</string>
+    <string name="sex_male">男</string>
+    <string name="sex_female">女</string>
+    <string-array name="Setting_Sex_array">
+         <item>male</item>
+         <item>female</item>
+    </string-array>
+    
+    <string name="Setting_sign_english">Sign</string>
+    <string-array name="Setting_sign_english_array">
+        <item>Taurus</item>
+        <item>Gemini</item>
+        <item>Cancer</item>
+        <item>Leo</item>
+        <item>Virgo</item>
+        <item>Libra</item>
+        <item>Scorpio</item>
+        <item>Sagittarius</item>
+        <item>Capricorn</item>
+        <item>Aquarius</item>
+        <item>Pisces</item>
+    </string-array>
+    
+    <string name="Setting_sign">星座 :</string>
+    <string-array name="Setting_sign_array">
+        <item>金牛座 Taurus 03/21~04/19</item>
+        <item>雙子座 Gemini 04/20~05/20</item>
+        <item>巨蟹座 Cancer 05/21~06/21</item>
+        <item>獅子座 Leo 06/22~07/22</item>
+        <item>處女座 Virgo 07/23~08/22</item>
+        <item>天秤座 Libra 09/23~10/23</item>
+        <item>天蠍座 Scorpio 10/24~11/22</item>
+        <item>射手座 Sagittarius 11/23~12/21</item>
+        <item>魔羯座 Capricorn 12/22~01/19</item>
+        <item>水瓶座 Aquarius 01/20~02/18</item>
+        <item>雙魚座 Pisces 02/19~03/20</item>
+    </string-array>
+    
+    <string name="Setting_bloodtype_english">bloodtype</string>
+    <string name="Setting_blood_A">A</string>
+    <string name="Setting_blood_B">B</string>
+    <string name="Setting_blood_AB">AB</string>
+    <string name="Setting_blood_O">O</string>
+    
+    <string name="Setting_bloodtype">血型 :</string>
+    <string-array name="Setting_bloodtype_array">
+        <item>A</item>
+        <item>B</item>
+        <item>AB</item>
+        <item>O</item>
+     </string-array>
+    <string name="Setting_mood">心情</string>
+    <string name="Setting_career">職業</string>
+    <string name="Setting_age">年齡</string>
+    
+    <string name="Setting_savecompleted">確認儲存</string>
+    <string name="Setting_introduce">設定完成個人資料設定後，\n請記得按下『確認儲存』喔！</string>
     
     
     
+    <!--  -->
     <color name="Blue">#1719ff</color>
     <color name="Green">#19ff1c</color>
     <color name="Red">#FF1c19</color>
@@ -45,10 +111,9 @@
     <string name="Setting">設定</string>
     <string name="Talking">Talking(圖)</string>
     <string name="Listening">Listeming(圖)</string>
-
     <string name="name1">台南的爛滑鼠</string>
     <string name="content">4444</string>
-
+    
     <string name="title_activity_login">LoginActivity</string>
     <string name="Login_LoginTitle">Login Page</string>
     <string name="Login_Username">Username</string>
@@ -69,6 +134,5 @@
     <string name="Register_SignText">Sign</string>
     <string name="Register_GenderText">Gender</string>
     <string name="Register_BloodTypeText">BloodType</string>
-
-
 </resources>
+

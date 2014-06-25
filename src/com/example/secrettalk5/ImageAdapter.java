@@ -15,7 +15,6 @@ public class ImageAdapter extends BaseAdapter {
 
 	public LayoutInflater myInflater;
 	public ArrayList<Article> articleList=new ArrayList<Article>();
-    
     Context context2;  
     
     public ImageAdapter(Context ctxt, ArrayList<Article> articleList) {

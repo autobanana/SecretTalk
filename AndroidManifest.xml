@@ -21,12 +21,9 @@
         android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
        >
         
-        <activity android:name="Begin_Prefence_Register_Anim" >
-            
-        </activity>
-        <activity
-            android:name="com.example.secrettalk5.LoginActivity"
-            android:label="@string/title_activity_login" >
+
+        <activity android:name="Begin_Prefence_Register_Anim"
+            	  android:screenOrientation="portrait"  >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -39,7 +36,8 @@
         </activity>
         <activity
             android:name="com.example.secrettalk5.MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"  >
             
             <!-- <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -50,17 +48,20 @@
         
         <activity
             android:name="com.example.secrettalk5.Setting_MyFragment"
-            android:label="@string/title_activity_setting_my_fragment" >
+            android:label="@string/title_activity_setting_my_fragment"
+            android:screenOrientation="portrait"  >
         </activity>
         <activity
             android:name="com.example.secrettalk5.Listening_MyFragment"
-            android:label="@string/title_activity_listening_my_fragment" >
+            android:label="@string/title_activity_listening_my_fragment"
+            android:screenOrientation="portrait"  >
         </activity>
         <activity
             android:name="com.example.secrettalk5.AboutProgram"
             android:icon="@drawable/ic_launcher"
-            android:label="@string/aboutprogram" >
+            android:screenOrientation="portrait" >
         </activity>
+        
 
     </application>
 
