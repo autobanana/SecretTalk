@@ -1,5 +1,14 @@
 package com.example.secrettalk5;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import org.json.JSONObject;
+
+import com.example.articlemodule.Article;
+import com.example.articlemodule.ArticleModule;
+import com.example.usermodule.UserInformation;
+
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -9,17 +18,22 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Listening_MyFragment extends Fragment {
 
 	int mNum; //頁號
 	public Button test_for_notification;
 	public TextView t1;
+	private ArrayList<Article> articleArrayList;
+	private ListView listening_listView;
 	public int count;
     public static Listening_MyFragment newInstance( int num) {
     	Listening_MyFragment fragment = new Listening_MyFragment();
@@ -73,35 +87,61 @@ public class Listening_MyFragment extends Fragment {
     	mNotificationManager.notify(count, mBuilder.build());
     
     }
+    
+    private void GetNewArticle(){
+    	//Initial HashMap 
+    	HashMap hm=new HashMap<String, String>();
+    	hm.put("username", UserInformation.Username);
+    			
+    	//Convert HashMap to JSONObject
+    	JSONObject jo=new JSONObject(hm);
+    			
+    	//Send Article Post Request
+    	ArticleModule am=new ArticleModule();
+    	am.context=getActivity();
+    	am.listeningFragment=this;
+    	am.execute("NewArticle",jo.toString());
+    	
+    }
+    
+    public void SetNewArticleListView(ArrayList<Article> articleArrayList){
+    	this.articleArrayList=articleArrayList;
+    	String count=String.valueOf(articleArrayList.size());
+    	Log.v("ListeningFragment", "StarRefreshListView");
+    	Log.v("ListeningFragment", "StarRefreshListView");
+    	RefreshListView();
+    	
+    }
+    
+    private void RefreshListView(){
+    	listening_listView.setAdapter(new ImageAdapter(getActivity(),articleArrayList));
+    	listening_listView.invalidateViews();
+    }
+    
     /**為Fragment加載佈局時調用**/
     @Override
-    
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
-    	
     	count =0;
     	View view = inflater.inflate(R.layout.fragment_listening_my, container,false);
     	t1 = (TextView) view.findViewById(R.id.content_talking);
     	test_for_notification = (Button) view.findViewById(R.id.Login_PostButton);
-    	
     	test_for_notification.setOnClickListener(new View.OnClickListener() {
     		
 			@Override
 			public void onClick(View v) {
 					//t1.setText("iiii");
-				
 					newMessage("今天我睡了一整天，感覺很空虛。",count);
 					count++;
-				
 			}
 		});
+    
+    	listening_listView=(ListView)view.findViewById(R.id.Listening_ListView);
+    	GetNewArticle();
     	
-    	//btn = (Button) rootView.findViewById(R.id.myButton);
-        //btn.setOnClickListener(this);
-       
-        
-        //TextView tv = (TextView) view.findViewById(R.id.textView1);
-        //tv.setText( "fragment+" + mNum);
         return view;
     }
-
+    
+    
+    
+    
 }

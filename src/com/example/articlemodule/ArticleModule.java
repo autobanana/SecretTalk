@@ -7,6 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.example.connection.HttpRequest;
+import com.example.secrettalk5.Listening_MyFragment;
 import com.example.secrettalk5.Talking_MyFragment;
 
 import android.content.Context;
@@ -20,7 +21,7 @@ public class ArticleModule extends AsyncTask<String,Void,String> {
 	private String RequestOption;
 	public Context context=null;
 	public Talking_MyFragment talkingFragment;
-	
+	public Listening_MyFragment listeningFragment;
 	
 	@Override
 	protected String doInBackground(String... params) {
@@ -121,6 +122,7 @@ public class ArticleModule extends AsyncTask<String,Void,String> {
 	private void GetListFinish(JSONObject resultObject){
 		
 		try {
+			
 			//Get Response
 			String response=resultObject.getString("Response");
 			
@@ -173,6 +175,7 @@ public class ArticleModule extends AsyncTask<String,Void,String> {
 	
 	private void GetNewArticleFinish(JSONObject resultObject){
 		try {
+			Log.v("ArticleModule","Get New Article Finish Start");
 			//Get Response
 			String response=resultObject.getString("Response");
 			
@@ -181,8 +184,31 @@ public class ArticleModule extends AsyncTask<String,Void,String> {
 			
 			//If Success
 			if(response.equals("0")){
-				String article=resultObject.getString("article");
+				String articlelistString=resultObject.getString("Article");
+				JSONArray articleListJSONArray=new JSONArray(articlelistString);
 				
+				ArrayList<Article> articleArrayList=new ArrayList<Article>();
+				for(int i=0;i<articleListJSONArray.length();i++){
+					//Get Article From Article List
+					JSONObject article =articleListJSONArray.getJSONObject(i);
+					
+					//Get Author ID
+					String author_id=article.getString("author_id");
+					//Get Content
+					String content=article.getString("content");
+					//Get Create Time
+					String created_Time=article.getString("created_at");
+					
+					Article articleInstance=new Article();
+					
+					articleInstance.author=author_id;
+					articleInstance.content=content;
+					articleInstance.created_Time=created_Time;
+					
+					articleArrayList.add(articleInstance);
+				}
+				Log.v("ArticleModule","Send Set New Article");
+				listeningFragment.SetNewArticleListView(articleArrayList);
 			}
 			else{
 				
