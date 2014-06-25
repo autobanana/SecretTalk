@@ -1,6 +1,8 @@
 package com.example.secrettalk5;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -49,6 +51,6 @@ public class Talking_MyFragment extends Fragment {
         
         return view;
     }
-
+    
 }
 
