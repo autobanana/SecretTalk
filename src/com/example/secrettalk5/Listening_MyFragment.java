@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class Listening_MyFragment extends Fragment {
@@ -21,24 +22,49 @@ public class Listening_MyFragment extends Fragment {
 	public Button test_for_notification;
 	public TextView t1;
 	public int count;
+	public ListView listening_listView;
     public static Listening_MyFragment newInstance( int num) {
     	Listening_MyFragment fragment = new Listening_MyFragment();
-        // Supply num input as an argument.
-//        Bundle args = new Bundle();
-//        args.putInt( "num" , num);
-//        fragment.setArguments(args);
         
     	return fragment;
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super .onCreate(savedInstanceState);
-        //這裡我只是簡單的用num區別標籤，其實具體應用中可以使用真實的fragment對象來作為葉片
-        //mNum = getArguments() != null ? getArguments().getInt( "num" ) : 1 ;
         
     }
-    //建立新的 通知 
-    public void newMessage(String detail_of_message,int count){
+    
+    /**為Fragment加載佈局時調用**/
+    @Override
+    
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+    	
+    	count =0;
+    	View view = inflater.inflate(R.layout.fragment_listening_my, container,false);
+    	String[] mtitle = new String[]{"顆顆","XXX","OOO","HH"} ;
+        String[] minfo =  new String[]{"唉呦凡呢","DDDDDDDD.高美濕地.大坑風景區","西SSSSSSSSSS子灣.英國領事館.愛河","a;dlkajsdkja;djadkja;dkja;dkja;sdkja;ldjkajd;alksdjsalkdj"};
+        listening_listView = (ListView) view.findViewById(R.id.listening_ListView1);  
+        listening_listView.setAdapter(new ImageAdapter(container.getContext(), mtitle, minfo));//getActivity().getApplicationContext()));
+ 
+    	/*t1 = (TextView) view.findViewById(R.id.content_talking);
+    	test_for_notification = (Button) view.findViewById(R.id.button1);
+    	
+    	test_for_notification.setOnClickListener(new View.OnClickListener() {
+    		
+			@Override
+			public void onClick(View v) {
+					//t1.setText("iiii");
+				
+					newMessage("今天我睡了一整天，感覺很空虛。",count);
+					count++;
+				
+			}
+		});
+    	*/
+    	
+        return view;
+    }
+public void newMessage(String detail_of_message,int count){
     	
     	
     	NotificationCompat.Builder mBuilder =
@@ -73,35 +99,4 @@ public class Listening_MyFragment extends Fragment {
     	mNotificationManager.notify(count, mBuilder.build());
     
     }
-    /**為Fragment加載佈局時調用**/
-    @Override
-    
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
-    	
-    	count =0;
-    	View view = inflater.inflate(R.layout.fragment_listening_my, container,false);
-    	t1 = (TextView) view.findViewById(R.id.content_talking);
-    	test_for_notification = (Button) view.findViewById(R.id.button1);
-    	
-    	test_for_notification.setOnClickListener(new View.OnClickListener() {
-    		
-			@Override
-			public void onClick(View v) {
-					//t1.setText("iiii");
-				
-					newMessage("今天我睡了一整天，感覺很空虛。",count);
-					count++;
-				
-			}
-		});
-    	
-    	//btn = (Button) rootView.findViewById(R.id.myButton);
-        //btn.setOnClickListener(this);
-       
-        
-        //TextView tv = (TextView) view.findViewById(R.id.textView1);
-        //tv.setText( "fragment+" + mNum);
-        return view;
-    }
-
 }

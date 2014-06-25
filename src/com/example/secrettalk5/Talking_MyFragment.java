@@ -28,9 +28,8 @@ public class Talking_MyFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super .onCreate(savedInstanceState);
-        //這裡我只是簡單的用num區別標籤，其實具體應用中可以使用真實的fragment對象來作為葉片
-        //mNum = getArguments() != null ? getArguments().getInt( "num" ) : 0 ;
     }
+    
     /**為Fragment加載佈局時調用**/
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,16 +46,7 @@ public class Talking_MyFragment extends Fragment {
         talking_listView.setAdapter(new ImageAdapter(container.getContext(), mtitle, minfo));//getActivity().getApplicationContext()));
 
         
-//        LayoutInflater layoutInflater = getActivity().getLayoutInflater();  
-//        View buttonLayout = layoutInflater.inflate(R.layout.conversation, null);  
-//        View buttonLayout2 = layoutInflater.inflate(R.layout.conversation, null);
-//        View buttonLayout3 = layoutInflater.inflate(R.layout.conversation, null);
-//        mainLayout.addView(buttonLayout);  
-//        mainLayout.addView(buttonLayout2);  
-//        mainLayout.addView(buttonLayout3);
         
-        //TextView tv = (TextView) view.findViewById(R.id.textView1);
-        //tv.setText( "fragment+" + mNum);
         return view;
     }
 

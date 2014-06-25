@@ -12,7 +12,6 @@ public class ImageAdapter extends BaseAdapter {
 	public LayoutInflater myInflater;
     CharSequence[] title = null;
     CharSequence[] info = null;
-	
     
     Context context2;  
     //String [] str = new String[]{"NO.01","No.02","No.03"};  

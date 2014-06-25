@@ -1,5 +1,6 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/FrameLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/Banana_Gray"
@@ -9,18 +10,11 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.secrettalk5.Listening_MyFragment$PlaceholderFragment" >
 
-    <TextView
-        android:id="@+id/content_talking"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+    <ListView
+        android:id="@+id/listening_ListView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/Banana_Gray" >
+    </ListView>
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/content_talking"
-        android:layout_below="@+id/content_talking"
-        android:text="Button" />
-
-</RelativeLayout>
+</FrameLayout>
