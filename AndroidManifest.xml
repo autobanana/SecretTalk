@@ -20,8 +20,6 @@
         android:label="@string/app_name"
         android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
        >
-        
-
         <activity android:name="Begin_Prefence_Register_Anim"
             	  android:screenOrientation="portrait"  >
             <intent-filter>

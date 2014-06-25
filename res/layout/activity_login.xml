@@ -104,21 +104,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.33"
-            android:text="@string/Login_PostArticle" />
+            android:text="@string/Login_PostArticle"
+            android:visibility="invisible" />
 
         <Button
             android:id="@+id/Login_GetArticleList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.33"
-            android:text="@string/Login_GetArtilceList" />
+            android:text="@string/Login_GetArtilceList"
+            android:visibility="invisible" />
 
         <Button
             android:id="@+id/Login_GetNewArticle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.33"
-            android:text="@string/Login_GetNewArticle" />
+            android:text="@string/Login_GetNewArticle"
+            android:visibility="invisible" />
 
     </LinearLayout>
 
