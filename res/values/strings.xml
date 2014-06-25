@@ -51,6 +51,7 @@
     </string-array>
     
     <string name="Setting_sign">星座 :</string>
+    <string name="prompt">請選擇您的星座</string>
     <string-array name="Setting_sign_array">
         <item>金牛座 Taurus 03/21~04/19</item>
         <item>雙子座 Gemini 04/20~05/20</item>
@@ -63,6 +64,22 @@
         <item>魔羯座 Capricorn 12/22~01/19</item>
         <item>水瓶座 Aquarius 01/20~02/18</item>
         <item>雙魚座 Pisces 02/19~03/20</item>
+    </string-array>
+    
+    <string name="Setting_mood">心情 :</string>
+    <string name="prompt_mood">請選擇您的心情</string>
+    <string-array name="Setting_mood_array">
+        <item>開心的</item>
+        <item>憂鬱的</item>
+        <item>平淡的</item>
+        <item>快樂的</item>
+        <item>幸福的</item>
+        <item>生氣的</item>
+        <item>生病的</item>
+        <item>不爽的</item>
+        <item>疲累的</item>
+        <item>緊張的</item>
+        <item>無奈的</item>
     </string-array>
     
     <string name="Setting_bloodtype_english">bloodtype</string>
@@ -78,14 +95,13 @@
         <item>AB</item>
         <item>O</item>
      </string-array>
-    <string name="Setting_mood">心情</string>
     <string name="Setting_career">職業</string>
     <string name="Setting_age">年齡</string>
     
     <string name="Setting_savecompleted">確認儲存</string>
     <string name="Setting_introduce">設定完成個人資料設定後，\n請記得按下『確認儲存』喔！</string>
     
-    
+    <string name="Talking_talk_button">分享</string>
     
     <!--  -->
     <color name="Blue">#1719ff</color>
@@ -114,7 +130,7 @@
     <string name="name1">台南的爛滑鼠</string>
     <string name="content">4444</string>
     
-    <string name="title_activity_login">LoginActivity</string>
+	 <string name="title_activity_login">LoginActivity</string>
     <string name="Login_LoginTitle">Login Page</string>
     <string name="Login_Username">Username</string>
     <string name="Login_Password">Password</string>
