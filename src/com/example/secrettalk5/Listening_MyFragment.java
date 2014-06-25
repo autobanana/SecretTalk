@@ -122,8 +122,10 @@ public class Listening_MyFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
     	count =0;
+    	
     	View view = inflater.inflate(R.layout.fragment_listening_my, container,false);
     	t1 = (TextView) view.findViewById(R.id.content_talking);
+    	/*
     	test_for_notification = (Button) view.findViewById(R.id.Login_PostButton);
     	test_for_notification.setOnClickListener(new View.OnClickListener() {
     		
@@ -134,8 +136,8 @@ public class Listening_MyFragment extends Fragment {
 					count++;
 			}
 		});
-    
-    	listening_listView=(ListView)view.findViewById(R.id.Listening_ListView);
+    */
+    	listening_listView=(ListView)view.findViewById(R.id.listening_ListView1);
     	GetNewArticle();
     	
         return view;

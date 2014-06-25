@@ -36,7 +36,7 @@ public class Begin_Prefence_Register_Anim extends Activity {
         public void run()
         {
         	Intent intent = new Intent();
-      	  	intent.setClass(Begin_Prefence_Register_Anim.this,MainActivity.class);
+      	  	intent.setClass(Begin_Prefence_Register_Anim.this,LoginActivity.class);
       	  	startActivity(intent);
       	  	finish(); 
         	//Change state here

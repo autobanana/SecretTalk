@@ -32,7 +32,8 @@
 		</activity>
 		 <activity
             android:name="com.example.secrettalk5.RegisterActivity"
-            android:label="@string/title_activity_register" >
+            android:label="@string/title_activity_register"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.example.secrettalk5.MainActivity"
@@ -61,8 +62,12 @@
             android:icon="@drawable/ic_launcher"
             android:screenOrientation="portrait" >
         </activity>
-        
-
+        <activity
+            android:name="com.example.secrettalk5.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:screenOrientation="portrait" >
+		</activity>
+  
     </application>
 
 </manifest>
