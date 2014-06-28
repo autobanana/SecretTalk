@@ -39,7 +39,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView"
-                android:textColor="@color/Banana_Gray_dark" />
+                android:textColor="@color/Banana_Gray_dark"
+                android:textSize="10sp" />
 
             <TextView
                 android:id="@+id/content1"

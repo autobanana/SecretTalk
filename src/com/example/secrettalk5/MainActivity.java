@@ -412,6 +412,9 @@ public class MainActivity extends  FragmentActivity{
 
 		public void onPageSelected(int arg0) {
 			Animation animation = null;
+			
+			title = viewpagertitle[arg0];
+			
 			switch (arg0) {
 			case 0:
 				//t1.setTextColor(0x00000000);
