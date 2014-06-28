@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -22,7 +21,7 @@ public class Begin_Prefence_Register_Anim extends Activity {
 		
 		//開場動畫
         layouta=(LinearLayout)findViewById(R.id.begin);
-        ImageView myImageView= (ImageView)findViewById(R.id.imageView1);
+        ImageView myImageView= (ImageView)findViewById(R.id.icon_imageview);
         Animation myFadeInAnimation = AnimationUtils.loadAnimation(this, R.anim.fade_out);
         myImageView.startAnimation(myFadeInAnimation); 
         
@@ -36,7 +35,8 @@ public class Begin_Prefence_Register_Anim extends Activity {
         public void run()
         {
         	Intent intent = new Intent();
-      	  	intent.setClass(Begin_Prefence_Register_Anim.this,LoginActivity.class);
+        	intent.setClass(Begin_Prefence_Register_Anim.this,LoginActivity.class);
+      	  	//intent.setClass(Begin_Prefence_Register_Anim.this,MainActivity.class);
       	  	startActivity(intent);
       	  	finish(); 
         	//Change state here

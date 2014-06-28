@@ -65,7 +65,12 @@
             android:label="@string/title_activity_login"
             android:screenOrientation="portrait" >
 		</activity>
-  
+  		<activity
+            android:name="com.example.secrettalk5.PostArticle"
+            android:label="@string/PostActivity_title"
+            android:screenOrientation="portrait"
+             >
+		</activity>
     </application>
 
 </manifest>

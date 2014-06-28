@@ -11,10 +11,6 @@ public class PreferenceSetting_Fragment extends Fragment {
 	int mNum; //­¶¸¹
     public static PreferenceSetting_Fragment newInstance( int num) {
     	PreferenceSetting_Fragment fragment = new PreferenceSetting_Fragment();
-        // Supply num input as an argument.
-    	//Bundle args = new Bundle();
-    	//args.putInt( "num" , num);
-    	//fragment.setArguments(args);
         return fragment;
     }
     
@@ -27,8 +23,6 @@ public class PreferenceSetting_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
                                                                                                                                                                                                                                                                                                                       
         View view = inflater.inflate(R.layout.fragment_preference_setting,  container,false );
-        //TextView tv = (TextView) view.findViewById(R.id.textView1);
-        //tv.setText( "fragment+" + mNum);
         return view;
     }
 }

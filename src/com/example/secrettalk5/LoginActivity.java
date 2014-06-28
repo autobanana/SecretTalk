@@ -34,6 +34,10 @@ public class LoginActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
 		
+		LoginEvent();
+				
+		
+		
 		//Register Login Button OnClick Event
 		Button LoginButton=(Button)findViewById(R.id.Login_LoginButton);
 		LoginButton.setOnClickListener(new Button.OnClickListener(){
@@ -95,10 +99,16 @@ public class LoginActivity extends Activity {
 		String username=((EditText)findViewById(R.id.Login_UsernameEditText)).getText().toString();
 		String password=((EditText)findViewById(R.id.Login_PasswordEditText)).getText().toString();
 		
+			
+		
+		
+		
 		//Initial HashMap 
 		HashMap hm=new HashMap<String, String>();
 		hm.put("username", username);
 		hm.put("password", password);
+	/*	hm.put("username", "secrettalk");
+		hm.put("password", "secrettalk");*/
 		
 		//Convert HashMap to JSONObject
 		JSONObject jo=new JSONObject(hm);

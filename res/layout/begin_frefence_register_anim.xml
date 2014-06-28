@@ -19,7 +19,7 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/imageView1"
+            android:id="@+id/icon_imageview"
             android:layout_width="fill_parent"
             android:layout_height="493dp"
             android:layout_weight="0.2"

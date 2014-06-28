@@ -28,6 +28,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,6 +46,7 @@ public class MainActivity extends  FragmentActivity{
 	
 	public MyFragmentPageAdapter mAdapter_main;
     public ListView myListview;
+    public LinearLayout viewPager_layout;
     public DrawerLayout drawerLayout;  
     //public List<String> list;  
     public CharSequence title;  
@@ -75,22 +77,10 @@ public class MainActivity extends  FragmentActivity{
     public void onCreate(Bundle savedInstanceState) {
         
         
-        /*
-        Handler myHandler3 = new Handler();
-        myHandler3.postDelayed(fordelay,2000);
-        */
-        //消除標題列
-        //requestWindowFeature(Window.FEATURE_NO_TITLE);
-        //消除狀態列
-        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        
         //開場動畫
     	//actionBar2 = getActionBar(); 
         //actionBar2.hide();
-        /*layouta=(DrawerLayout)findViewById(R.id.drawer_layout_second);
-        ImageView myImageView= (ImageView)findViewById(R.id.imageView1);
-        Animation myFadeInAnimation = AnimationUtils.loadAnimation(this, R.anim.fade_out);
-        myImageView.startAnimation(myFadeInAnimation); 
+        /*
                 
 		SharedPreferences checking = getSharedPreferences("Check",MODE_PRIVATE);
 		check = checking.getInt("Check", (int)1);
@@ -113,6 +103,7 @@ public class MainActivity extends  FragmentActivity{
         mViewPager_main.setAdapter(mAdapter_main);
         mViewPager_main.setOnPageChangeListener(new MyOnPageChangeListener());
         
+        viewPager_layout = (LinearLayout)findViewById(R.id.L_main);
         
         /**初始化**/
         initial_TextView();
@@ -122,7 +113,7 @@ public class MainActivity extends  FragmentActivity{
         //initial_Preference(); 保留 for偏好設定
         
         //mViewPager_main.setCurrentItem(2);
-       /* if (savedInstanceState == null) {
+        /* if (savedInstanceState == null) {
         	getSupportFragmentManager().beginTransaction().add(R.id.container, new PlaceholderFragment()).commit();
         }*/
         
@@ -184,18 +175,24 @@ public class MainActivity extends  FragmentActivity{
             	if(position == 0){
             		//回到首頁
             		//清空所有新加入的fragment
+            		ViewPager_Show();
             		getSupportFragmentManager().popBackStack( null , FragmentManager.POP_BACK_STACK_INCLUSIVE);
             		title = "SecretTalk";
             	}
             	else if(position == 1){
             		//偏好設定
+            		//getSupportFragmentManager().popBackStack( null , FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            		ViewPager_Hide();
+
             		preferencesetting =  new  PreferenceSetting_Fragment();  
                     FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
                     transaction1.addToBackStack(null);   //保留先前的Fragment
                     transaction1.add(R.id.drawer_layout_second, preferencesetting).commit();
                     title = mStrings[position];
+            	
             	}
             	else if(position == 2){
+            		ViewPager_Hide();
             		navigation = new Navigation_Fragment();
             		FragmentTransaction transaction2 = getSupportFragmentManager().beginTransaction();
                     transaction2.addToBackStack(null);   //保留先前的Fragment
@@ -204,6 +201,7 @@ public class MainActivity extends  FragmentActivity{
             	}
             	else if(position ==3){
             		//成就系統介紹		
+            		ViewPager_Hide();
             		achievement = new Achievement_Fragment();
             		FragmentTransaction transaction3 = getSupportFragmentManager().beginTransaction();
                     transaction3.addToBackStack(null);   //保留先前的Fragment
@@ -213,6 +211,7 @@ public class MainActivity extends  FragmentActivity{
             	}
             	else if(position == 4){
             		//關於本程式
+            		ViewPager_Hide();
             		aboutprogram =  new  AboutProgram_Fragment();  
                     FragmentTransaction transaction4 = getSupportFragmentManager().beginTransaction();
                     transaction4.addToBackStack(null);   //保留先前的Fragment
@@ -221,6 +220,7 @@ public class MainActivity extends  FragmentActivity{
             	
             	}
             	else if(position == 5){
+            		ViewPager_Hide();
             		signout =  new  SignOut_Fragment();  
                     FragmentTransaction transaction4 = getSupportFragmentManager().beginTransaction();
                     transaction4.addToBackStack(null);   //保留先前的Fragment
@@ -246,6 +246,14 @@ public class MainActivity extends  FragmentActivity{
         });  
 	}
     
+	public void ViewPager_Hide() {
+		viewPager_layout.setVisibility(View.INVISIBLE);
+	
+	}
+	public void ViewPager_Show(){
+		viewPager_layout.setVisibility(View.VISIBLE);
+	}
+
 	public void Leave_program() {
 		
     	AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
@@ -294,7 +302,8 @@ public class MainActivity extends  FragmentActivity{
         }
     	if (item.getItemId() == R.id.action_refresh) {
             //Toast.makeText(context, "action_edit", Toast.LENGTH_SHORT).show();
-            getSupportFragmentManager().popBackStack( null , FragmentManager.POP_BACK_STACK_INCLUSIVE);
+    		ViewPager_Show();
+    		getSupportFragmentManager().popBackStack( null , FragmentManager.POP_BACK_STACK_INCLUSIVE);
     		getActionBar().setTitle("SecretTalk");  
             return true;
         }
@@ -368,7 +377,6 @@ public class MainActivity extends  FragmentActivity{
 		
 		
 	}
-	
 	private class MyOnClickListener implements View.OnClickListener {
 		private int index = 0;
 		
@@ -399,7 +407,7 @@ public class MainActivity extends  FragmentActivity{
 		two = one * 2;
 
 	}
-	
+
 	public class MyOnPageChangeListener implements OnPageChangeListener {
 
 		public void onPageSelected(int arg0) {

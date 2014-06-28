@@ -9,7 +9,6 @@ import com.example.articlemodule.Article;
 import com.example.articlemodule.ArticleModule;
 import com.example.usermodule.UserInformation;
 
-import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -25,7 +24,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class Listening_MyFragment extends Fragment {
 
@@ -37,18 +35,12 @@ public class Listening_MyFragment extends Fragment {
 	public int count;
     public static Listening_MyFragment newInstance( int num) {
     	Listening_MyFragment fragment = new Listening_MyFragment();
-        // Supply num input as an argument.
-//        Bundle args = new Bundle();
-//        args.putInt( "num" , num);
-//        fragment.setArguments(args);
         
     	return fragment;
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super .onCreate(savedInstanceState);
-        //這裡我只是簡單的用num區別標籤，其實具體應用中可以使用真實的fragment對象來作為葉片
-        //mNum = getArguments() != null ? getArguments().getInt( "num" ) : 1 ;
         
     }
     //建立新的 通知 

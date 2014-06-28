@@ -50,8 +50,8 @@ public class ImageAdapter extends BaseAdapter {
             //建構listItem內容view
             viewTag = new ViewHolder(
             (TextView)convertView.findViewById(R.id.Name),
-            (TextView) convertView.findViewById(R.id.Time),
-            (TextView) convertView.findViewById(R.id.content_talking)
+            (TextView)convertView.findViewById(R.id.Time),
+            (TextView)convertView.findViewById(R.id.content_talking)
              );
              
             //設置容器內容

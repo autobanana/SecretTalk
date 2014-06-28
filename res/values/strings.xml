@@ -103,6 +103,17 @@
     
     <string name="Talking_talk_button">分享</string>
     
+    
+    <!-- Talking   -->
+    <string name="PostActivity_title">分享文章</string>
+    <string name="PostActivity_dialog_title">請輸入你想分享的內容...</string>
+    <string name="yes">確定</string>
+    <string name="no">取消</string>
+    <string name="post">分享</string>
+    <string name="test">ddsdlkjs;dk;klf;fljk;alkfja;kfja;lsjkfl;ajkfkajfl;anvnzmcnzowieupoqwueqiuyeufhslkjlksnc;zlckxnlk</string>
+    
+    
+    
     <!--  -->
     <color name="Blue">#1719ff</color>
     <color name="Green">#19ff1c</color>
@@ -117,8 +128,7 @@
     <string name="action_info">軟體資訊</string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
-    <string name="yes">確定</string>
-    <string name="no">取消</string>
+    
     <string name="leavingprogram">確定要離開 SecretTalk？</string>
     <string name="leave">離開程式</string>
     <string name="title_activity_about_program">AboutProgram</string>
