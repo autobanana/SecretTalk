@@ -16,8 +16,10 @@ public class Begin_Prefence_Register_Anim extends Activity {
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		
-		//setTheme(android.R.style.Theme_Translucent_NoTitleBar_Fullscreen);
-		setContentView(R.layout.begin_frefence_register_anim);
+		setContentView(R.layout.begin_frefence_register_anim); //原來
+		
+		//setContentView(R.layout.activity_login_new);
+		
 		
 		//開場動畫
         layouta=(LinearLayout)findViewById(R.id.begin);
@@ -28,6 +30,7 @@ public class Begin_Prefence_Register_Anim extends Activity {
         //跳轉ACTIVITY
         Handler myHandler = new Handler();
         myHandler.postDelayed(mMyRunnable,2000);
+        
         
 	}
 	private Runnable mMyRunnable = new Runnable()

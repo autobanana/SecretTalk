@@ -32,8 +32,9 @@ public class LoginActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_login);
+		//setContentView(R.layout.activity_login);
 		
+		setContentView(R.layout.activity_login_new);
 		LoginEvent();
 				
 		
@@ -57,6 +58,7 @@ public class LoginActivity extends Activity {
 			}
 		});
 		
+		/*
 		//Post Article Button OnClick Event
 		Button PostButton=(Button)findViewById(R.id.Login_PostButton);
 		PostButton.setOnClickListener(new Button.OnClickListener() {
@@ -79,7 +81,7 @@ public class LoginActivity extends Activity {
 				
 			}
 		});
-		
+	
 		//Get New Article OnClick Event
 		Button GetNewArticleButton=(Button)findViewById(R.id.Login_GetNewArticle);
 		GetNewArticleButton.setOnClickListener(new Button.OnClickListener(){
@@ -91,7 +93,7 @@ public class LoginActivity extends Activity {
 			}
 			
 		});
-		
+		*/	
 	}
 	
 	private void LoginEvent(){
