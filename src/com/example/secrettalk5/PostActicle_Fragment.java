@@ -1,5 +1,12 @@
 package com.example.secrettalk5;
 
+import java.util.HashMap;
+
+import org.json.JSONObject;
+
+import com.example.articlemodule.ArticleModule;
+import com.example.usermodule.UserInformation;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -16,6 +23,7 @@ public class PostActicle_Fragment extends Fragment {
 
 	int mNum; 
 	public View view;//頁號
+	
     public static PostActicle_Fragment newInstance( int num) {
     	PostActicle_Fragment fragment = new PostActicle_Fragment();
         return fragment;
@@ -31,7 +39,7 @@ public class PostActicle_Fragment extends Fragment {
                                                                                                                                                                                                                                                                                                                       
         view = inflater.inflate(R.layout.fragment_postacticle_my,  container,false );
         Button cancel = (Button)view.findViewById(R.id.button2);
-        Button post = (Button)view.findViewById(R.id.button1);
+        Button post = (Button)view.findViewById(R.id.PostArticle_PostButton);
         cancel.setOnClickListener( new OnClickListener(){      	
         	public void onClick(View view) {
         		remove_Framgement_itself();
@@ -47,7 +55,22 @@ public class PostActicle_Fragment extends Fragment {
     public void postarcticle(){
     	
     	//發文程式碼
-		Toast.makeText(view.getContext(), "小魏這塊給你發文", Toast.LENGTH_LONG).show();	
+		//Toast.makeText(view.getContext(), "小魏這塊給你發文", Toast.LENGTH_LONG).show();
+    	
+    	EditText et=(EditText)view.findViewById(R.id.PostArticle_ContentEditText);
+    	String content=et.getText().toString();
+    	
+    	HashMap hm=new HashMap<String, String>();
+		hm.put("username", UserInformation.Username);
+		hm.put("content", content);
+		//Convert HashMap to JSONObject
+		JSONObject jo=new JSONObject(hm);
+		
+		//Send Article Post Request
+		ArticleModule am=new ArticleModule();
+		am.context=getActivity();
+		am.postArticleFragment=this;
+		am.execute("Create",jo.toString());
     	//
     	
     	remove_Framgement_itself();

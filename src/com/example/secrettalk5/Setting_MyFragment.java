@@ -35,7 +35,7 @@ public class Setting_MyFragment extends Fragment {
                     
     	
         view = inflater.inflate(R.layout.fragment_setting_my,  container,false );
-        Button checkbutton = (Button) view.findViewById(R.id.button1);
+        Button checkbutton = (Button) view.findViewById(R.id.PostArticle_PostButton);
         radioGroup1 = (RadioGroup) view.findViewById(R.id.radioGroup1);
     	radioGroup2 = (RadioGroup) view.findViewById(R.id.radioGroup2);
         Spinner spinner = (Spinner) view.findViewById(R.id.spinner1);

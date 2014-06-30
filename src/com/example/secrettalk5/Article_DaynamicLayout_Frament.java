@@ -40,7 +40,7 @@ public class Article_DaynamicLayout_Frament extends Fragment {
     	view = inflater.inflate(R.layout.fragment_article_dynamiclayout,  container,false );
     	dynmaic_scrollview = (ScrollView)view.findViewById(R.id.scrollView1);
     	a = (LinearLayout)view.findViewById(R.id.insideScrollView);
-    	reply_edittext = (EditText)view.findViewById(R.id.editText1);
+    	reply_edittext = (EditText)view.findViewById(R.id.PostArticle_ContentEditText);
     	reply_button = (Button)view.findViewById(R.id.button3);
     	
     	reply_button.setOnClickListener( new OnClickListener(){      	
@@ -53,7 +53,7 @@ public class Article_DaynamicLayout_Frament extends Fragment {
     	
     	
     	//´ú¸Õ¥Îbutton /////////////////////////////////////////////
-    	Button S = (Button)view.findViewById(R.id.button1);
+    	Button S = (Button)view.findViewById(R.id.PostArticle_PostButton);
     	
     	S.setOnClickListener( new OnClickListener(){      	
         	public void onClick(View view) {

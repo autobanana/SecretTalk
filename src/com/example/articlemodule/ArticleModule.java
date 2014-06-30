@@ -8,6 +8,7 @@ import org.json.JSONObject;
 
 import com.example.connection.HttpRequest;
 import com.example.secrettalk5.Listening_MyFragment;
+import com.example.secrettalk5.PostActicle_Fragment;
 import com.example.secrettalk5.Talking_MyFragment;
 
 import android.content.Context;
@@ -22,6 +23,7 @@ public class ArticleModule extends AsyncTask<String,Void,String> {
 	public Context context=null;
 	public Talking_MyFragment talkingFragment;
 	public Listening_MyFragment listeningFragment;
+	public PostActicle_Fragment postArticleFragment;
 	
 	@Override
 	protected String doInBackground(String... params) {
@@ -101,7 +103,7 @@ public class ArticleModule extends AsyncTask<String,Void,String> {
 			
 			//If Success
 			if(response.equals("0")){
-			
+				postArticleFragment.remove_Framgement_itself();
 			}
 			else{
 				

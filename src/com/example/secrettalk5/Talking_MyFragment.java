@@ -7,6 +7,7 @@ import org.json.JSONObject;
 
 import com.example.articlemodule.Article;
 import com.example.articlemodule.ArticleModule;
+import com.example.globalcontainer.GlobalContainer;
 import com.example.usermodule.UserInformation;
 
 import android.content.Context;
@@ -41,7 +42,7 @@ public class Talking_MyFragment extends Fragment {
 	private FrameLayout mainLayout; 
 	public ListView talking_listView;
 	private Context ct;
-	private ArrayList<Article> article_ArrayList=new ArrayList<Article>();
+	
 	public PostActicle_Fragment postacticle;
 	public Article_DaynamicLayout_Frament article_daynamicLayout;
 	
@@ -53,7 +54,9 @@ public class Talking_MyFragment extends Fragment {
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super .onCreate(savedInstanceState);
+    	
+    	super.onCreate(savedInstanceState);
+    	
 
     }
     
@@ -141,14 +144,14 @@ public class Talking_MyFragment extends Fragment {
     
     
     public void SetArticleList(ArrayList<Article> article_ArrayList){
-    	this.article_ArrayList=article_ArrayList;
+    	GlobalContainer.article_ArrayList=article_ArrayList;
     	RefreshListView();
     	
     }
     
     private void RefreshListView(){
     	
-    	talking_listView.setAdapter(new ImageAdapter(getActivity(),article_ArrayList));
+    	talking_listView.setAdapter(new ImageAdapter(getActivity(),GlobalContainer.article_ArrayList));
     	talking_listView.invalidateViews();
     	
     }
