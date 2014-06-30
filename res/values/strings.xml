@@ -172,5 +172,6 @@
     <string name="Register_SignText">Sign</string>
     <string name="Register_GenderText">Gender</string>
     <string name="Register_BloodTypeText">BloodType</string>
+    <string name="Refresh">Refresh</string>
 </resources>
 

@@ -53,9 +53,21 @@ public class Talking_MyFragment extends Fragment {
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
+    	
+    	
         super .onCreate(savedInstanceState);
 
     }
+    
+
+    
+    
+    
+    
+    
+    
+    
     
     /**為Fragment加載佈局時調用**/
     @Override
@@ -88,6 +100,12 @@ public class Talking_MyFragment extends Fragment {
                 transaction1.add(R.id.drawer_layout_second, postacticle).commit();
                 getActivity().getActionBar().setTitle(R.string.PostActivity_dialog_title);  
         		
+                
+                
+                
+                
+                
+                
         	}    	        	
         });
         
@@ -115,8 +133,9 @@ public class Talking_MyFragment extends Fragment {
                 transaction4.addToBackStack(null);   //保留先前的Fragment
                 transaction4.add(R.id.drawer_layout_second, article_daynamicLayout).commit();
                 
-            	//Toast.makeText(getActivity(), "" + position, Toast.LENGTH_SHORT).show();
-            	//talking_listView.setItemChecked(position,true);  
+                View backView = getActivity().findViewById(R.id.L_main);
+                backView.setVisibility(View.INVISIBLE);
+
                 
             }
 
@@ -153,6 +172,8 @@ public class Talking_MyFragment extends Fragment {
     	
     }
     
+    
+
 
 }
 

@@ -83,7 +83,7 @@ public class RegisterActivity extends Activity {
 				nickname==null||realname==null||
 				realname==null||birthday==null){
 			
-			Toast.makeText(this, "Please fill all content", Toast.LENGTH_LONG).show();
+//			Toast.makeText(this, "Please fill all content", Toast.LENGTH_LONG).show();
 			
 		}
 		

@@ -47,7 +47,7 @@ public class PostActicle_Fragment extends Fragment {
     public void postarcticle(){
     	
     	//發文程式碼
-		Toast.makeText(view.getContext(), "小魏這塊給你發文", Toast.LENGTH_LONG).show();	
+//		Toast.makeText(view.getContext(), "小魏這塊給你發文", Toast.LENGTH_LONG).show();	
     	//
     	
     	remove_Framgement_itself();

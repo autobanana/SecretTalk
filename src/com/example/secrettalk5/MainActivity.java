@@ -3,6 +3,7 @@ package com.example.secrettalk5;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentManager.OnBackStackChangedListener;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -110,6 +111,23 @@ public class MainActivity extends  FragmentActivity{
         initial_ImageView();
         initial_PageView();
         initial_ListView();
+        
+        getSupportFragmentManager().addOnBackStackChangedListener(new OnBackStackChangedListener() {    
+            public void onBackStackChanged() {
+
+                int backCount = getSupportFragmentManager().getBackStackEntryCount();
+                if (backCount == 0){
+                	ViewPager_Show();
+                                   // block where back has been pressed. since backstack is zero.
+                }
+            }
+        });
+        
+        
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
+                ); 
+        
         //initial_Preference(); 保留 for偏好設定
         
         //mViewPager_main.setCurrentItem(2);
@@ -119,6 +137,19 @@ public class MainActivity extends  FragmentActivity{
         
     }
     
+    
+    
+    
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
     //當街到notification後會直接進入 並跳轉調正確的頁面
     public void onResume() {   
         Bundle bundle = this.getIntent().getExtras();
@@ -127,6 +158,7 @@ public class MainActivity extends  FragmentActivity{
             mViewPager_main.setCurrentItem(n);
             
         }       
+               
         super.onResume();
     }
     
@@ -237,7 +269,7 @@ public class MainActivity extends  FragmentActivity{
                 //bundle.putString( "content" ,list.get(i));  
                 //myFragment.setArguments(bundle);  
                
-            	Toast.makeText(MainActivity.this, "" + position, Toast.LENGTH_SHORT).show();
+//            	Toast.makeText(MainActivity.this, "" + position, Toast.LENGTH_SHORT).show();
             	myListview.setItemChecked(position, true );  
                 drawerLayout.closeDrawer(myListview);  
                 
@@ -300,8 +332,8 @@ public class MainActivity extends  FragmentActivity{
     	if (mDrawerToggle.onOptionsItemSelected(item)) {
           return true;
         }
-    	if (item.getItemId() == R.id.action_refresh) {
-            //Toast.makeText(context, "action_edit", Toast.LENGTH_SHORT).show();
+    	if (item.getItemId() == R.id.action_home) {
+//            Toast.makeText(context, "action_edit", Toast.LENGTH_SHORT).show();
     		ViewPager_Show();
     		getSupportFragmentManager().popBackStack( null , FragmentManager.POP_BACK_STACK_INCLUSIVE);
     		getActionBar().setTitle("SecretTalk");  
@@ -407,7 +439,10 @@ public class MainActivity extends  FragmentActivity{
 		two = one * 2;
 
 	}
+	
 
+	
+	
 	public class MyOnPageChangeListener implements OnPageChangeListener {
 
 		public void onPageSelected(int arg0) {
@@ -472,6 +507,32 @@ public class MainActivity extends  FragmentActivity{
 		public void onPageScrollStateChanged(int arg0) {
 		}
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
     // A placeholder fragment containing a simple view.
 /*	    public static class PlaceholderFragment extends Fragment {

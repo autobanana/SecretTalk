@@ -49,7 +49,7 @@ public class ArticleModule extends AsyncTask<String,Void,String> {
 		}
 		catch(Exception ex){
 			
-			Toast.makeText(context, "Error In Send", Toast.LENGTH_LONG).show();
+//			Toast.makeText(context, "Error In Send", Toast.LENGTH_LONG).show();
 			return ex.toString();	
 		}
 		
@@ -67,7 +67,7 @@ public class ArticleModule extends AsyncTask<String,Void,String> {
 			
 		} catch (JSONException e) {
 			
-			Toast.makeText(context, "Error In Post Execute", Toast.LENGTH_LONG).show();
+//			Toast.makeText(context, "Error In Post Execute", Toast.LENGTH_LONG).show();
 			e.printStackTrace();
 			Log.v("ArticleModule","Get result:"+result.toString());
 		}
@@ -108,11 +108,11 @@ public class ArticleModule extends AsyncTask<String,Void,String> {
 				
 			}
 			
-			Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+//			Toast.makeText(context, message, Toast.LENGTH_LONG).show();
 		}
 		catch(JSONException e){
 			
-			Toast.makeText(context, "Error In Create Finish", Toast.LENGTH_LONG).show();
+//			Toast.makeText(context, "Error In Create Finish", Toast.LENGTH_LONG).show();
 			e.printStackTrace();
 			
 		}
@@ -162,11 +162,11 @@ public class ArticleModule extends AsyncTask<String,Void,String> {
 				
 				
 			}
-			Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+//			Toast.makeText(context, message, Toast.LENGTH_LONG).show();
 		}
 		catch(JSONException e){
 			
-			Toast.makeText(context, "Error In Get List Finish", Toast.LENGTH_LONG).show();
+//			Toast.makeText(context, "Error In Get List Finish", Toast.LENGTH_LONG).show();
 			e.printStackTrace();
 		}
 		
@@ -215,7 +215,7 @@ public class ArticleModule extends AsyncTask<String,Void,String> {
 				
 			}
 			
-			Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+//			Toast.makeText(context, message, Toast.LENGTH_LONG).show();
 		}
 		catch(JSONException e){
 			

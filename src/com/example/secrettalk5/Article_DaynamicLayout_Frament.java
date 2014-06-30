@@ -48,8 +48,7 @@ public class Article_DaynamicLayout_Frament extends Fragment {
         		reply_specific_article();
         	}     	        	
         });
-    	
-    	
+
     	
     	
     	//測試用button /////////////////////////////////////////////
@@ -69,6 +68,10 @@ public class Article_DaynamicLayout_Frament extends Fragment {
         });
     	////////////////////////////////////////////////////////
     	
+    	
+    
+    	
+    	
         return view;
     }
 
@@ -79,7 +82,7 @@ public class Article_DaynamicLayout_Frament extends Fragment {
 		String replycontent = reply_edittext.getText().toString();
 		
 		
-		Toast.makeText(view.getContext(), "小魏這塊給你寫回覆", Toast.LENGTH_LONG).show();
+//		Toast.makeText(view.getContext(), "小魏這塊給你寫回覆", Toast.LENGTH_LONG).show();
 		
 		
 		
