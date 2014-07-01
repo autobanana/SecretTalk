@@ -140,7 +140,9 @@ public class ArticleModule extends AsyncTask<String,Void,String> {
 				for(int i=0;i<articleList.length();i++){
 					//Get Article From Article List
 					JSONObject article =articleList.getJSONObject(i);
-										
+					
+					//Get Article ID
+					String article_id=article.getString("id");
 					//Get Author ID
 					String author_id=article.getString("author_id");
 					//Get Content
@@ -150,6 +152,7 @@ public class ArticleModule extends AsyncTask<String,Void,String> {
 					
 					Article articleInstance=new Article();
 					
+					articleInstance.article_id=article_id;
 					articleInstance.author=author_id;
 					articleInstance.content=content;
 					articleInstance.created_Time=created_Time;

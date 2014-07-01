@@ -111,9 +111,14 @@ public class Talking_MyFragment extends Fragment {
             @Override  
             public  void  onItemClick(AdapterView<?> adapterView, View view,  int  position,  long  l) {  
                 
-            	
-            	
-            	article_daynamicLayout =  new  Article_DaynamicLayout_Frament();  
+            	Log.v("ReplyModule", String.valueOf(position));
+            	Log.v("ReplyModule", GlobalContainer.article_ArrayList.toString());
+            	Article artilce=GlobalContainer.article_ArrayList.get(position);
+            	Log.v("ReplyModule", artilce.toString());
+            	String article_id=artilce.article_id;
+            	Log.v("ReplyModule", article_id);
+            	article_daynamicLayout =  new  Article_DaynamicLayout_Frament();
+            	article_daynamicLayout.article_id=article_id;
                 FragmentTransaction transaction4 = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction4.addToBackStack(null);   //保留先前的Fragment
                 transaction4.add(R.id.drawer_layout_second, article_daynamicLayout).commit();

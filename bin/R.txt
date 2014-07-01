@@ -316,6 +316,8 @@ int id Login_UsernameEditText 0x7f050040
 int id Login_UsernameTextView 0x7f05003f
 int id Login_trytrysee 0x7f05004c
 int id Name 0x7f050072
+int id PostArticle_ContentEditText 0x7f05007b
+int id PostArticle_PostButton 0x7f050077
 int id Register_BirthdayEditText 0x7f050061
 int id Register_BirthdayRow 0x7f05005f
 int id Register_BirthdayTextView 0x7f050060
@@ -362,7 +364,6 @@ int id activity_chooser_view_content 0x7f050025
 int id always 0x7f05000b
 int id begin 0x7f050070
 int id beginning 0x7f050011
-int id button1 0x7f050077
 int id button2 0x7f050078
 int id button3 0x7f05007c
 int id button_talking 0x7f050096
@@ -380,7 +381,6 @@ int id drawer_layout_main3 0x7f050085
 int id drawer_layout_second 0x7f050082
 int id dropdown 0x7f05000f
 int id dynamic_linearlayout 0x7f050076
-int id editText1 0x7f05007b
 int id edit_query 0x7f050030
 int id end 0x7f050013
 int id expand_activities_button 0x7f050026

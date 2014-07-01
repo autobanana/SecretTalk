@@ -1,5 +1,13 @@
 package com.example.secrettalk5;
 
+import java.util.HashMap;
+
+import org.json.JSONObject;
+
+import com.example.articlemodule.ArticleModule;
+import com.example.articlemodule.ReplyModule;
+import com.example.usermodule.UserInformation;
+
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -24,7 +32,9 @@ public class Article_DaynamicLayout_Frament extends Fragment {
 	public ScrollView dynmaic_scrollview;
 	public Button reply_button;
 	public EditText reply_edittext;
+	public String article_id;
 	
+
 	public static Article_DaynamicLayout_Frament newInstance( int num) {
 		Article_DaynamicLayout_Frament fragment = new Article_DaynamicLayout_Frament();
         return fragment;
@@ -32,6 +42,7 @@ public class Article_DaynamicLayout_Frament extends Fragment {
     
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
     }
     /**為Fragment加載佈局時調用**/
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
@@ -68,10 +79,28 @@ public class Article_DaynamicLayout_Frament extends Fragment {
         	}     	        	
         });
     	////////////////////////////////////////////////////////
-    	
+    	GetHistoricalDialogue();
         return view;
     }
 
+    public void GetHistoricalDialogue()
+    {
+    	//Initial HashMap 
+    	HashMap hm=new HashMap<String, String>();
+    	hm.put("username", UserInformation.Username);
+    	hm.put("article_id", article_id);
+    		
+    	//Convert HashMap to JSONObject
+    	JSONObject jo=new JSONObject(hm);
+    			
+    	//Send Article Post Request
+    	ReplyModule rm=new ReplyModule();
+    	rm.context=getActivity();
+    	rm.articleDynamicFragment=this;
+    	rm.execute("Content",jo.toString());
+    	
+    }
+    
 	public void reply_specific_article() {
 		
 		
