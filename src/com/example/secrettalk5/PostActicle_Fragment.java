@@ -55,6 +55,7 @@ public class PostActicle_Fragment extends Fragment {
     public void postarcticle(){
     	
     	//發文程式碼
+
 		//Toast.makeText(view.getContext(), "小魏這塊給你發文", Toast.LENGTH_LONG).show();
     	
     	EditText et=(EditText)view.findViewById(R.id.PostArticle_ContentEditText);
@@ -71,6 +72,7 @@ public class PostActicle_Fragment extends Fragment {
 		am.context=getActivity();
 		am.postArticleFragment=this;
 		am.execute("Create",jo.toString());
+
     	//
     	
     	remove_Framgement_itself();

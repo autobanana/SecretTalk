@@ -10,14 +10,24 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
+
+
+
+import android.content.Context;
 import android.util.Log;
 
+
+
 public class HttpRequest {
-	
+
 	public String GET(String url)
 	{	
+		        
 		InputStream inputStream = null;
 		String result;
+		
+        
+		
 		try{
 			// create HttpClient
             HttpClient httpclient = new DefaultHttpClient();
@@ -44,6 +54,11 @@ public class HttpRequest {
 		
 	}
 	
+	private Context getApplicationContext() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	//Convert InputStream to String
 	private static String convertInputStreamToString(InputStream inputStream) throws IOException{
         BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(inputStream));

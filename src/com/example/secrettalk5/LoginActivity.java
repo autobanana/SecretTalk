@@ -12,6 +12,7 @@ import org.json.JSONObject;
 
 
 
+
 import com.example.articlemodule.ArticleModule;
 import com.example.usermodule.UserInformation;
 import com.example.usermodule.UserModule;
@@ -36,9 +37,12 @@ public class LoginActivity extends Activity {
 		
 		setContentView(R.layout.activity_login_new);
 		LoginEvent();
-				
+        
 		
-		
+		ConnectionDetector cd = new ConnectionDetector(getApplicationContext());
+        
+        cd.showConnction();		
+			
 		//Register Login Button OnClick Event
 		Button LoginButton=(Button)findViewById(R.id.Login_LoginButton);
 		LoginButton.setOnClickListener(new Button.OnClickListener(){
@@ -100,10 +104,7 @@ public class LoginActivity extends Activity {
 		//Get User Input
 		String username=((EditText)findViewById(R.id.Login_UsernameEditText)).getText().toString();
 		String password=((EditText)findViewById(R.id.Login_PasswordEditText)).getText().toString();
-		
-			
-		
-		
+				
 		
 		//Initial HashMap 
 		HashMap hm=new HashMap<String, String>();

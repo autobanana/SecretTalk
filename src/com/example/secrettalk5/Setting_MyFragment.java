@@ -52,7 +52,7 @@ public class Setting_MyFragment extends Fragment {
         checkbutton.setOnClickListener( new OnClickListener(){      	
         	public void onClick(View view) {
         		getSettingInfo();
-        		Toast.makeText(view.getContext(), "儲存成功！", Toast.LENGTH_LONG).show();	
+//        		Toast.makeText(view.getContext(), "儲存成功！", Toast.LENGTH_LONG).show();	
         	}     	        	
         });
         
