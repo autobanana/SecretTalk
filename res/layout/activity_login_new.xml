@@ -15,7 +15,7 @@
         android:orientation="vertical" >
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/birthday_year"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/login_title"
@@ -24,7 +24,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/birthday_month"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/login_introduce"
@@ -154,7 +154,7 @@
             android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/birthday_day"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_weight="1" />
@@ -165,7 +165,7 @@
                 android:layout_weight="1" >
 
                 <TextView
-                    android:id="@+id/textView6"
+                    android:id="@+id/login_day"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_weight="1" />

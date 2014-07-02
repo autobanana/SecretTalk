@@ -107,10 +107,10 @@ public class LoginActivity extends Activity {
 		
 		//Initial HashMap 
 		HashMap hm=new HashMap<String, String>();
-		//hm.put("username", username);
-		//hm.put("password", password);
-		hm.put("username", "secrettalk");
-		hm.put("password", "secrettalk");
+		hm.put("username", username);
+		hm.put("password", password);
+		//hm.put("username", "secrettalk");
+		//hm.put("password", "secrettalk");
 		
 		//Convert HashMap to JSONObject
 		JSONObject jo=new JSONObject(hm);

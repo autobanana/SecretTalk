@@ -22,10 +22,22 @@
     <color name="Banana_light">#FFFFBB</color>
     <color name="Banana_Setting_Gray">#666666</color>
     <color name="Banana_Setting_Gray_light">#F5F5F5</color>
+
     
     
     <!-- Setting 的標題 與內容  -->
+    <string name="Setting_personaldata">個人基本資料</string>
+    <string name="Setting_instantset">個人即時設定  ( 系統將以本資料決定連結 ) </string>
+    <string name="Setting_moodchoose_title">請選擇你的心情</string>
+    <color name="Setting_birthday_color">#FF6991</color>
+    <color name="Setting_constellation">#FFE3D1</color>
+    <color name="Setting_testcolor">#FFE478</color>
+    <color name="Setting_username">#FFE3D1</color>
+    <color name="Setting_gender">#A2D2FF</color>
     <string name="Setting_text_size">20dp</string>
+    <string name="Setting_testname">小豬</string>
+    <string name="Setting_testlogin_day">12</string>
+    <string name="Setting_test_user_id">autobanana</string>
     <!-- 性別 -->
     <string name="Setting_sex">性別 :</string>
     <string name="sex_male">男</string>
@@ -95,6 +107,8 @@
         <item>AB</item>
         <item>O</item>
      </string-array>
+    
+    
     <string name="Setting_career">職業</string>
     <string name="Setting_age">年齡</string>
     

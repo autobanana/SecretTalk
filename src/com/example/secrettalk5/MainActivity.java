@@ -14,6 +14,7 @@ import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
@@ -101,7 +102,12 @@ public class MainActivity extends  FragmentActivity{
         mViewPager_main = (ViewPager) findViewById(R.id.vPager_main);
         mAdapter_main = new MyFragmentPageAdapter(getSupportFragmentManager());
         mViewPager_main.setAdapter(mAdapter_main);
+        
+        //mAdapter_main.notifyDataSetChanged();  ///
+        
         mViewPager_main.setOnPageChangeListener(new MyOnPageChangeListener());
+        
+        
         
         viewPager_layout = (LinearLayout)findViewById(R.id.L_main);
         
@@ -118,6 +124,13 @@ public class MainActivity extends  FragmentActivity{
         }*/
         
     }
+    /*
+    public void onNewIntent(Intent intent){
+    	super.onNewIntent(intent);
+        mViewPager_main.setAdapter(mAdapter_main);
+        mAdapter_main.notifyDataSetChanged();  
+        setIntent(intent);///
+    }*/
     
     //當街到notification後會直接進入 並跳轉調正確的頁面
     public void onResume() {   
