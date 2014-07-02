@@ -11,17 +11,16 @@
 	 -->
     <item
         android:id="@+id/action_home"
-        android:orderInCategory="1"
-        android:showAsAction="ifRoom|withText"
-        android:layout_gravity="center"
+        android:orderInCategory="2"
+        android:showAsAction="ifRoom"
+        		android:icon="@drawable/icon_home"
         android:title="@string/Home"/>
     
     <item  
         android:id="@+id/action_refresh"
-        android:orderInCategory="2"
-        android:showAsAction="ifRoom|withText"
-		android:icon="@drawable/refresh_icon"
-		android:layout_gravity="center"
+        android:orderInCategory="1"
+        android:showAsAction="ifRoom"
+		android:icon="@drawable/icon_refresh"
         android:title="@string/Refresh" />
     
     
