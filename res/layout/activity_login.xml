@@ -81,7 +81,7 @@
         android:gravity="center"  >
 
         <Button
-            android:id="@+id/Login_LoginButton"
+            android:id="@+id/signout_signoutButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/Login_LoginButton" />

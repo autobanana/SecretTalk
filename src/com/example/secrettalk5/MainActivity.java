@@ -382,7 +382,7 @@ public class MainActivity extends  FragmentActivity{
 
 		t1 = (TextView) findViewById(R.id.content_talking);
 		t2 = (TextView) findViewById(R.id.Time);
-		t3 = (TextView) findViewById(R.id.textView3);
+		t3 = (TextView) findViewById(R.id.about_version);
 
 		t1.setOnClickListener(new MyOnClickListener(0));
 		t2.setOnClickListener(new MyOnClickListener(1));
