@@ -14,22 +14,34 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 public class RegisterActivity extends Activity {
 
+	public RadioGroup GendermRadioGroup1; 
+	public RadioButton mRadio1,mRadio2; 
+	public String gender;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_register);
+		setContentView(R.layout.fragment_register_new);
 		
 		//Register Login Button OnClick Event
-		Button RegisterButton=(Button)findViewById(R.id.Register_RegisterButton);
+		Button RegisterButton=(Button)findViewById(R.id.button2);
 		RegisterButton.setOnClickListener(new Button.OnClickListener(){
 			@Override
 			public void onClick(View v) {
 				RegisterEvent();
+			}
+		});
+		Button Cancel=(Button)findViewById(R.id.button1);
+		Cancel.setOnClickListener(new Button.OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				finish();
 			}
 		});
 		
@@ -39,7 +51,7 @@ public class RegisterActivity extends Activity {
 	}
 	
 	private void AddSpinnerChoice(){
-		Spinner spinner=(Spinner)findViewById(R.id.Register_SignSpinner);
+		Spinner spinner=(Spinner)findViewById(R.id.spinner1);
 		String[] sign = {"Aries", "Taurus", "Gemini", "Cancer", "Leo","Virgo","Libra","Scorpio","Sagittarius","Capricorn","Aquarius","Pisces"};
 		ArrayAdapter<String> signList=new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,sign);
 		spinner.setAdapter(signList);
@@ -47,41 +59,63 @@ public class RegisterActivity extends Activity {
 	}
 	
 	private void AddBloodTypeChoice(){
-		Spinner spinner=(Spinner)findViewById(R.id.Register_BloodTypeSpinner);
+		Spinner spinner=(Spinner)findViewById(R.id.spinner2);
 		String[] bloodType = {"A", "B", "AB", "O"};
 		ArrayAdapter<String> bloodTypeList=new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,bloodType);
 		spinner.setAdapter(bloodTypeList);
 	}
 	
 	private void AddGenderChoice(){
-		Spinner spinner=(Spinner)findViewById(R.id.Register_GenderSpinner);
+		
+		GendermRadioGroup1 = (RadioGroup) findViewById(R.id.radioGroup1);
+		mRadio1 = (RadioButton) findViewById(R.id.radio0);
+		mRadio2 = (RadioButton) findViewById(R.id.radio1); 
+		      
+		GendermRadioGroup1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
+		    public void onCheckedChanged(RadioGroup group, int checkedId){
+		    	if(checkedId== mRadio1.getId()){
+		    		gender = "male";
+		    	}
+		    	else if(checkedId==mRadio2.getId()){ 
+		    		gender = "female";
+		    	}       
+		    } 
+		  }); 
+		
+		/*Spinner spinner=(Spinner)findViewById(R.id.Register_GenderSpinner);
 		String[] gender = {"men", "female"};
 		ArrayAdapter<String> genderList=new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,gender);
-		spinner.setAdapter(genderList);
+		spinner.setAdapter(genderList);*/
 	}
+	
+	
+	
 	
 	private void RegisterEvent(){
 		
 		//Get All Content
-		String username=((EditText)findViewById(R.id.Register_UsernameEditText)).getText().toString();
-		String password=((EditText)findViewById(R.id.Register_PasswordEditText)).getText().toString();
-		String nickname=((EditText)findViewById(R.id.Register_NicknameEditText)).getText().toString();
-		String realname=((EditText)findViewById(R.id.Register_RealnameEditText)).getText().toString();
-		String birthday=((EditText)findViewById(R.id.Register_BirthdayEditText)).getText().toString();
+		String username=((EditText)findViewById(R.id.register_Username)).getText().toString();
+		String password=((EditText)findViewById(R.id.register_password)).getText().toString();
+		String nickname=((EditText)findViewById(R.id.register_nickname)).getText().toString();
+		String realname=((EditText)findViewById(R.id.register_realname)).getText().toString();
 		
-		Spinner signSpinner=(Spinner)findViewById(R.id.Register_SignSpinner);
+		String birthday_year =((EditText)findViewById(R.id.year)).getText().toString();
+		String birthday_month = ((EditText)findViewById(R.id.month)).getText().toString();
+		String birthday_day = ((EditText)findViewById(R.id.day)).getText().toString();
+		String birthday = birthday_year+"."+birthday_month+"."+birthday_day;
+		Spinner signSpinner=(Spinner)findViewById(R.id.spinner1);
 		String sign=signSpinner.getSelectedItem().toString();
 		
-		Spinner genderSpinner=(Spinner)findViewById(R.id.Register_GenderSpinner);
-		String gender=genderSpinner.getSelectedItem().toString();
+		/*Spinner genderSpinner=(Spinner)findViewById(R.id.Register_GenderSpinner);
+		String gender=genderSpinner.getSelectedItem().toString();*/
 		
-		Spinner bloodTypeSpinner=(Spinner)findViewById(R.id.Register_BloodTypeSpinner);
+		Spinner bloodTypeSpinner=(Spinner)findViewById(R.id.spinner2);
 		String bloodType=bloodTypeSpinner.getSelectedItem().toString();
 		
 		
 		if(username==null||password==null||
 				nickname==null||realname==null||
-				realname==null||birthday==null){
+				realname==null||birthday_year ==null || birthday_month== null || birthday_day == null){
 			
 			Toast.makeText(this, "Please fill all content", Toast.LENGTH_LONG).show();
 			

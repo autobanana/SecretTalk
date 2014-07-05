@@ -35,7 +35,7 @@ public class LoginActivity extends Activity {
 		//setContentView(R.layout.activity_login);
 		
 		setContentView(R.layout.activity_login_new);
-		LoginEvent();
+		//LoginEvent();
 				
 		
 		
@@ -47,9 +47,9 @@ public class LoginActivity extends Activity {
 				LoginEvent();
 			}
 		});
-		
+	
 		//Register Register Button OnClick Event
-		Button RegisterButton=(Button)findViewById(R.id.Login_RegisterButton);
+		Button RegisterButton=(Button)findViewById(R.id.register_button);
 		RegisterButton.setOnClickListener(new Button.OnClickListener(){
 
 			@Override
@@ -57,6 +57,7 @@ public class LoginActivity extends Activity {
 				StartRegiserActivity();
 			}
 		});
+		
 		
 		/*
 		//Post Article Button OnClick Event

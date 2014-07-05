@@ -18,7 +18,7 @@ public class Begin_Prefence_Register_Anim extends Activity {
 		
 		setContentView(R.layout.begin_frefence_register_anim); //原來
 		
-		//setContentView(R.layout.activity_login_new);
+		//setContentView(R.layout.fragment_register_new);
 		
 		
 		//開場動畫
@@ -32,14 +32,15 @@ public class Begin_Prefence_Register_Anim extends Activity {
         myHandler.postDelayed(mMyRunnable,2000);
         
         
+        
 	}
 	private Runnable mMyRunnable = new Runnable()
     {
         public void run()
         {
         	Intent intent = new Intent();
-        	//intent.setClass(Begin_Prefence_Register_Anim.this,LoginActivity.class);
-      	  	intent.setClass(Begin_Prefence_Register_Anim.this,MainActivity.class);
+        	intent.setClass(Begin_Prefence_Register_Anim.this,LoginActivity.class);
+      	  	//intent.setClass(Begin_Prefence_Register_Anim.this,MainActivity.class);
       	  	startActivity(intent);
       	  	finish(); 
         	//Change state here

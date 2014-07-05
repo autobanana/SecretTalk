@@ -28,7 +28,9 @@
     <!-- Setting 的標題 與內容  -->
     <string name="Setting_personaldata">個人基本資料</string>
     <string name="Setting_instantset">個人即時設定  ( 系統將以本資料決定連結 ) </string>
-    <string name="Setting_moodchoose_title">請選擇你的心情</string>
+    <string name="Setting_moodchoose_title">現在你感覺?</string>
+    <string name="Setting_interestchoose_title">你的興趣是?</string>
+    <string name="Setting_personalitychoose_title">你覺得你這個人?</string>
     <color name="Setting_birthday_color">#FF6991</color>
     <color name="Setting_constellation">#FFE3D1</color>
     <color name="Setting_testcolor">#FFE478</color>
@@ -40,8 +42,6 @@
     <string name="Setting_test_user_id">autobanana</string>
     <!-- 性別 -->
     <string name="Setting_sex">性別 :</string>
-    <string name="sex_male">男</string>
-    <string name="sex_female">女</string>
     <string-array name="Setting_Sex_array">
          <item>male</item>
          <item>female</item>
@@ -137,6 +137,24 @@
     <string name="login_try">試玩看看</string>
     <string name="login_introduce">感謝你安裝本程式，趕快來體驗SecretTalk吧！</string>
     
+    <!-- register layout  -->
+    <string name="Register_title">Register</string>
+    <string name="Register_introduce">請填入以下資料註冊SecretTalk帳號。</string>
+    <string name="Register_user_id">帳號</string>
+    <string name="Register_password">密碼</string>
+    <string name="Register_nickname">暱稱</string>
+    <string name="Register_realname">真名</string>
+    <string name="Register_birthday">生日</string>
+    <string name="Register_year">年</string>
+    <string name="Register_month">月</string>
+    <string name="Register_day">日</string>
+    <string name="Register_gender">性別</string>
+    <string name="sex_male">男</string>
+    <string name="sex_female">女</string>
+    <string name="Register_constellation">星座</string>
+    <string name="Register_boodtype">血型</string>
+    <string name="Register_summit_and_register">送出註冊</string>
+    <string name="Register_cancel">取消</string>
     
     
     
