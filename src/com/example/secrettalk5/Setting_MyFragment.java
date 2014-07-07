@@ -61,7 +61,8 @@ public class Setting_MyFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
                     
-        view = inflater.inflate(R.layout.fragment_setting_my,  container,false );
+        view = inflater.inflate(R.layout.fragment_setting_my2,  container,false );
+        /*
         Button checkbutton = (Button) view.findViewById(R.id.PostArticle_PostButton);
         radioGroup1 = (RadioGroup) view.findViewById(R.id.radioGroup1);
     	radioGroup2 = (RadioGroup) view.findViewById(R.id.radioGroup2);
@@ -82,7 +83,7 @@ public class Setting_MyFragment extends Fragment {
 //        		Toast.makeText(view.getContext(), "儲存成功！", Toast.LENGTH_LONG).show();	
         	}     	        	
         });
-        
+        */
         //調整layout
         initial_personal_from_sever_data();
         adjustment_layout();

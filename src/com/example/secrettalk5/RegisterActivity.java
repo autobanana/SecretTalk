@@ -31,7 +31,7 @@ public class RegisterActivity extends Activity {
 		setContentView(R.layout.fragment_register_new);
 		
 		//Register Login Button OnClick Event
-		Button RegisterButton=(Button)findViewById(R.id.button2);
+		Button RegisterButton=(Button)findViewById(R.id.PostArticle_PostButton2);
 		RegisterButton.setOnClickListener(new Button.OnClickListener(){
 			@Override
 			public void onClick(View v) {

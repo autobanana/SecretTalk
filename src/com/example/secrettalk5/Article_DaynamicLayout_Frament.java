@@ -68,14 +68,14 @@ public class Article_DaynamicLayout_Frament extends Fragment {
         });
     	    	
     	//´ú¸Õ¥Îbutton /////////////////////////////////////////////
-    	Button S = (Button)view.findViewById(R.id.PostArticle_PostButton);
+    	Button S = (Button)view.findViewById(R.id.PostArticle_PostButton1);
     	
     	S.setOnClickListener( new OnClickListener(){      	
         	public void onClick(View view) {
         		DynamicLayout("Vicky","2013.23.33 32:23:2","¤µ¤Ñ¤Ñ¬Oºñªº¡A¦n©_©Ç¦n©_©Ç¡I¤µ¤Ñ¤Ñ¬Oºñªº¡A¦n©_©Ç¦n©_©Ç¡I¤µ¤Ñ¤Ñ¬Oºñªº¦n©_©Ç¦n©_©Ç¡I¤µ¤Ñ¤Ñ¬Oºñªº¡A¦n©_©Ç¦n©_©Ç¡I¤µ¤Ñ¤Ñ¬Oºñªº¡A¦n©_©Ç¦n©_©Ç¡I",1);
         	}     	        	
         });
-    	Button S2 = (Button)view.findViewById(R.id.button2);
+    	Button S2 = (Button)view.findViewById(R.id.PostArticle_PostButton2);
     	
     	S2.setOnClickListener( new OnClickListener(){      	
         	public void onClick(View view) {
