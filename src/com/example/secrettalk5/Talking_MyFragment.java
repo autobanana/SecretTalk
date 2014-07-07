@@ -7,6 +7,7 @@ import org.json.JSONObject;
 
 import com.example.articlemodule.Article;
 import com.example.articlemodule.ArticleModule;
+import com.example.globalcontainer.GlobalContainer;
 import com.example.usermodule.UserInformation;
 
 import android.content.Context;
@@ -41,22 +42,21 @@ public class Talking_MyFragment extends Fragment {
 	private FrameLayout mainLayout; 
 	public ListView talking_listView;
 	private Context ct;
-	private ArrayList<Article> article_ArrayList=new ArrayList<Article>();
+	
 	public PostActicle_Fragment postacticle;
 	public Article_DaynamicLayout_Frament article_daynamicLayout;
-	
 	
     public static Talking_MyFragment newInstance( int num) {
     	Talking_MyFragment fragment = new Talking_MyFragment();
         // Supply num input as an argument.
         return fragment;
     }
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super .onCreate(savedInstanceState);
-
+    	super.onCreate(savedInstanceState);
     }
-    
+
     /**為Fragment加載佈局時調用**/
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -88,6 +88,12 @@ public class Talking_MyFragment extends Fragment {
                 transaction1.add(R.id.drawer_layout_second, postacticle).commit();
                 getActivity().getActionBar().setTitle(R.string.PostActivity_dialog_title);  
         		
+                
+                
+                
+                
+                
+                
         	}    	        	
         });
         
@@ -108,15 +114,21 @@ public class Talking_MyFragment extends Fragment {
             @Override  
             public  void  onItemClick(AdapterView<?> adapterView, View view,  int  position,  long  l) {  
                 
-            	
-            	
-            	article_daynamicLayout =  new  Article_DaynamicLayout_Frament();  
+            	Log.v("ReplyModule", String.valueOf(position));
+            	Log.v("ReplyModule", GlobalContainer.article_ArrayList.toString());
+            	Article artilce=GlobalContainer.article_ArrayList.get(position);
+            	Log.v("ReplyModule", artilce.toString());
+            	String article_id=artilce.article_id;
+            	Log.v("ReplyModule", article_id);
+            	article_daynamicLayout =  new  Article_DaynamicLayout_Frament();
+            	article_daynamicLayout.article_id=article_id;
                 FragmentTransaction transaction4 = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction4.addToBackStack(null);   //保留先前的Fragment
                 transaction4.add(R.id.drawer_layout_second, article_daynamicLayout).commit();
                 
-            	//Toast.makeText(getActivity(), "" + position, Toast.LENGTH_SHORT).show();
-            	//talking_listView.setItemChecked(position,true);  
+                View backView = getActivity().findViewById(R.id.L_main);
+                backView.setVisibility(View.INVISIBLE);
+
                 
             }
 
@@ -141,18 +153,20 @@ public class Talking_MyFragment extends Fragment {
     
     
     public void SetArticleList(ArrayList<Article> article_ArrayList){
-    	this.article_ArrayList=article_ArrayList;
+    	GlobalContainer.article_ArrayList=article_ArrayList;
     	RefreshListView();
     	
     }
     
     private void RefreshListView(){
     	
-    	talking_listView.setAdapter(new ImageAdapter(getActivity(),article_ArrayList));
+    	talking_listView.setAdapter(new ImageAdapter(getActivity(),GlobalContainer.article_ArrayList));
     	talking_listView.invalidateViews();
     	
     }
     
+    
+
 
 }
 

@@ -8,6 +8,7 @@ import org.json.JSONObject;
 
 import com.example.connection.HttpRequest;
 import com.example.secrettalk5.Listening_MyFragment;
+import com.example.secrettalk5.PostActicle_Fragment;
 import com.example.secrettalk5.Talking_MyFragment;
 
 import android.content.Context;
@@ -22,6 +23,7 @@ public class ArticleModule extends AsyncTask<String,Void,String> {
 	public Context context=null;
 	public Talking_MyFragment talkingFragment;
 	public Listening_MyFragment listeningFragment;
+	public PostActicle_Fragment postArticleFragment;
 	
 	@Override
 	protected String doInBackground(String... params) {
@@ -49,7 +51,7 @@ public class ArticleModule extends AsyncTask<String,Void,String> {
 		}
 		catch(Exception ex){
 			
-			Toast.makeText(context, "Error In Send", Toast.LENGTH_LONG).show();
+//			Toast.makeText(context, "Error In Send", Toast.LENGTH_LONG).show();
 			return ex.toString();	
 		}
 		
@@ -67,7 +69,7 @@ public class ArticleModule extends AsyncTask<String,Void,String> {
 			
 		} catch (JSONException e) {
 			
-			Toast.makeText(context, "Error In Post Execute", Toast.LENGTH_LONG).show();
+//			Toast.makeText(context, "Error In Post Execute", Toast.LENGTH_LONG).show();
 			e.printStackTrace();
 			Log.v("ArticleModule","Get result:"+result.toString());
 		}
@@ -101,18 +103,18 @@ public class ArticleModule extends AsyncTask<String,Void,String> {
 			
 			//If Success
 			if(response.equals("0")){
-			
+				postArticleFragment.remove_Framgement_itself();
 			}
 			else{
 				
 				
 			}
 			
-			Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+//			Toast.makeText(context, message, Toast.LENGTH_LONG).show();
 		}
 		catch(JSONException e){
 			
-			Toast.makeText(context, "Error In Create Finish", Toast.LENGTH_LONG).show();
+//			Toast.makeText(context, "Error In Create Finish", Toast.LENGTH_LONG).show();
 			e.printStackTrace();
 			
 		}
@@ -138,7 +140,9 @@ public class ArticleModule extends AsyncTask<String,Void,String> {
 				for(int i=0;i<articleList.length();i++){
 					//Get Article From Article List
 					JSONObject article =articleList.getJSONObject(i);
-										
+					
+					//Get Article ID
+					String article_id=article.getString("id");
 					//Get Author ID
 					String author_id=article.getString("author_id");
 					//Get Content
@@ -148,6 +152,7 @@ public class ArticleModule extends AsyncTask<String,Void,String> {
 					
 					Article articleInstance=new Article();
 					
+					articleInstance.article_id=article_id;
 					articleInstance.author=author_id;
 					articleInstance.content=content;
 					articleInstance.created_Time=created_Time;
@@ -162,11 +167,11 @@ public class ArticleModule extends AsyncTask<String,Void,String> {
 				
 				
 			}
-			Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+//			Toast.makeText(context, message, Toast.LENGTH_LONG).show();
 		}
 		catch(JSONException e){
 			
-			Toast.makeText(context, "Error In Get List Finish", Toast.LENGTH_LONG).show();
+//			Toast.makeText(context, "Error In Get List Finish", Toast.LENGTH_LONG).show();
 			e.printStackTrace();
 		}
 		
@@ -215,7 +220,7 @@ public class ArticleModule extends AsyncTask<String,Void,String> {
 				
 			}
 			
-			Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+//			Toast.makeText(context, message, Toast.LENGTH_LONG).show();
 		}
 		catch(JSONException e){
 			

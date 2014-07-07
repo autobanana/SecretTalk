@@ -117,7 +117,7 @@ public class UserModule extends AsyncTask<String,Void,String> {
 			
 			else{
 				//Show Login Fail Message
-				Toast.makeText(context, message , Toast.LENGTH_LONG).show();
+//				Toast.makeText(context, message , Toast.LENGTH_LONG).show();
 			}
 			
 			
@@ -143,7 +143,7 @@ public class UserModule extends AsyncTask<String,Void,String> {
 				RA.RegisterSuccessEvent();
 			}
 			
-			Toast.makeText(context, message , Toast.LENGTH_LONG).show();
+//			Toast.makeText(context, message , Toast.LENGTH_LONG).show();
 			
 			
 			Log.v("UserModule",message);
@@ -151,7 +151,7 @@ public class UserModule extends AsyncTask<String,Void,String> {
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			Toast.makeText(context, e.toString() , Toast.LENGTH_LONG).show();
+//			Toast.makeText(context, e.toString() , Toast.LENGTH_LONG).show();
 			
 		}
 		

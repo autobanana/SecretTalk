@@ -1,8 +1,10 @@
 package com.example.secrettalk5;
 
+
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentManager.OnBackStackChangedListener;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -34,6 +36,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+
+
+
 public class MainActivity extends  FragmentActivity{
 
 	public ViewPager mViewPager_main;
@@ -59,6 +65,12 @@ public class MainActivity extends  FragmentActivity{
     private static final String[] viewpagertitle = new String[]{"說-Talking","聽-Listening","你 ? Who am I ?"};
     private static final String[] mStrings = new String[] {"回到首頁","偏好設定", "程式導覽", "成就系統介紹", "關於本程式","登出", "結束程式"};
 
+        
+    private ConnectionDetector cd;
+    
+    
+    
+    
     //testforbutton 
     SpannableString viewpager_s1,viewpager_s2,viewpager_s3;
     SpannableString viewpager_s1_press,viewpager_s2_press,viewpager_s3_press;
@@ -74,6 +86,12 @@ public class MainActivity extends  FragmentActivity{
     public Navigation_Fragment navigation;
     public Achievement_Fragment achievement;
     public SignOut_Fragment signout;
+    
+    
+
+    
+    
+    
     
     public void onCreate(Bundle savedInstanceState) {
         
@@ -102,11 +120,38 @@ public class MainActivity extends  FragmentActivity{
         initial_ImageView();
         initial_PageView();
         initial_ListView();
+        
+        
+        
+        
+        cd = new ConnectionDetector(getApplicationContext());
+        
+        cd.showConnction();
+        
+        getSupportFragmentManager().addOnBackStackChangedListener(new OnBackStackChangedListener() {    
+            public void onBackStackChanged() {
+
+                int backCount = getSupportFragmentManager().getBackStackEntryCount();
+                if (backCount == 0){
+                	ViewPager_Show();
+                                   // block where back has been pressed. since backstack is zero.
+                }
+            }
+        });
+        
+        
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
+                ); 
+        
         //initial_Preference(); 保留 for偏好設定
         
         
         
+    
     }
+    
+
     
     //當街到notification後會直接進入 並跳轉調正確的頁面
     public void onResume() {   
@@ -116,6 +161,7 @@ public class MainActivity extends  FragmentActivity{
             mViewPager_main.setCurrentItem(n);
             
         }       
+               
         super.onResume();
     }
     
@@ -140,6 +186,7 @@ public class MainActivity extends  FragmentActivity{
 
             /** Called when a drawer has settled in a completely closed state. */
             public void onDrawerClosed(View view) {
+            	
             	super .onDrawerClosed(view);  
                 getActionBar().setTitle(title);  
                 invalidateOptionsMenu();  
@@ -161,6 +208,8 @@ public class MainActivity extends  FragmentActivity{
             @Override  
             public  void  onItemClick(AdapterView<?> adapterView, View view,  int  position,  long  l) {  
                 
+            	cd.showConnction();
+            	
             	if(position == 0){
             		//回到首頁
             		//清空所有新加入的fragment
@@ -221,7 +270,7 @@ public class MainActivity extends  FragmentActivity{
             		Leave_program();
             	}
                
-            	Toast.makeText(MainActivity.this, "" + position, Toast.LENGTH_SHORT).show();
+//            	Toast.makeText(MainActivity.this, "" + position, Toast.LENGTH_SHORT).show();
             	myListview.setItemChecked(position, true );  
                 drawerLayout.closeDrawer(myListview);  
                 
@@ -284,13 +333,22 @@ public class MainActivity extends  FragmentActivity{
     	if (mDrawerToggle.onOptionsItemSelected(item)) {
           return true;
         }
-    	if (item.getItemId() == R.id.action_refresh) {
-            //Toast.makeText(context, "action_edit", Toast.LENGTH_SHORT).show();
+    	if (item.getItemId() == R.id.action_home) {
+//            Toast.makeText(context, "action_edit", Toast.LENGTH_SHORT).show();
     		ViewPager_Show();
     		getSupportFragmentManager().popBackStack( null , FragmentManager.POP_BACK_STACK_INCLUSIVE);
     		getActionBar().setTitle("SecretTalk");  
             return true;
         }
+    	if (item.getItemId() == R.id.action_refresh) {
+    		
+    		Toast.makeText(this, "do something", Toast.LENGTH_LONG).show();
+    		
+    	}
+    	
+    	
+    	
+    	
         // Handle your other action bar items...
 
         return super.onOptionsItemSelected(item);
@@ -389,12 +447,19 @@ public class MainActivity extends  FragmentActivity{
 		cursor.setImageMatrix(matrix);
 		one = offset * 2 + bmpW;
 		two = one * 2;
-
 	}
 
-	public class MyOnPageChangeListener implements OnPageChangeListener {
+	
+	
+	
 
+	
+	
+	public class MyOnPageChangeListener implements OnPageChangeListener {		
 		public void onPageSelected(int arg0) {
+								
+			cd.showConnction();
+			
 			Animation animation = null;
 			
 			title = viewpagertitle[arg0];
@@ -456,6 +521,32 @@ public class MainActivity extends  FragmentActivity{
 		public void onPageScrollStateChanged(int arg0) {
 		}
 	}
+	
+	
+	
+	
+	
+	
+	
+
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
     // A placeholder fragment containing a simple view.
      /*public static class PlaceholderFragment extends Fragment {

@@ -88,6 +88,7 @@ public class ArticleDynamicAdapter extends BaseAdapter {
        }
         
         viewhoder.content.setMaxWidth(ScreenW-140);
+
         viewhoder.time.setText(Time);
         viewhoder.name.setText(Name);
         viewhoder.content.setText(Content);

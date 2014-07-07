@@ -12,6 +12,7 @@ import org.json.JSONObject;
 
 
 
+
 import com.example.articlemodule.ArticleModule;
 import com.example.usermodule.UserInformation;
 import com.example.usermodule.UserModule;
@@ -35,10 +36,15 @@ public class LoginActivity extends Activity {
 		//setContentView(R.layout.activity_login);
 		
 		setContentView(R.layout.activity_login_new);
+		
 		LoginEvent();    //>>???????? 這行需要嗎
 				
+
 		
-		
+		ConnectionDetector cd = new ConnectionDetector(getApplicationContext());
+        
+        cd.showConnction();		
+			
 		//Register Login Button OnClick Event
 		Button LoginButton=(Button)findViewById(R.id.Login_LoginButton);
 		LoginButton.setOnClickListener(new Button.OnClickListener(){

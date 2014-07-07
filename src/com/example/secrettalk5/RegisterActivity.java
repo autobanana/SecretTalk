@@ -126,7 +126,7 @@ public class RegisterActivity extends Activity {
 				nickname==null||realname==null||
 				realname==null||birthday_year ==null || birthday_month== null || birthday_day == null){
 			
-			Toast.makeText(this, "Please fill all content", Toast.LENGTH_LONG).show();
+//			Toast.makeText(this, "Please fill all content", Toast.LENGTH_LONG).show();
 			
 		}
 		
