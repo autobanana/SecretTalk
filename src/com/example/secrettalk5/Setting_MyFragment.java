@@ -224,8 +224,6 @@ public class Setting_MyFragment extends Fragment {
 		hm.put("interest",   Integer.toString(choose_interest));
 		hm.put("mood",   Integer.toString(choose_mood));
 		
-		
-		
 		Toast.makeText(view.getContext(), "小魏這裡給你存資料！！", Toast.LENGTH_LONG).show();
 		
 		
