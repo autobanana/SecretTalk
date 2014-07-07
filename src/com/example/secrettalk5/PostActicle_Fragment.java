@@ -38,8 +38,8 @@ public class PostActicle_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
                                                                                                                                                                                                                                                                                                                       
         view = inflater.inflate(R.layout.fragment_postacticle_my,  container,false );
-        Button cancel = (Button)view.findViewById(R.id.PostArticle_PostButton2);
-        Button post = (Button)view.findViewById(R.id.PostArticle_PostButton1);
+        Button cancel = (Button)view.findViewById(R.id.PostArticle_PostButton_Cancel);
+        Button post = (Button)view.findViewById(R.id.PostArticle_PostButton_Check);
         cancel.setOnClickListener( new OnClickListener(){      	
         	public void onClick(View view) {
         		remove_Framgement_itself();

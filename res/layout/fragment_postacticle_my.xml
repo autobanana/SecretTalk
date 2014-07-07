@@ -19,7 +19,7 @@
             android:src="@drawable/test_for_conversation" />
 
         <EditText
-            android:id="@+id/editText1"
+            android:id="@+id/PostArticle_ContentEditText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:ems="10"
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content" >
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/PostArticle_PostButton_Check"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -45,7 +45,7 @@
             android:textColor="@color/Black" />
 
         <Button
-            android:id="@+id/PostArticle_PostButton2"
+            android:id="@+id/PostArticle_PostButton_Cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
