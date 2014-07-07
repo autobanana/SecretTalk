@@ -74,7 +74,7 @@
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/textView2"
+                            android:id="@+id/user_loginday"
                             android:layout_width="fill_parent"
                             android:layout_height="match_parent"
                             android:layout_margin="3dp"
@@ -87,7 +87,7 @@
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/login_day"
+                            android:id="@+id/user_id"
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:layout_margin="3dp"
@@ -102,12 +102,12 @@
                             android:textStyle="bold" />
 
                         <ImageView
-                            android:id="@+id/imageView4"
+                            android:id="@+id/user_level"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_margin="3dp"
                             android:layout_weight="1"
-                            android:src="@drawable/level_1" />
+                            android:background="@drawable/level_1" />
 
                     </LinearLayout>
 
@@ -175,28 +175,28 @@
                         </LinearLayout>
 
                         <ImageView
-                            android:id="@+id/imageView2"
+                            android:id="@+id/user_bloodtype"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="3dp"
                             android:layout_weight="1"
-                            android:src="@drawable/bloodtype_a" />
+                            android:background="@drawable/bloodtype_a" />
 
                         <ImageView
-                            android:id="@+id/imageView3"
+                            android:id="@+id/user_constellation"
                             android:layout_width="fill_parent"
                             android:layout_height="match_parent"
                             android:layout_margin="3dp"
                             android:layout_weight="1"
-                            android:src="@drawable/constellation_aquarius" />
+                            android:background="@drawable/constellation_aquarius" />
 
                         <ImageView
-                            android:id="@+id/imageView1"
+                            android:id="@+id/user_gender"
                             android:layout_width="fill_parent"
                             android:layout_height="match_parent"
                             android:layout_margin="3dp"
                             android:layout_weight="1"
-                            android:src="@drawable/female" />
+                            android:background="@drawable/female" />
 
                     </LinearLayout>
 
@@ -232,7 +232,7 @@
                     android:padding="5dp" >
 
                     <Button
-                        android:id="@+id/Button1"
+                        android:id="@+id/user_mood"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
@@ -240,7 +240,7 @@
                         android:background="@drawable/setting_button_background" />
 
                     <Button
-                        android:id="@+id/Button2"
+                        android:id="@+id/user_interest"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
@@ -248,7 +248,7 @@
                         android:background="@drawable/setting_interest" />
 
                     <Button
-                        android:id="@+id/Button3"
+                        android:id="@+id/user_personality"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"

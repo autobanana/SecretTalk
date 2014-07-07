@@ -292,8 +292,9 @@
                 android:id="@+id/spinner1"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
-                android:layout_gravity="center"
-                android:layout_weight="1" />
+                android:layout_gravity="center|center_vertical"
+                android:layout_weight="1"
+                android:prompt="@string/Register_spinner_prompt" />
 
         </LinearLayout>
 
@@ -317,8 +318,9 @@
                 android:id="@+id/spinner2"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
-                android:layout_gravity="center"
-                android:layout_weight="1" />
+                android:layout_gravity="center|center_vertical"
+                android:layout_weight="1" 
+                android:prompt="@string/Register_spinner_prompt_bloodtype"/>
 
         </LinearLayout>
 

@@ -34,7 +34,6 @@ public class UserModule extends AsyncTask<String,Void,String> {
 				String parameter =params[1];
 				String requestURL=url+"create?request="+java.net.URLEncoder.encode(parameter,"UTF-8");
 				HttpRequest request=new HttpRequest();
-				
 				Log.v("UserModule","Send Request:"+requestURL);
 				
 				return request.GET(requestURL);
@@ -44,7 +43,6 @@ public class UserModule extends AsyncTask<String,Void,String> {
 			else if(RequestOption.equals("Login")){	
 				String parameter =params[1];
 				String requestURL;
-				
 				requestURL = url+"login?request="+java.net.URLEncoder.encode(parameter,"UTF-8");
 				Log.v("UserModule", requestURL);
 				HttpRequest request=new HttpRequest();

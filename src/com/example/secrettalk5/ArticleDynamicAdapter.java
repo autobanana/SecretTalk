@@ -1,6 +1,7 @@
 package com.example.secrettalk5;
 
 import android.content.Context;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,11 +17,13 @@ public class ArticleDynamicAdapter extends BaseAdapter {
     public String Name = null;
     public String Content = null;
     public String Time = null;
-	
-    public ArticleDynamicAdapter(Context ctxt, String name, String time,String content,int who) {
+	public int ScreenW=0;
+    
+    public ArticleDynamicAdapter(Context ctxt, String name, String time,String content,int who,int screenW) {
 		context2 = ctxt;
 		myInflater = LayoutInflater.from(ctxt);
 		
+		ScreenW = screenW;
 		who_say = who;
 		Name = name;
 		Content = content;
@@ -54,7 +57,7 @@ public class ArticleDynamicAdapter extends BaseAdapter {
         		convertView = myInflater.inflate(R.layout.article_send, null);
         	}
             else if(who_say == 1){ //receive別人
-            	convertView = myInflater.inflate(R.layout.article_receive, null);
+            	convertView = myInflater.inflate(R.layout.article_reveive2, null);
             }
         	//建構listItem內容view
         	
@@ -83,7 +86,8 @@ public class ArticleDynamicAdapter extends BaseAdapter {
             	viewhoder.usericon.setImageResource(R.drawable.test_for_conversation);
                 break;
        }
-         
+        
+        viewhoder.content.setMaxWidth(ScreenW-140);
         viewhoder.time.setText(Time);
         viewhoder.name.setText(Name);
         viewhoder.content.setText(Content);

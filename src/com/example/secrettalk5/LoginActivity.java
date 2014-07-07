@@ -35,7 +35,7 @@ public class LoginActivity extends Activity {
 		//setContentView(R.layout.activity_login);
 		
 		setContentView(R.layout.activity_login_new);
-		//LoginEvent();
+		LoginEvent();    //>>???????? 這行需要嗎
 				
 		
 		
@@ -102,16 +102,12 @@ public class LoginActivity extends Activity {
 		String username=((EditText)findViewById(R.id.Login_UsernameEditText)).getText().toString();
 		String password=((EditText)findViewById(R.id.Login_PasswordEditText)).getText().toString();
 		
-			
-		
-		
-		
 		//Initial HashMap 
 		HashMap hm=new HashMap<String, String>();
-		hm.put("username", username);
-		hm.put("password", password);
-		//hm.put("username", "secrettalk");
-		//hm.put("password", "secrettalk");
+		//hm.put("username", username);
+		//hm.put("password", password);
+		hm.put("username", "secrettalk");
+		hm.put("password", "secrettalk");
 		
 		//Convert HashMap to JSONObject
 		JSONObject jo=new JSONObject(hm);

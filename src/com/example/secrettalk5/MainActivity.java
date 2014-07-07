@@ -78,22 +78,8 @@ public class MainActivity extends  FragmentActivity{
     public void onCreate(Bundle savedInstanceState) {
         
         
-        //開場動畫
-    	//actionBar2 = getActionBar(); 
-        //actionBar2.hide();
-        /*
-                
-		SharedPreferences checking = getSharedPreferences("Check",MODE_PRIVATE);
-		check = checking.getInt("Check", (int)1);
-		
-		Handler myHandler = new Handler();
-        myHandler.postDelayed(mMyRunnable,2000);
-        Handler myHandler2 = new Handler();
-        myHandler2.postDelayed(mMyRunnable2,3000);
-        */
     	setTheme(R.style.CustomActionBarTheme);
     	super.onCreate(savedInstanceState);
-    	
         setContentView(R.layout.fragment_main2);
         
         //fragment_main2 首頁
@@ -118,19 +104,9 @@ public class MainActivity extends  FragmentActivity{
         initial_ListView();
         //initial_Preference(); 保留 for偏好設定
         
-        //mViewPager_main.setCurrentItem(2);
-        /* if (savedInstanceState == null) {
-        	getSupportFragmentManager().beginTransaction().add(R.id.container, new PlaceholderFragment()).commit();
-        }*/
+        
         
     }
-    /*
-    public void onNewIntent(Intent intent){
-    	super.onNewIntent(intent);
-        mViewPager_main.setAdapter(mAdapter_main);
-        mAdapter_main.notifyDataSetChanged();  
-        setIntent(intent);///
-    }*/
     
     //當街到notification後會直接進入 並跳轉調正確的頁面
     public void onResume() {   
@@ -241,14 +217,9 @@ public class MainActivity extends  FragmentActivity{
                     title = mStrings[position];
             	}
             	else{
-            		//離開程式?            		
+            		//離開程式	
             		Leave_program();
             	}
-            	//Fragment 傳值的方式
-            	//MyFragment myFragment =  new  MyFragment();  
-                //Bundle bundle =  new  Bundle();  
-                //bundle.putString( "content" ,list.get(i));  
-                //myFragment.setArguments(bundle);  
                
             	Toast.makeText(MainActivity.this, "" + position, Toast.LENGTH_SHORT).show();
             	myListview.setItemChecked(position, true );  
@@ -487,7 +458,7 @@ public class MainActivity extends  FragmentActivity{
 	}
 	
     // A placeholder fragment containing a simple view.
-/*	    public static class PlaceholderFragment extends Fragment {
+     /*public static class PlaceholderFragment extends Fragment {
 
         public PlaceholderFragment() {
         }

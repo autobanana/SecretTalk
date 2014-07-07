@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,14 +58,14 @@ public class Article_DaynamicLayout_Frament extends Fragment {
     	
     	S.setOnClickListener( new OnClickListener(){      	
         	public void onClick(View view) {
-        		DynamicLayout("Vicky","2013.23.33 32:23:2","今天天是綠的，好奇怪好奇怪！今天天是綠的，好奇怪好奇怪！今天天是綠的好奇怪好奇怪！今天天是綠的，好奇怪好奇怪！今天天是綠的，好奇怪好奇怪！",1);
+        		DynamicLayout("Vicky","2013.23.33 32:23:2","今天天是綠的，",1);
         	}     	        	
         });
     	Button S2 = (Button)view.findViewById(R.id.button2);
     	
     	S2.setOnClickListener( new OnClickListener(){      	
         	public void onClick(View view) {
-        		DynamicLayout("Mark","2013.23.33 32:23:2","ddsdlkjs;dk;klf;fljk;alkfja;kfja;lsjkfl;ajkfkajfl;anvnzmcnzowieupoqwueqiuyeufhslkjlksnc;zlckxnlk",0);
+        		DynamicLayout("Mark","2013.23.33 32:23:2","二○○七年，龔南葳",0);
         	}     	        	
         });
     	////////////////////////////////////////////////////////
@@ -77,11 +78,7 @@ public class Article_DaynamicLayout_Frament extends Fragment {
 		
 		//獲得內容
 		String replycontent = reply_edittext.getText().toString();
-		
-		
 		Toast.makeText(view.getContext(), "小魏這塊給你寫回覆", Toast.LENGTH_LONG).show();
-		
-		
 		
 		//收回鍵盤+清空Edittext
 		reply_edittext.setText("");
@@ -92,9 +89,11 @@ public class Article_DaynamicLayout_Frament extends Fragment {
 
 	public void DynamicLayout(String name,String time,String content ,int whotalk ) {
 		
-		
+		DisplayMetrics dm = new DisplayMetrics();
+		getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
+		int screenW = dm.widthPixels;
 		ListView t = new ListView(getActivity());     
-		t.setAdapter(new ArticleDynamicAdapter(getActivity(),name,time,content,whotalk));
+		t.setAdapter(new ArticleDynamicAdapter(getActivity(),name,time,content,whotalk,screenW));
 		
 		LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(     
 				LinearLayout.LayoutParams.MATCH_PARENT,     
