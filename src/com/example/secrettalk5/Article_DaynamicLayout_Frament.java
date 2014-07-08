@@ -43,6 +43,8 @@ public class Article_DaynamicLayout_Frament extends Fragment {
 	public String article_id;
 	public ArrayList<Reply> reply_ArrayList=new ArrayList<Reply>();
 	private Handler handler = new Handler();
+	public DisplayMetrics dm;
+	public int screenW;
 	
 	public static Article_DaynamicLayout_Frament newInstance( int num) {
 		Article_DaynamicLayout_Frament fragment = new Article_DaynamicLayout_Frament();
@@ -56,6 +58,12 @@ public class Article_DaynamicLayout_Frament extends Fragment {
     /**為Fragment加載佈局時調用**/
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
     	view = inflater.inflate(R.layout.fragment_article_dynamiclayout,  container,false );
+    	
+    	
+    	dm = new DisplayMetrics();
+		getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
+		screenW = dm.widthPixels;
+    	
     	dynmaic_scrollview = (ScrollView)view.findViewById(R.id.scrollView1);
     	a = (LinearLayout)view.findViewById(R.id.insideScrollView);
     	reply_edittext = (EditText)view.findViewById(R.id.PostArticle_ContentEditText);
@@ -140,7 +148,7 @@ public class Article_DaynamicLayout_Frament extends Fragment {
 	
 		//收回鍵盤+清空Edittext
 		reply_edittext.setText("");
-		((InputMethodManager)getActivity().getSystemService(getActivity().INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);  
+		//((InputMethodManager)getActivity().getSystemService(getActivity().INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);  
 		
 		
 	}
@@ -240,9 +248,7 @@ public class Article_DaynamicLayout_Frament extends Fragment {
 	
 	public void DynamicLayout(String name,String time,String content ,int whotalk ) {
 		
-		DisplayMetrics dm = new DisplayMetrics();
-		getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
-		int screenW = dm.widthPixels;
+		
 		ListView t = new ListView(getActivity());     
 		t.setAdapter(new ArticleDynamicAdapter(getActivity(),name,time,content,whotalk,screenW));
 		

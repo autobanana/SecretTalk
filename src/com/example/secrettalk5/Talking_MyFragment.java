@@ -39,9 +39,7 @@ public class Talking_MyFragment extends Fragment {
 	public Button talking_button;
 	public ListView aa;
 	public Context a;
-	private FrameLayout mainLayout; 
 	public ListView talking_listView;
-	private Context ct;
 	
 	public PostActicle_Fragment postacticle;
 	public Article_DaynamicLayout_Frament article_daynamicLayout;
@@ -76,24 +74,13 @@ public class Talking_MyFragment extends Fragment {
                 FragmentTransaction transaction4 = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction4.addToBackStack(null);   //保留先前的Fragment
                 transaction4.add(R.id.drawer_layout_second, article_daynamicLayout).commit();*/
-        		
-        		
         		///////
-        		
-        		
         		
         		postacticle =  new  PostActicle_Fragment();  
                 FragmentTransaction transaction1 = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction1.addToBackStack(null);   //保留先前的Fragment
                 transaction1.add(R.id.drawer_layout_second, postacticle).commit();
                 getActivity().getActionBar().setTitle(R.string.PostActivity_dialog_title);  
-        		
-                
-                
-                
-                
-                
-                
         	}    	        	
         });
         
@@ -166,8 +153,6 @@ public class Talking_MyFragment extends Fragment {
     }
     
     
-
-
 }
 
 

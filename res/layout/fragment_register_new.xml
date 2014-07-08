@@ -121,7 +121,6 @@
                 android:background="@drawable/bg_edittext"
                 android:ems="10"
                 android:hint="請輸入暱稱..."
-                android:inputType="textPassword"
                 android:padding="3dp"
                 android:textColorHint="@color/Banana_Gray_dark" />
         </LinearLayout>
@@ -148,7 +147,6 @@
                 android:background="@drawable/bg_edittext"
                 android:ems="10"
                 android:hint="請輸入您的真實姓名..."
-                android:inputType="textPassword"
                 android:padding="3dp"
                 android:textColorHint="@color/Banana_Gray_dark" />
         </LinearLayout>

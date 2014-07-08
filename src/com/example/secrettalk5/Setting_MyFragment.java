@@ -62,28 +62,6 @@ public class Setting_MyFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
                     
         view = inflater.inflate(R.layout.fragment_setting_my2,  container,false );
-        /*
-        Button checkbutton = (Button) view.findViewById(R.id.PostArticle_PostButton);
-        radioGroup1 = (RadioGroup) view.findViewById(R.id.radioGroup1);
-    	radioGroup2 = (RadioGroup) view.findViewById(R.id.radioGroup2);
-        Spinner spinner = (Spinner) view.findViewById(R.id.spinner1);
-        Spinner spinner2 = (Spinner) view.findViewById(R.id.spinner2);
-        spinner.setPrompt("請選擇你的星座...");
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
-                R.array.Setting_sign_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
-                R.array.Setting_mood_array, android.R.layout.simple_spinner_item);
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner2.setAdapter(adapter2);
-        checkbutton.setOnClickListener( new OnClickListener(){      	
-        	public void onClick(View view) {
-        		
-//        		Toast.makeText(view.getContext(), "儲存成功！", Toast.LENGTH_LONG).show();	
-        	}     	        	
-        });
-        */
         //調整layout
         initial_personal_from_sever_data();
         adjustment_layout();
