@@ -49,6 +49,23 @@ public class UserModule extends AsyncTask<String,Void,String> {
 				return request.GET(requestURL);
 				
 			}
+			else if(RequestOption.equals("GetProfile")){
+				String parameter =params[1];
+				String requestURL;
+				requestURL = url+"userprofile?request="+java.net.URLEncoder.encode(parameter,"UTF-8");
+				Log.v("UserModule", requestURL);
+				HttpRequest request=new HttpRequest();
+				return request.GET(requestURL);
+				
+			}
+			else if(RequestOption.equals("SetProfile")){
+				String parameter =params[1];
+				String requestURL;
+				requestURL = url+"setprofile?request="+java.net.URLEncoder.encode(parameter,"UTF-8");
+				Log.v("UserModule", requestURL);
+				HttpRequest request=new HttpRequest();
+				return request.GET(requestURL);
+			}
 			else
 			{
 				return "123";
@@ -87,6 +104,7 @@ public class UserModule extends AsyncTask<String,Void,String> {
 	private void ExecuteResult(JSONObject resultObject){
 		
 		if(RequestOption.equals("Login")){
+			Log.v("UserModule","Start LoginFinish");
 			LoginFinish(resultObject);
 		}
 		
@@ -95,6 +113,80 @@ public class UserModule extends AsyncTask<String,Void,String> {
 			RegisterFinish(resultObject);
 			
 			
+		}
+		if(RequestOption.equals("GetProfile")){
+			Log.v("UserModule","Start GetProfileFinish");
+			GetProfileFinish(resultObject);
+			
+			
+		}
+		if(RequestOption.equals("SetProfile")){
+			Log.v("UserModule","Start SetProfileFinish");
+			GetProfileFinish(resultObject);
+			
+			
+		}
+		
+	}
+	
+	private void SetProfileFinish(JSONObject resultObject){
+		try {
+			
+			//Get Response
+			String response=resultObject.getString("Response");
+			
+			//Get Server Message
+			String message=resultObject.getString("Message");
+						
+
+			if(response.equals("0")){
+				
+			}
+			
+			else{
+				//Show Login Fail Message
+				//Toast.makeText(context, message , Toast.LENGTH_LONG).show();
+			}
+			
+			
+		} catch (JSONException e) {
+
+			e.printStackTrace();
+		}
+	}
+	
+	private void GetProfileFinish(JSONObject resultObject){
+		
+		try {
+			
+			//Get Response
+			String response=resultObject.getString("Response");
+			
+			//Get Server Message
+			String message=resultObject.getString("Message");
+						
+			
+			if(response.equals("0")){
+				String userProfile=resultObject.getString("UserProfile");
+				JSONObject userProfileJSONObject = new JSONObject(userProfile);
+				
+				UserInformation.Gender=userProfileJSONObject.getString("Gender");
+				UserInformation.BloodType=userProfileJSONObject.getString("BloodType");
+				UserInformation.Mood=userProfileJSONObject.getString("Mood");
+				UserInformation.Interest=userProfileJSONObject.getString("Interest");
+				UserInformation.Personality=userProfileJSONObject.getString("Personality");
+					
+			}
+			
+			else{
+					
+				
+			}
+			
+			
+		} catch (JSONException e) {
+
+			e.printStackTrace();
 		}
 		
 	}
