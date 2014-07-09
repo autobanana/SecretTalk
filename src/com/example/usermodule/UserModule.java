@@ -1,7 +1,10 @@
 package com.example.usermodule;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -42,11 +45,12 @@ public class UserModule extends AsyncTask<String,Void,String> {
 			//Login Option
 			else if(RequestOption.equals("Login")){	
 				String parameter =params[1];
-				String requestURL;
-				requestURL = url+"login?request="+java.net.URLEncoder.encode(parameter,"UTF-8");
+				String requestURL = url+"login";
+				List<BasicNameValuePair> postData = new ArrayList<BasicNameValuePair>();
+				postData.add(new BasicNameValuePair("request",parameter));
 				Log.v("UserModule", requestURL);
 				HttpRequest request=new HttpRequest();
-				return request.GET(requestURL);
+				return request.POST(requestURL, postData);
 				
 			}
 			else if(RequestOption.equals("GetProfile")){
