@@ -46,7 +46,7 @@ public class LoginActivity extends Activity {
         cd.showConnction();		
 			
 		//Register Login Button OnClick Event
-		Button LoginButton=(Button)findViewById(R.id.Login_LoginButton);
+		Button LoginButton=(Button)findViewById(R.id.signout_signoutButton);
 		LoginButton.setOnClickListener(new Button.OnClickListener(){
 			@Override
 			public void onClick(View v) {

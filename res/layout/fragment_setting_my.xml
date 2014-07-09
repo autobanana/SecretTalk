@@ -6,7 +6,7 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/birthday_month"
+        android:id="@+id/signout_userID_textView"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginLeft="20dp"
@@ -81,7 +81,7 @@
                 android:background="@color/Banana_Setting_Gray_light" >
 
                 <TextView
-                    android:id="@+id/textView3"
+                    android:id="@+id/about_version"
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
@@ -135,7 +135,7 @@
                 android:background="@color/Banana_Setting_Gray_light" >
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/about_program_instructor"
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
@@ -161,7 +161,7 @@
                 android:background="@color/Banana_Setting_Gray_light" >
 
                 <TextView
-                    android:id="@+id/birthday_day"
+                    android:id="@+id/about_program_develpoer_textViwer3"
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"

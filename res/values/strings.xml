@@ -208,5 +208,18 @@
     <string name="Register_GenderText">Gender</string>
     <string name="Register_BloodTypeText">BloodType</string>
     <string name="Refresh">Refresh</string>
+    <string name="Signout_title">Signout</string>
+    <string name="Signout_Button">登出</string>
+    <string name="Signout_Nickname">暱稱</string>
+    <string name="Signout_user_id">帳號</string>
+    <string name="about_program_tittle">About</string>
+    <string name="about_program_Version">Version</string>
+    <string name="about_program_VersionTextView">V 1.0</string>
+    <string name="about_program_developer">Developer</string>
+    <string name="about_program_instructor">Instructor</string>
+    <string name="about_program_develpoer1">Vicky</string>
+    <string name="about_program_develpoer2">Frank</string>
+    <string name="about_program_develpoer3">Kieth</string>
+    <string name="about_program_instructor1"></string>
 </resources>
 
