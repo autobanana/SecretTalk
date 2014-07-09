@@ -55,7 +55,7 @@ public class LoginActivity extends Activity {
 		});
 	
 		//Register Register Button OnClick Event
-		Button RegisterButton=(Button)findViewById(R.id.register_button);
+		Button RegisterButton=(Button)findViewById(R.id.Login_RegisterButton);
 		RegisterButton.setOnClickListener(new Button.OnClickListener(){
 
 			@Override
