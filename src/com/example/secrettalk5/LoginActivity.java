@@ -30,6 +30,9 @@ import android.widget.Toast;
 
 public class LoginActivity extends Activity {
 
+			
+	private ConnectionDetector cd;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -37,11 +40,11 @@ public class LoginActivity extends Activity {
 		
 		setContentView(R.layout.activity_login_new);
 		
-		LoginEvent();    //>>???????? 這行需要嗎
+//		LoginEvent();    //>>???????? 這行需要嗎
 				
 
 		
-		ConnectionDetector cd = new ConnectionDetector(getApplicationContext());
+		cd = new ConnectionDetector(getApplicationContext());
         
         cd.showConnction();		
 			
@@ -105,15 +108,18 @@ public class LoginActivity extends Activity {
 	
 	private void LoginEvent(){
 		//Get User Input
+		
+		if(cd.isConnectingToInternet()){
+		
 		String username=((EditText)findViewById(R.id.Login_UsernameEditText)).getText().toString();
 		String password=((EditText)findViewById(R.id.Login_PasswordEditText)).getText().toString();
 		
 		//Initial HashMap 
 		HashMap hm=new HashMap<String, String>();
-		//hm.put("username", username);
-		//hm.put("password", password);
-		hm.put("username", "secrettalk");
-		hm.put("password", "secrettalk");
+		hm.put("username", username);
+		hm.put("password", password);
+//		hm.put("username", "secrettalk");
+//		hm.put("password", "secrettalk");
 		
 		//Convert HashMap to JSONObject
 		JSONObject jo=new JSONObject(hm);
@@ -123,6 +129,9 @@ public class LoginActivity extends Activity {
 		um.LA=LoginActivity.this;
 	    um.context=LoginActivity.this;
 	    um.execute("Login",jo.toString());
+		}else{
+			cd.showConnction();
+		}
 		
 	}
 	
@@ -197,6 +206,10 @@ public class LoginActivity extends Activity {
 		//Start new Activity
 		startActivity(intent);
 	}
+	
+	
+	
+	
 	
 	
 

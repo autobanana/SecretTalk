@@ -121,7 +121,7 @@
                 android:background="@drawable/bg_edittext"
                 android:ems="10"
                 android:hint="請輸入暱稱..."
-                android:inputType="textPassword"
+                android:inputType="text"
                 android:padding="3dp"
                 android:textColorHint="@color/Banana_Gray_dark" />
         </LinearLayout>
@@ -148,7 +148,7 @@
                 android:background="@drawable/bg_edittext"
                 android:ems="10"
                 android:hint="請輸入您的真實姓名..."
-                android:inputType="textPassword"
+                android:inputType="text"
                 android:padding="3dp"
                 android:textColorHint="@color/Banana_Gray_dark" />
         </LinearLayout>
@@ -294,6 +294,7 @@
                 android:layout_height="35dp"
                 android:layout_gravity="center|center_vertical"
                 android:layout_weight="1"
+                android:clipChildren="false"
                 android:prompt="@string/Register_spinner_prompt" />
 
         </LinearLayout>
@@ -319,8 +320,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:layout_gravity="center|center_vertical"
-                android:layout_weight="1" 
-                android:prompt="@string/Register_spinner_prompt_bloodtype"/>
+                android:layout_weight="1"
+                android:clipChildren="false"
+                android:prompt="@string/Register_spinner_prompt_bloodtype" />
 
         </LinearLayout>
 

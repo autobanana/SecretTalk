@@ -1,12 +1,11 @@
 package com.example.secrettalk5;
 
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
-
 import org.json.JSONObject;
-
 import com.example.articlemodule.ArticleModule;
 import com.example.usermodule.UserInformation;
-
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -19,7 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class PostActicle_Fragment extends Fragment {
+ public class PostActicle_Fragment extends Fragment {
 
 	int mNum; 
 	public View view;//­¶¸¹
@@ -77,6 +76,7 @@ public class PostActicle_Fragment extends Fragment {
     	remove_Framgement_itself();
     }
     
+
     
     
     public void remove_Framgement_itself(){
