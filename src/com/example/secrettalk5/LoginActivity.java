@@ -4,21 +4,13 @@ import java.util.HashMap;
 
 import org.json.JSONObject;
 
-
-
-
-
-
-
-
-
-
 import com.example.articlemodule.ArticleModule;
 import com.example.usermodule.UserInformation;
 import com.example.usermodule.UserModule;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.location.GpsStatus.Listener;
 import android.os.Bundle;
 import android.view.Menu;
@@ -30,40 +22,67 @@ import android.widget.Toast;
 
 public class LoginActivity extends Activity {
 
+			
+	private ConnectionDetector cd;
+	
+	private SharedPreferences account ;
+	
+	private String username,password;
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		//setContentView(R.layout.activity_login);
 		
-		setContentView(R.layout.activity_login_new);
 		
-		//LoginEvent();    //>>???????? 這行需要嗎
-				
-
+		account = getSharedPreferences("ACCOUNT", 0);	
 		
-		ConnectionDetector cd = new ConnectionDetector(getApplicationContext());
-        
+		username = account.getString("USERNAME", "");
+		password = account.getString("PASSWORD", "");
+		
+		
+		cd = new ConnectionDetector(getApplicationContext());
         cd.showConnction();		
 			
-		//Register Login Button OnClick Event
-		Button LoginButton=(Button)findViewById(R.id.signout_signoutButton);
-		LoginButton.setOnClickListener(new Button.OnClickListener(){
-			@Override
-			public void onClick(View v) {
-				LoginEvent();
-			}
-		});
-	
-		//Register Register Button OnClick Event
-		Button RegisterButton=(Button)findViewById(R.id.Login_RegisterButton);
-		RegisterButton.setOnClickListener(new Button.OnClickListener(){
-
-			@Override
-			public void onClick(View v) {
-				StartRegiserActivity();
-			}
-		});
+        //未登入過,或沒有網路時,進入原本登入畫面
+        if(username.isEmpty() || !cd.isConnectingToInternet()){   
+	        setContentView(R.layout.activity_login_new);
+	        
+			//Register Login Button OnClick Event
+			Button LoginButton=(Button)findViewById(R.id.Login_loginButton);
+			LoginButton.setOnClickListener(new Button.OnClickListener(){
+				@Override
+				public void onClick(View v) {
+					if(cd.isConnectingToInternet()) {
+						username=((EditText)findViewById(R.id.Login_UsernameEditText)).getText().toString();
+						password=((EditText)findViewById(R.id.Login_PasswordEditText)).getText().toString();
+						LoginEvent(username,password);
+					}
+					else
+					{
+						cd.showConnction();
+					}
+				}
+			});
 		
+			//Register Register Button OnClick Event
+			Button RegisterButton=(Button)findViewById(R.id.Login_RegisterButton);
+			RegisterButton.setOnClickListener(new Button.OnClickListener(){
+				@Override
+				public void onClick(View v) {
+					StartRegiserActivity();
+				}
+			});
+        }
+        else{
+        	
+        	setContentView(R.layout.begin_frefence_register_anim);
+        	LoginEvent(username,password);
+        	
+	    }
+        
+        
 		
 		/*
 		//Post Article Button OnClick Event
@@ -103,17 +122,13 @@ public class LoginActivity extends Activity {
 		*/	
 	}
 	
-	private void LoginEvent(){
-		//Get User Input
-		String username=((EditText)findViewById(R.id.Login_UsernameEditText)).getText().toString();
-		String password=((EditText)findViewById(R.id.Login_PasswordEditText)).getText().toString();
+	private void LoginEvent(String username,String password){
 		
 		//Initial HashMap 
 		HashMap hm=new HashMap<String, String>();
 		hm.put("username", username);
 		hm.put("password", password);
-		//hm.put("username", "secrettalk");
-		//hm.put("password", "secrettalk");
+	
 		
 		//Convert HashMap to JSONObject
 		JSONObject jo=new JSONObject(hm);
@@ -123,9 +138,11 @@ public class LoginActivity extends Activity {
 		um.LA=LoginActivity.this;
 	    um.context=LoginActivity.this;
 	    um.execute("Login",jo.toString());
-		
+	
 	}
 	
+
+		
 	private void PostArticle(String content){
 		//Initial HashMap 
 		HashMap hm=new HashMap<String, String>();
@@ -182,6 +199,9 @@ public class LoginActivity extends Activity {
 		Bundle bundle = new Bundle();
 		intent.setClass(LoginActivity.this, MainActivity.class);
 		
+		account.edit().putString("USERNAME", username).commit();
+		account.edit().putString("PASSWORD", password).commit();
+		
 		//Close This Activity 
 		finish();
 		
@@ -198,6 +218,6 @@ public class LoginActivity extends Activity {
 		startActivity(intent);
 	}
 	
-	
+		
 
 }

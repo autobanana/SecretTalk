@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 
 public class Begin_Prefence_Register_Anim extends Activity {
 	
-	public LinearLayout layouta;
+	public LinearLayout layoutA;
 	
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
@@ -22,7 +22,7 @@ public class Begin_Prefence_Register_Anim extends Activity {
 		
 		
 		//開場動畫
-        layouta=(LinearLayout)findViewById(R.id.begin);
+        layoutA=(LinearLayout)findViewById(R.id.begin);
         ImageView myImageView= (ImageView)findViewById(R.id.icon_imageview);
         Animation myFadeInAnimation = AnimationUtils.loadAnimation(this, R.anim.fade_out);
         myImageView.startAnimation(myFadeInAnimation); 

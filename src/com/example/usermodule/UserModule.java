@@ -209,7 +209,7 @@ public class UserModule extends AsyncTask<String,Void,String> {
 			
 			else{
 				//Show Login Fail Message
-//				Toast.makeText(context, message , Toast.LENGTH_LONG).show();
+				Toast.makeText(context, message , Toast.LENGTH_LONG).show();
 			}
 			
 			

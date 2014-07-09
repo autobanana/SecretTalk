@@ -1,5 +1,6 @@
 package com.example.secrettalk5;
 
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 
 import org.json.JSONObject;
@@ -21,10 +22,10 @@ import android.widget.Toast;
 
 public class RegisterActivity extends Activity {
 
-	public String[] sign;
-	public RadioGroup GendermRadioGroup1; 
-	public RadioButton mRadio1,mRadio2; 
-	public String gender;
+	private String[] sign;
+	private RadioGroup GendermRadioGroup1; 
+	private RadioButton mRadio1,mRadio2; 
+	private String gender;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -68,6 +69,7 @@ public class RegisterActivity extends Activity {
 	}
 	
 	private void AddGenderChoice(){
+		gender = "male";
 		
 		GendermRadioGroup1 = (RadioGroup) findViewById(R.id.radioGroup1);
 		mRadio1 = (RadioButton) findViewById(R.id.radio0);
@@ -122,15 +124,7 @@ public class RegisterActivity extends Activity {
 		}
 		 
 		
-		if(username==null||password==null||
-				nickname==null||realname==null||
-				realname==null||birthday_year ==null || birthday_month== null || birthday_day == null){
-			
-//			Toast.makeText(this, "Please fill all content", Toast.LENGTH_LONG).show();
-			
-		}
-		
-		else{
+		if(CheckRegisterData(username,password,nickname,realname,birthday)){
 			
 			//Initial HashMap 
 			HashMap<String, String> hm=new HashMap<String, String>();
@@ -156,11 +150,89 @@ public class RegisterActivity extends Activity {
 		
 	}
 	
+	
 	public void RegisterSuccessEvent(){
+		Toast.makeText(this.getApplicationContext(), "註冊成功，歡迎享受這美妙的app!", Toast.LENGTH_LONG).show();
 		finish();
 	}
 	
 	
+	
+	private boolean CheckRegisterData(String username,String password,String n_name,String r_name,String birthday){
+		
+		
+		////////////ID Part
+		
+		if(username.isEmpty()) {
+			Toast.makeText(this.getApplicationContext(), "帳號不可以為空", Toast.LENGTH_LONG).show();
+			return false;
+		}
+		
+		if(username.length()<3 || password.length()>12) {
+			Toast.makeText(this.getApplicationContext(), "帳號需介於3至12碼", Toast.LENGTH_LONG).show();
+			return false;			
+		}
+		
+				
+		if(!(username.charAt(0)<='z' && username.charAt(0)>='a')) {
+			Toast.makeText(this.getApplicationContext(), "帳號字首需為英文小寫", Toast.LENGTH_LONG).show();
+			return false;
+		}
+		
+		if(!username.matches("[a-z0-9|\\.]*")) {
+			Toast.makeText(this.getApplicationContext(), "帳號需為英文小寫與數字組合", Toast.LENGTH_LONG).show();
+			return false;
+		}
+		
+		
+		
+		//////////////// password Part
+		if(password.isEmpty()){
+			Toast.makeText(this.getApplicationContext(), "密碼不可以為空", Toast.LENGTH_LONG).show();
+			return false;
+		}
+		
+		if(password.length()<6 || password.length()>12){
+			Toast.makeText(this.getApplicationContext(), "密碼需介於6至12碼", Toast.LENGTH_LONG).show();
+			return false;			
+		}
+		
+						
+		if(!password.matches("[a-zA-Z0-9|\\.]*")){
+			Toast.makeText(this.getApplicationContext(), "密碼需為英文與數字組合", Toast.LENGTH_LONG).show();
+			return false;
+		}
+
+				
+		//////////////// RealName Part
+		if(r_name.isEmpty()){
+			Toast.makeText(this.getApplicationContext(), "真實姓名不可為空", Toast.LENGTH_LONG).show();
+			return false;
+		}
+		
+		//////////////// nickName Part
+		if(n_name.isEmpty()){
+			Toast.makeText(this.getApplicationContext(), "暱稱不可為空", Toast.LENGTH_LONG).show();
+			return false;
+		}
+		
+		
+		
+		////////////////birthday Part
+		
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
+		dateFormat.setLenient(false);
+		
+		try	{
+			dateFormat.parse(birthday);
+		} catch (Exception e) {
+			Toast.makeText(this.getApplicationContext(), "請輸入正確的日期格式", Toast.LENGTH_LONG).show();
+			return false;
+		}
+		
+		
+		return true;
+	}
 	
 	
 	

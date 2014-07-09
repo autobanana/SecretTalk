@@ -9,7 +9,9 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.widget.Toast;
+import android.content.Intent;
+import android.content.SharedPreferences;
+
 
 public class SignOut_Fragment extends Fragment {
 	
@@ -33,30 +35,28 @@ public class SignOut_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
                                                                                                                                                                                                                                                                                                                       
         View view = inflater.inflate(R.layout.fragment_signout_my,  container,false );
-        //TextView tv = (TextView) view.findViewById(R.id.textView1);
-        //tv.setText( "fragment+" + mNum);
-        
+
         
         Button signourButton=(Button)view.findViewById(R.id.signout_signoutButton);
         
         signourButton.setOnClickListener(new OnClickListener(){      	
         	public void onClick(View v) {
+        		
         		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
         		
-        		alertDialogBuilder.setTitle("Are you sure to signout?");
+        		alertDialogBuilder.setTitle("你確定要登出嗎?");
         		
-    			alertDialogBuilder.setMessage("Click yes to exit!").setCancelable(false)
-				.setPositiveButton("Yes",new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog,int id) {
-						Toast.makeText(getActivity(),"小魏魏這要你加東西哦!", Toast.LENGTH_SHORT).show();
-						
-					}
-				  })
-				.setNegativeButton("No",new DialogInterface.OnClickListener() {
+    			alertDialogBuilder.setMessage("按 YES 登出").setCancelable(false)
+				.setPositiveButton("NO",new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog,int id) {
 						// if this button is clicked, just close
 						// the dialog box and do nothing
 						dialog.cancel();
+					}
+				  })
+				.setNegativeButton("YES",new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog,int id) {
+						Signout();
 					}
 				});
  
@@ -68,9 +68,23 @@ public class SignOut_Fragment extends Fragment {
         	}
         });
         
-        
-        
         return view;
     }
-
+    
+    
+    private void Signout(){
+    	
+    	SharedPreferences account = this.getActivity().getSharedPreferences("ACCOUNT", 0);	
+    	
+		account.edit().putString("USERNAME", "").commit();
+		account.edit().putString("PASSWORD", "").commit();
+    	
+    	
+	    Intent intent = new Intent();
+	    intent.setClass(this.getActivity(),LoginActivity.class);
+	  	//	intent.setClass(Begin_Prefence_Register_Anim.this,MainActivity.class);
+		startActivity(intent);
+		this.getActivity().finish();
+   	
+    }
 }

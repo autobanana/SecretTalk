@@ -108,7 +108,7 @@
             android:orientation="vertical" >
 
             <Button
-                android:id="@+id/signout_signoutButton"
+                android:id="@+id/Login_loginButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/textview_background"
