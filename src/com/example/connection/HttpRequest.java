@@ -4,14 +4,24 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 
 
+
+
+
+import org.apache.http.protocol.HTTP;
+import org.apache.http.util.EntityUtils;
 
 import android.content.Context;
 import android.util.Log;
@@ -25,9 +35,7 @@ public class HttpRequest {
 		        
 		InputStream inputStream = null;
 		String result;
-		
-        
-		
+
 		try{
 			// create HttpClient
             HttpClient httpclient = new DefaultHttpClient();
@@ -51,6 +59,29 @@ public class HttpRequest {
 			return ex.toString();
 		}
 		
+		
+	}
+	
+	public String POST(String url , List params){
+		HttpPost post = new HttpPost(url);
+		 try {
+			post.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
+			
+			HttpResponse httpResponse = new DefaultHttpClient().execute(post);
+				
+			String strResult = EntityUtils.toString(httpResponse.getEntity());
+			return strResult;
+			
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+			return e.toString();
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+			return e.toString();
+		} catch (IOException e) {
+			e.printStackTrace();
+			return e.toString();
+		}
 		
 	}
 	
