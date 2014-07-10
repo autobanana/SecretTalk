@@ -10,10 +10,12 @@ public class ViewHolder {
         TextView username;  
         TextView time;  
         TextView content;  
-        public ViewHolder(ImageView Author_level,TextView Username, TextView Time, TextView Content){
+       // TextView nickname;
+        public ViewHolder(ImageView Author_level,TextView Username, TextView Time, TextView Content){//,TextView Nickname){
             this.author_level = Author_level;
         	this.username = Username;
             this.time = Time;
             this.content = Content;
+           // this.nickname=Nickname;
         }
 }

@@ -117,18 +117,6 @@ public class Listening_MyFragment extends Fragment {
     	
     	View view = inflater.inflate(R.layout.fragment_listening_my, container,false);
     	t1 = (TextView) view.findViewById(R.id.content_talking);
-    	/*
-    	test_for_notification = (Button) view.findViewById(R.id.Login_PostButton);
-    	test_for_notification.setOnClickListener(new View.OnClickListener() {
-    		
-			@Override
-			public void onClick(View v) {
-					//t1.setText("iiii");
-					newMessage("今天我睡了一整天，感覺很空虛。",count);
-					count++;
-			}
-		});
-    */
     	listening_listView=(ListView)view.findViewById(R.id.listening_ListView1);
     	GetNewArticle();
     	

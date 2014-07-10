@@ -228,13 +228,11 @@ public class ReplyModule extends AsyncTask<String,Void,String> {
 					
 					//Get Author Id
 					String author_id=article.getString("author_id");
-					
 					//Get Content
 					String content=article.getString("content");
-					
 					//Get Time
 					String created_Time=article.getString("created_at");
-					
+					// Get Level
 					String level=article.getString("level");
 					
 					//Reply

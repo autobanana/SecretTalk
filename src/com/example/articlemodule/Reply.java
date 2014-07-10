@@ -10,4 +10,5 @@ public class Reply {
 	public String content;
 	public Date created_Time;
 	public String level;
+
 }
