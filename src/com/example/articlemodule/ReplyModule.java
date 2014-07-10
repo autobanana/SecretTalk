@@ -92,9 +92,6 @@ public class ReplyModule extends AsyncTask<String,Void,String> {
 		else{
 			
 		}
-		
-		
-		
 	}
 	
 	
@@ -134,7 +131,7 @@ public class ReplyModule extends AsyncTask<String,Void,String> {
 					reply.author=author_id;
 					reply.content=content;
 					reply.created_Time=ConvertToDate(created_Time);
-					reply.Level=level;
+					reply.level=level;
 					
 					reply_ArrayList.add(reply);
 				}
@@ -183,12 +180,13 @@ public class ReplyModule extends AsyncTask<String,Void,String> {
 				String article_id=replyObject.getString("article_id");
 				String author_id=replyObject.getString("author_id");
 				String created_at=replyObject.getString("created_at");
-
+				String level=replyObject.getString("level");
 				//Add to Reply Object
 				reply.article_id=article_id;
 				reply.author=author_id;
 				reply.created_Time=ConvertToDate(created_at);
 				reply.content=content;
+				reply.level=level;
 				
 				articleDynamicFragment.CreateNewReplyFinish(reply);
 			}
@@ -237,6 +235,7 @@ public class ReplyModule extends AsyncTask<String,Void,String> {
 					//Get Time
 					String created_Time=article.getString("created_at");
 					
+					String level=article.getString("level");
 					
 					//Reply
 					Reply reply=new Reply();
@@ -244,7 +243,7 @@ public class ReplyModule extends AsyncTask<String,Void,String> {
 					reply.author=author_id;
 					reply.content=content;
 					reply.created_Time=ConvertToDate(created_Time);
-					
+					reply.level=level;
 					reply_ArrayList.add(reply);
 				}
 				

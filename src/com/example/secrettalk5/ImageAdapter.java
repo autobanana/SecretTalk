@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class ImageAdapter extends BaseAdapter {
@@ -21,15 +22,6 @@ public class ImageAdapter extends BaseAdapter {
     	
 		context2 = ctxt;
 		myInflater = LayoutInflater.from(ctxt);
-		
-//		Article Bulletin = new Article();
-//		Bulletin.article_id = "";
-//		Bulletin.author = "我是SecretTelk";
-//		Bulletin.content = "TestTestTestTestTestTest";
-//		Bulletin.created_Time="最新更新時間";
-		
-//		this.articleList.add(Bulletin);
-//		this.articleList.addAll(articleList);
 		this.articleList = articleList;
 
 	}
@@ -58,6 +50,7 @@ public class ImageAdapter extends BaseAdapter {
              
             //建構listItem內容view
             viewTag = new ViewHolder(
+            (ImageView)convertView.findViewById(R.id.level_author),
             (TextView)convertView.findViewById(R.id.Name),
             (TextView)convertView.findViewById(R.id.Time),
             (TextView)convertView.findViewById(R.id.content_talking)
@@ -69,21 +62,8 @@ public class ImageAdapter extends BaseAdapter {
         else{
             viewTag = (ViewHolder) convertView.getTag();
         }
-         
-        //設定內容圖案
-//        switch(position){
-//            case 0:
-//                viewTag.icon.setBackgroundResource(R.drawable.taipei);
-//                break;
-//            case 1:
-//                viewTag.icon.setBackgroundResource(R.drawable.taichung);
-//                break;
-//            case 2:
-//                viewTag.icon.setBackgroundResource(R.drawable.kaohsiung);
-//                break;
-//       }
-         
-        //設定標題文字
+        
+      //設定標題文字
         Article article=articleList.get(position);
         
         String author=article.author;
@@ -92,32 +72,28 @@ public class ImageAdapter extends BaseAdapter {
         //設定內容文字
         String content=article.content;
         viewTag.content.setText(content);
-         
-        return convertView;
-    	///
+        
+        String level = article.level;   
+        //設定內容圖案
+        switch(Integer.valueOf(level)){
+           case 0:
+                viewTag.author_level.setBackgroundResource(R.drawable.level_1);
+                break;
+            case 1:
+                viewTag.author_level.setBackgroundResource(R.drawable.level_2);
+                break;
+            case 2:
+                viewTag.author_level.setBackgroundResource(R.drawable.level_3);
+                break;
+            case 3:
+            	viewTag.author_level.setBackgroundResource(R.drawable.level_4);
+                break;
+            case 4:
+                viewTag.author_level.setBackgroundResource(R.drawable.level_5);
+            	break;
+       }
+       return convertView;
     	
-    	/*ViewHolder holder;  
-        if(convertView == null){  
-            //View的getTag()獲取viewHolder對象  
-            holder = new ViewHolder();  
-           // holder2 = new ViewHolder();
-            convertView = View.inflate(context2, R.layout.conversation, null);  
-            holder.username = (TextView) convertView.findViewById(R.id.Name);  
-            holder.time = (TextView) convertView.findViewById(R.id.Time);  
-            holder.content = (TextView) convertView.findViewById(R.id.content_talking);  
-            convertView.setTag(holder);  
-              
-        
-        }else {  
-        
-        	holder = (ViewHolder) convertView.getTag();  
-        
-        }  
-        //holder.imageButton.setImageResource(imageid[position]);  
-        //holder.username.setText(str[position]);  
-        //holder.time.setText(time[position]);  
-        //holder.content.setText(content[position]);  
-        return convertView;  */
     } 
 }
 

@@ -9,5 +9,5 @@ public class Reply {
 	public String author;
 	public String content;
 	public Date created_Time;
-	public String Level;
+	public String level;
 }
