@@ -13,6 +13,7 @@ import org.json.JSONObject;
 
 
 
+
 import com.example.articlemodule.ArticleModule;
 import com.example.usermodule.UserInformation;
 import com.example.usermodule.UserModule;
@@ -38,9 +39,6 @@ public class LoginActivity extends Activity {
 		setContentView(R.layout.activity_login_new);
 		
 		//LoginEvent();    //>>???????? 這行需要嗎
-				
-
-		
 		ConnectionDetector cd = new ConnectionDetector(getApplicationContext());
         
         cd.showConnction();		
@@ -103,6 +101,7 @@ public class LoginActivity extends Activity {
 		*/	
 	}
 	
+	
 	private void LoginEvent(){
 		//Get User Input
 		String username=((EditText)findViewById(R.id.Login_UsernameEditText)).getText().toString();
@@ -123,7 +122,7 @@ public class LoginActivity extends Activity {
 		um.LA=LoginActivity.this;
 	    um.context=LoginActivity.this;
 	    um.execute("Login",jo.toString());
-		
+	    
 	}
 	
 	private void PostArticle(String content){
@@ -175,6 +174,23 @@ public class LoginActivity extends Activity {
 		am.context=this;
 		am.execute("NewArticle",jo.toString());
 		
+	}
+	
+	public void GetInfoForSettingFragment(){
+		//Information for Setting Fragment 
+    	//Initial HashMap 
+    	HashMap hm=new HashMap<String, String>();
+		hm.put("username", UserInformation.Username);
+		
+		//Convert HashMap to JSONObject
+		JSONObject jo=new JSONObject(hm);
+		
+		//Send GetProfile Request
+		UserModule um=new UserModule();
+		um.LA=LoginActivity.this;
+	    um.context=LoginActivity.this;
+	    um.execute("GetProfile",jo.toString());
+    	
 	}
 	
 	public void StartMainActivity(){

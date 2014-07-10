@@ -23,6 +23,7 @@ import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,10 +36,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-
-
-
 
 public class MainActivity extends  FragmentActivity{
 
@@ -68,9 +65,6 @@ public class MainActivity extends  FragmentActivity{
         
     private ConnectionDetector cd;
     
-    
-    
-    
     //testforbutton 
     SpannableString viewpager_s1,viewpager_s2,viewpager_s3;
     SpannableString viewpager_s1_press,viewpager_s2_press,viewpager_s3_press;
@@ -88,16 +82,16 @@ public class MainActivity extends  FragmentActivity{
     public SignOut_Fragment signout;
     
     
-
-    
-    
-    
     
     public void onCreate(Bundle savedInstanceState) {
         
         
-    	setTheme(R.style.CustomActionBarTheme);
+    	
     	super.onCreate(savedInstanceState);
+    	
+    	Log.d("TTTTTTTTTT","onCreate");
+    	
+    	setTheme(R.style.CustomActionBarTheme);
         setContentView(R.layout.fragment_main2);
         
         //fragment_main2 ­º­¶
@@ -120,9 +114,6 @@ public class MainActivity extends  FragmentActivity{
         initial_ImageView();
         initial_PageView();
         initial_ListView();
-        
-        
-        
         
         cd = new ConnectionDetector(getApplicationContext());
         
@@ -163,6 +154,7 @@ public class MainActivity extends  FragmentActivity{
         }       
                
         super.onResume();
+        Log.d("TTTTTTTTTT","onResume");
     }
     
   	public boolean onCreateOptionsMenu(Menu menu) {
@@ -521,43 +513,33 @@ public class MainActivity extends  FragmentActivity{
 		public void onPageScrollStateChanged(int arg0) {
 		}
 	}
+	public void onStart()
+    {
+        super.onStart();
+        Log.d("TTTTTTTTTT","onStart");
+    }
+    
+    public void onPause()
+    {
+        super.onPause();
+        Log.d("TTTTTTTTTT","onPause");
+    }
+    
+    public void onStop()
+    {
+        super.onStop();
+        Log.d("TTTTTTTTTT","onStop");
+    }
+    
+    public void onRestart()
+    {
+        super.onRestart();
+        Log.d("TTTTTTTTTT","onReStart");
+    }
+    public void onDestroy()
+    {
+        super.onDestroy();
+        Log.d("TTTTTTTTTT","onDestroy");
+    }
 	
-	
-	
-	
-	
-	
-	
-
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-    // A placeholder fragment containing a simple view.
-     /*public static class PlaceholderFragment extends Fragment {
-
-        public PlaceholderFragment() {
-        }
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, true);
-            return rootView;
-        }
-    }*/
 }
