@@ -27,6 +27,11 @@ public class Begin_Prefence_Register_Anim extends Activity {
         Animation myFadeInAnimation = AnimationUtils.loadAnimation(this, R.anim.fade_out);
         myImageView.startAnimation(myFadeInAnimation); 
         
+        
+        
+        
+        
+        
         //∏ı¬‡ACTIVITY
         Handler myHandler = new Handler();
         myHandler.postDelayed(mMyRunnable,2000);
@@ -34,6 +39,14 @@ public class Begin_Prefence_Register_Anim extends Activity {
         
         
 	}
+	private Runnable Menu = new Runnable()
+    {
+        public void run()
+        {
+        	setContentView(R.layout.begin_frefence_register_anim);
+
+        }
+     };
 	private Runnable mMyRunnable = new Runnable()
     {
         public void run()

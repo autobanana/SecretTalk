@@ -66,16 +66,7 @@ public class Talking_MyFragment extends Fragment {
         
         talking_button.setOnClickListener( new OnClickListener(){      	
         	public void onClick(View view) {
-        		
-        		
-        		//////
-        		/* 測試用*/
-        		/*article_daynamicLayout =  new  Article_DaynamicLayout_Frament();  
-                FragmentTransaction transaction4 = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction4.addToBackStack(null);   //保留先前的Fragment
-                transaction4.add(R.id.drawer_layout_second, article_daynamicLayout).commit();*/
-        		///////
-        		
+        		       		
         		postacticle =  new  PostActicle_Fragment();  
                 FragmentTransaction transaction1 = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction1.addToBackStack(null);   //保留先前的Fragment
@@ -84,13 +75,27 @@ public class Talking_MyFragment extends Fragment {
         	}    	        	
         });
         
-        initial_ListView();
+        Initial_ListView();
         GetArticle();
 
         return view;
     }
-    //
-    public void initial_ListView() {
+    public void Bulletin_AddToArrayList() {
+    	
+    	ArrayList<Article> article_ArrayList_for_TalkingFragment =new ArrayList<Article>();
+    	Article Bulletin = new Article();
+    	Bulletin.article_id = "";
+		Bulletin.author = "我是SecretTelk";
+		Bulletin.content = "TestTestTestTestTestTest";
+		Bulletin.created_Time= "最新更新時間";
+		article_ArrayList_for_TalkingFragment.add(Bulletin);
+    	article_ArrayList_for_TalkingFragment.addAll(GlobalContainer.article_ArrayList);
+    	GlobalContainer.article_ArrayList = article_ArrayList_for_TalkingFragment;
+    	
+	}
+
+	//
+    public void Initial_ListView() {
 		    	
     	
     	//myListview.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, mStrings));
@@ -101,9 +106,10 @@ public class Talking_MyFragment extends Fragment {
             @Override  
             public  void  onItemClick(AdapterView<?> adapterView, View view,  int  position,  long  l) {  
                 
+            	
             	Log.v("ReplyModule", String.valueOf(position));
             	Log.v("ReplyModule", GlobalContainer.article_ArrayList.toString());
-            	Article artilce=GlobalContainer.article_ArrayList.get(position);
+            	Article artilce = GlobalContainer.article_ArrayList.get(position);
             	Log.v("ReplyModule", artilce.toString());
             	String article_id=artilce.article_id;
             	Log.v("ReplyModule", article_id);
@@ -136,11 +142,14 @@ public class Talking_MyFragment extends Fragment {
 		am.talkingFragment=this;
 		am.execute("List",jo.toString());
 		
+		
 	}
     
     
     public void SetArticleList(ArrayList<Article> article_ArrayList){
-    	GlobalContainer.article_ArrayList=article_ArrayList;
+    	
+    	GlobalContainer.article_ArrayList = article_ArrayList;
+    	//Bulletin_AddToArrayList();
     	RefreshListView();
     	
     }

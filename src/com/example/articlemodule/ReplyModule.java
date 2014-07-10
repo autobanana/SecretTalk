@@ -125,6 +125,8 @@ public class ReplyModule extends AsyncTask<String,Void,String> {
 					//Get Time
 					String created_Time=article.getString("created_at");
 					
+					//Get Level
+					String level = article.getString("level");
 					
 					//Reply
 					Reply reply=new Reply();
@@ -132,6 +134,7 @@ public class ReplyModule extends AsyncTask<String,Void,String> {
 					reply.author=author_id;
 					reply.content=content;
 					reply.created_Time=ConvertToDate(created_Time);
+					reply.Level=level;
 					
 					reply_ArrayList.add(reply);
 				}

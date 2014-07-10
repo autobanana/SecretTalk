@@ -61,7 +61,7 @@ public class MainActivity extends  FragmentActivity{
     public ActionBarDrawerToggle mDrawerToggle;
     private static final String[] viewpagertitle = new String[]{"說-Talking","聽-Listening","你 ? Who am I ?"};
     private static final String[] mStrings = new String[] {"回到首頁","偏好設定", "程式導覽", "成就系統介紹", "關於本程式","登出", "結束程式"};
-
+    private static final String[] mStrings_NoPreference = new String[] {"回到首頁", "程式導覽", "成就系統介紹", "關於本程式","登出", "結束程式"};
         
     private ConnectionDetector cd;
     
@@ -162,115 +162,207 @@ public class MainActivity extends  FragmentActivity{
   		return true;
   	}
   	
-    public void initial_ListView() {
-		    	
-    	
-    	myListview.setAdapter(new ListviewAdapter(this));
-    	//myListview.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, mStrings));
-    	drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_main);
-        mDrawerToggle = new ActionBarDrawerToggle(
-                this,                  /* host Activity */
-                drawerLayout,         /* DrawerLayout object */
-                R.drawable.ic_drawer,  /* nav drawer icon to replace 'Up' caret */
-                R.string.drawer_open,  /* "open drawer" description */
-                R.string.drawer_close  /* "close drawer" description */
-                ) {
-
-            /** Called when a drawer has settled in a completely closed state. */
-            public void onDrawerClosed(View view) {
-            	
-            	super .onDrawerClosed(view);  
-                getActionBar().setTitle(title);  
-                invalidateOptionsMenu();  
-            }
-
-            /** Called when a drawer has settled in a completely open state. */
-            public void onDrawerOpened(View drawerView) {
-            	super .onDrawerOpened(drawerView);  
-                invalidateOptionsMenu();
-            }
-        };
-
-        // Set the drawer toggle as the DrawerListener
-        drawerLayout.setDrawerListener(mDrawerToggle);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setHomeButtonEnabled(true);
-        
-        myListview.setOnItemClickListener( new  AdapterView.OnItemClickListener() {  
-            @Override  
-            public  void  onItemClick(AdapterView<?> adapterView, View view,  int  position,  long  l) {  
-                
-            	cd.showConnction();
-            	
-            	if(position == 0){
-            		//回到首頁
-            		//清空所有新加入的fragment
-            		ViewPager_Show();
-            		getSupportFragmentManager().popBackStack( null , FragmentManager.POP_BACK_STACK_INCLUSIVE);
-            		title = "SecretTalk";
-            	}
-            	else if(position == 1){
-            		//偏好設定
-            		//getSupportFragmentManager().popBackStack( null , FragmentManager.POP_BACK_STACK_INCLUSIVE);
-            		ViewPager_Hide();
-
-            		preferencesetting =  new  PreferenceSetting_Fragment();  
-                    FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
-                    transaction1.addToBackStack(null);   //保留先前的Fragment
-                    transaction1.add(R.id.drawer_layout_second, preferencesetting).commit();
-                    title = mStrings[position];
-            	
-            	}
-            	else if(position == 2){
-            		ViewPager_Hide();
-            		navigation = new Navigation_Fragment();
-            		FragmentTransaction transaction2 = getSupportFragmentManager().beginTransaction();
-                    transaction2.addToBackStack(null);   //保留先前的Fragment
-                    transaction2.add(R.id.drawer_layout_second, navigation).commit();
-                    title = mStrings[position]; 
-            	}
-            	else if(position ==3){
-            		//成就系統介紹		
-            		ViewPager_Hide();
-            		achievement = new Achievement_Fragment();
-            		FragmentTransaction transaction3 = getSupportFragmentManager().beginTransaction();
-                    transaction3.addToBackStack(null);   //保留先前的Fragment
-                    transaction3.add(R.id.drawer_layout_second, achievement).commit();
-                    title = mStrings[position];
-                    
-            	}
-            	else if(position == 4){
-            		//關於本程式
-            		ViewPager_Hide();
-            		aboutprogram =  new  AboutProgram_Fragment();  
-                    FragmentTransaction transaction4 = getSupportFragmentManager().beginTransaction();
-                    transaction4.addToBackStack(null);   //保留先前的Fragment
-                    transaction4.add(R.id.drawer_layout_second, aboutprogram).commit();
-                    title = mStrings[position];
-            	
-            	}
-            	else if(position == 5){
-            		ViewPager_Hide();
-            		signout =  new  SignOut_Fragment();  
-                    FragmentTransaction transaction4 = getSupportFragmentManager().beginTransaction();
-                    transaction4.addToBackStack(null);   //保留先前的Fragment
-                    transaction4.add(R.id.drawer_layout_second, signout).commit();
-                    title = mStrings[position];
-            	}
-            	else{
-            		//離開程式	
-            		Leave_program();
-            	}
-               
-//            	Toast.makeText(MainActivity.this, "" + position, Toast.LENGTH_SHORT).show();
-            	myListview.setItemChecked(position, true );  
-                drawerLayout.closeDrawer(myListview);  
-                
-            }
-
-        });  
-	}
+//    public void initial_ListView() {
+//		    	
+//    	
+//    	myListview.setAdapter(new ListviewAdapter(this));
+//    	//myListview.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, mStrings));
+//    	drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_main);
+//        mDrawerToggle = new ActionBarDrawerToggle(
+//                this,                  /* host Activity */
+//                drawerLayout,         /* DrawerLayout object */
+//                R.drawable.ic_drawer,  /* nav drawer icon to replace 'Up' caret */
+//                R.string.drawer_open,  /* "open drawer" description */
+//                R.string.drawer_close  /* "close drawer" description */
+//                ) {
+//
+//            /** Called when a drawer has settled in a completely closed state. */
+//            public void onDrawerClosed(View view) {
+//            	
+//            	super .onDrawerClosed(view);  
+//                getActionBar().setTitle(title);  
+//                invalidateOptionsMenu();  
+//            }
+//
+//            /** Called when a drawer has settled in a completely open state. */
+//            public void onDrawerOpened(View drawerView) {
+//            	super .onDrawerOpened(drawerView);  
+//                invalidateOptionsMenu();
+//            }
+//        };
+//
+//        // Set the drawer toggle as the DrawerListener
+//        drawerLayout.setDrawerListener(mDrawerToggle);
+//        getActionBar().setDisplayHomeAsUpEnabled(true);
+//        getActionBar().setHomeButtonEnabled(true);
+//        
+//        myListview.setOnItemClickListener( new  AdapterView.OnItemClickListener() {  
+//            @Override  
+//            public  void  onItemClick(AdapterView<?> adapterView, View view,  int  position,  long  l) {  
+//                
+//            	cd.showConnction();
+//            	
+//            	if(position == 0){
+//            		//回到首頁
+//            		//清空所有新加入的fragment
+//            		ViewPager_Show();
+//            		getSupportFragmentManager().popBackStack( null , FragmentManager.POP_BACK_STACK_INCLUSIVE);
+//            		title = "SecretTalk";
+//            	}
+//            	else if(position == 1){
+//            		//偏好設定
+//            		//getSupportFragmentManager().popBackStack( null , FragmentManager.POP_BACK_STACK_INCLUSIVE);
+//            		ViewPager_Hide();
+//            		preferencesetting =  new  PreferenceSetting_Fragment();  
+//                    FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
+//                    transaction1.addToBackStack(null);   //保留先前的Fragment
+//                    transaction1.add(R.id.drawer_layout_second, preferencesetting).commit();
+//                    title = mStrings[position];
+//            	
+//            	}
+//            	else if(position == 2){
+//            		ViewPager_Hide();
+//            		navigation = new Navigation_Fragment();
+//            		FragmentTransaction transaction2 = getSupportFragmentManager().beginTransaction();
+//                    transaction2.addToBackStack(null);   //保留先前的Fragment
+//                    transaction2.add(R.id.drawer_layout_second, navigation).commit();
+//                    title = mStrings[position]; 
+//            	}
+//            	else if(position ==3){
+//            		//成就系統介紹		
+//            		ViewPager_Hide();
+//            		achievement = new Achievement_Fragment();
+//            		FragmentTransaction transaction3 = getSupportFragmentManager().beginTransaction();
+//                    transaction3.addToBackStack(null);   //保留先前的Fragment
+//                    transaction3.add(R.id.drawer_layout_second, achievement).commit();
+//                    title = mStrings[position];
+//                    
+//            	}
+//            	else if(position == 4){
+//            		//關於本程式
+//            		ViewPager_Hide();
+//            		aboutprogram =  new  AboutProgram_Fragment();  
+//                    FragmentTransaction transaction4 = getSupportFragmentManager().beginTransaction();
+//                    transaction4.addToBackStack(null);   //保留先前的Fragment
+//                    transaction4.add(R.id.drawer_layout_second, aboutprogram).commit();
+//                    title = mStrings[position];
+//            	
+//            	}
+//            	else if(position == 5){
+//            		ViewPager_Hide();
+//            		signout =  new  SignOut_Fragment();  
+//                    FragmentTransaction transaction4 = getSupportFragmentManager().beginTransaction();
+//                    transaction4.addToBackStack(null);   //保留先前的Fragment
+//                    transaction4.add(R.id.drawer_layout_second, signout).commit();
+//                    title = mStrings[position];
+//            	}
+//            	else{
+//            		//離開程式	
+//            		Leave_program();
+//            	}
+//            	myListview.setItemChecked(position, true );  
+//                drawerLayout.closeDrawer(myListview);  
+//                
+//            }
+//
+//        });  
+//	}
     
+  public void initial_ListView() {
+	
+
+		myListview.setAdapter(new ListviewAdapter(this));
+		//myListview.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, mStrings));
+		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_main);
+		mDrawerToggle = new ActionBarDrawerToggle(
+		    this,                  /* host Activity */
+		drawerLayout,         /* DrawerLayout object */
+		R.drawable.ic_drawer,  /* nav drawer icon to replace 'Up' caret */
+		R.string.drawer_open,  /* "open drawer" description */
+		R.string.drawer_close  /* "close drawer" description */
+		) {
+
+			/** Called when a drawer has settled in a completely closed state. */
+			public void onDrawerClosed(View view) {
+	
+				super .onDrawerClosed(view);  
+			    getActionBar().setTitle(title);  
+			    invalidateOptionsMenu();  
+			}
+
+			/** Called when a drawer has settled in a completely open state. */
+			public void onDrawerOpened(View drawerView) {
+				super .onDrawerOpened(drawerView);  
+			    invalidateOptionsMenu();
+			}
+		};
+
+		// Set the drawer toggle as the DrawerListener
+		drawerLayout.setDrawerListener(mDrawerToggle);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+		getActionBar().setHomeButtonEnabled(true);
+
+		myListview.setOnItemClickListener( new  AdapterView.OnItemClickListener() {  
+			@Override  
+			public  void  onItemClick(AdapterView<?> adapterView, View view,  int  position,  long  l) {  
+    
+				cd.showConnction();
+	
+				if(position == 0){
+						//回到首頁
+					//清空所有新加入的fragment
+					ViewPager_Show();
+					getSupportFragmentManager().popBackStack( null , FragmentManager.POP_BACK_STACK_INCLUSIVE);
+					title = "SecretTalk";
+				}
+				else if(position == 1){
+					ViewPager_Hide();
+					navigation = new Navigation_Fragment();
+					FragmentTransaction transaction2 = getSupportFragmentManager().beginTransaction();
+				    transaction2.addToBackStack(null);   //保留先前的Fragment
+				    transaction2.add(R.id.drawer_layout_second, navigation).commit();
+				    title = mStrings_NoPreference[position]; 
+
+				}
+				else if(position == 2){
+					//成就系統介紹		
+					ViewPager_Hide();
+					achievement = new Achievement_Fragment();
+					FragmentTransaction transaction3 = getSupportFragmentManager().beginTransaction();
+				    transaction3.addToBackStack(null);   //保留先前的Fragment
+				    transaction3.add(R.id.drawer_layout_second, achievement).commit();
+				    title = mStrings_NoPreference[position];
+				}
+				else if(position ==3){
+					//關於本程式
+					ViewPager_Hide();
+					aboutprogram =  new  AboutProgram_Fragment();  
+				    FragmentTransaction transaction4 = getSupportFragmentManager().beginTransaction();
+				    transaction4.addToBackStack(null);   //保留先前的Fragment
+				    transaction4.add(R.id.drawer_layout_second, aboutprogram).commit();
+				    title = mStrings_NoPreference[position];
+				}
+				else if(position == 4){
+					ViewPager_Hide();
+					signout =  new  SignOut_Fragment();  
+				    FragmentTransaction transaction4 = getSupportFragmentManager().beginTransaction();
+				    transaction4.addToBackStack(null);   //保留先前的Fragment
+				    transaction4.add(R.id.drawer_layout_second, signout).commit();
+				    title = mStrings_NoPreference[position];
+				}
+				else{
+					//離開程式	
+					Leave_program();
+				}
+				myListview.setItemChecked(position, true );  
+			    drawerLayout.closeDrawer(myListview);  
+			    
+				}
+
+			});  
+  		}
+  	
+  	
 	public void ViewPager_Hide() {
 		viewPager_layout.setVisibility(View.INVISIBLE);
 	
@@ -441,11 +533,6 @@ public class MainActivity extends  FragmentActivity{
 		two = one * 2;
 	}
 
-	
-	
-	
-
-	
 	
 	public class MyOnPageChangeListener implements OnPageChangeListener {		
 		public void onPageSelected(int arg0) {

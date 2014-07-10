@@ -181,7 +181,7 @@
                 android:padding="3dp" />
 
             <TextView
-                android:id="@+id/textView1"
+                android:id="@+id/Talking_Bulletin_TextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/Register_year" 

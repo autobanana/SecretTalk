@@ -49,15 +49,17 @@
                 android:id="@+id/signout_version"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:paddingRight="10dp"
                 android:text="@string/Signout_Nickname"
                 android:textColor="@color/Black"
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/signout_version_textView"
+                android:id="@+id/signout_nickname_textView"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:background="@color/Banana_light"
                 android:gravity="center"
@@ -74,15 +76,17 @@
                 android:id="@+id/about_program_instructor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:paddingRight="10dp"
                 android:text="@string/Signout_user_id"
                 android:textColor="@color/Black"
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/signout_userID_textView"
+                android:id="@+id/signout_username_textView"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_margin="10dp"
                 android:layout_weight="9"
                 android:background="@color/Banana_light"
                 android:gravity="center"
@@ -93,6 +97,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
             android:layout_weight="1.8"
             android:gravity="center"
             android:orientation="vertical" >
@@ -100,7 +108,7 @@
             <Button
                 android:id="@+id/signout_signoutButton"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="fill_parent"
                 android:background="@color/textview_background"
                 android:padding="6dp"
                 android:text="@string/Signout_Button" />

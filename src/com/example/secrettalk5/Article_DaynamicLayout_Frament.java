@@ -53,46 +53,7 @@ public class Article_DaynamicLayout_Frament extends Fragment {
         return fragment;
     }
     
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        
-        if (null != savedInstanceState) {
-            // Restore state here
-        }
-        Log.d("AAAAAAAAAAAAAAAAAAAAAAAAAAAAa", "onCreate");
-        
-        
-    }
-    public void onAttach(Activity activity) { 
-        super.onAttach(activity);
-        Log.d("AAAAAAAAAAAAAAAAAAAAAAAAAAAAa", "onAttach");
-    }
-    
-    public void onActivityCreated(Bundle saved) { 
-        super.onActivityCreated(saved);
-    	Log.d("AAAAAAAAAAAAAAAAAAAAAAAAAAAAa", "onActivityCreated");
-    }
-    public void onStart() { 
-        super.onStart();
-        Log.d("AAAAAAAAAAAAAAAAAAAAAAAAAAAAa", "onStart");
-    }
-    public void onResume() { 
-        super.onResume();
-        Log.d("AAAAAAAAAAAAAAAAAAAAAAAAAAAAa", "onResume");
-    }
-    
-    public void onPause() { 
-        super.onPause();
-        Log.d("AAAAAAAAAAAAAAAAAAAAAAAAAAAAa","onPause");
-    }
-    public void onStop() { 
-        super.onStop();
-        Log.d("AAAAAAAAAAAAAAAAAAAAAAAAAAAAa", "onStop");
-    }
-    public void onSaveInstanceState(Bundle toSave) { 
-        super.onSaveInstanceState(toSave);
-    Log.d("AAAAAAAAAAAAAAAAAAAAAAAAAAAAa", "onSaveinstanceState");
-    }
+   
     /**為Fragment加載佈局時調用**/
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
     	view = inflater.inflate(R.layout.fragment_article_dynamiclayout,  container,false );
@@ -117,6 +78,7 @@ public class Article_DaynamicLayout_Frament extends Fragment {
         	}     	        	
         });
     	SetCheckNewReplyRunnable();    	
+    	
     	//測試用button /////////////////////////////////////////////
     	Button S = (Button)view.findViewById(R.id.PostArticle_PostButton1);
     	
@@ -133,6 +95,7 @@ public class Article_DaynamicLayout_Frament extends Fragment {
         	}     	        	
         });
     	////////////////////////////////////////////////////////
+    	
     	GetHistoricalDialogue();
         return view;
     }
@@ -339,4 +302,46 @@ public class Article_DaynamicLayout_Frament extends Fragment {
 		return latestTime;
 		
 	}
+	
+	 public void onCreate(Bundle savedInstanceState) {
+	        super.onCreate(savedInstanceState);
+	        
+	        if (null != savedInstanceState) {
+	            // Restore state here
+	        }
+	        Log.d("AAAAAAAAAAAAAAAAAAAAAAAAAAAAa", "onCreate");
+	        
+	        
+	    }
+	    public void onAttach(Activity activity) { 
+	        super.onAttach(activity);
+	        Log.d("AAAAAAAAAAAAAAAAAAAAAAAAAAAAa", "onAttach");
+	    }
+	    
+	    public void onActivityCreated(Bundle saved) { 
+	        super.onActivityCreated(saved);
+	    	Log.d("AAAAAAAAAAAAAAAAAAAAAAAAAAAAa", "onActivityCreated");
+	    }
+	    public void onStart() { 
+	        super.onStart();
+	        Log.d("AAAAAAAAAAAAAAAAAAAAAAAAAAAAa", "onStart");
+	    }
+	    public void onResume() { 
+	        super.onResume();
+	        Log.d("AAAAAAAAAAAAAAAAAAAAAAAAAAAAa", "onResume");
+	    }
+	    
+	    public void onPause() { 
+	        super.onPause();
+	        Log.d("AAAAAAAAAAAAAAAAAAAAAAAAAAAAa","onPause");
+	    }
+	    public void onStop() { 
+	        super.onStop();
+	        Log.d("AAAAAAAAAAAAAAAAAAAAAAAAAAAAa", "onStop");
+	    }
+	    public void onSaveInstanceState(Bundle toSave) { 
+	        super.onSaveInstanceState(toSave);
+	    Log.d("AAAAAAAAAAAAAAAAAAAAAAAAAAAAa", "onSaveinstanceState");
+	    }
+	
 }

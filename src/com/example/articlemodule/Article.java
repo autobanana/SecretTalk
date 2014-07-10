@@ -7,5 +7,4 @@ public class Article {
 	public String content;
 	public String created_Time;
 	
-	
 }

@@ -149,6 +149,9 @@ public class ArticleModule extends AsyncTask<String,Void,String> {
 					String content=article.getString("content");
 					//Get Create Time
 					String created_Time=article.getString("created_at");
+					//Get Author Level
+					//String level = article.getString("level");
+					
 					
 					Article articleInstance=new Article();
 					
@@ -178,6 +181,7 @@ public class ArticleModule extends AsyncTask<String,Void,String> {
 		
 	}
 	
+	//ť Listening
 	private void GetNewArticleFinish(JSONObject resultObject){
 		try {
 			Log.v("ArticleModule","Get New Article Finish Start");

@@ -18,12 +18,22 @@ public class ImageAdapter extends BaseAdapter {
     Context context2;  
     
     public ImageAdapter(Context ctxt, ArrayList<Article> articleList) {
-
+    	
 		context2 = ctxt;
 		myInflater = LayoutInflater.from(ctxt);
-		this.articleList=articleList;
+		
+//		Article Bulletin = new Article();
+//		Bulletin.article_id = "";
+//		Bulletin.author = "我是SecretTelk";
+//		Bulletin.content = "TestTestTestTestTestTest";
+//		Bulletin.created_Time="最新更新時間";
+		
+//		this.articleList.add(Bulletin);
+//		this.articleList.addAll(articleList);
+		this.articleList = articleList;
 
 	}
+   
     @Override  
     public int getCount() {  
         return articleList.size();  
@@ -39,7 +49,6 @@ public class ImageAdapter extends BaseAdapter {
     @Override  
     public View getView(int position, View convertView, ViewGroup parent) {  
         
-    	///
     	//自訂類別，表達個別listItem中的view物件集合。
     	ViewHolder viewTag;
  

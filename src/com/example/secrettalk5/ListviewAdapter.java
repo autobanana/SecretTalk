@@ -11,8 +11,10 @@ import android.widget.TextView;
 public class ListviewAdapter extends BaseAdapter {
 
 	public LayoutInflater myInflater;
-	CharSequence[] title ={"回到首頁","偏好設定", "程式導覽", "成就系統介紹", "關於本程式","登出", "結束程式"};
-	int[] iconName = {R.drawable.list_home,R.drawable.list_preference,R.drawable.list_navi,R.drawable.list_achiment,R.drawable.list_about,R.drawable.list_signout,R.drawable.list_leave};
+	//CharSequence[] title ={"回到首頁","偏好設定", "程式導覽", "成就系統介紹", "關於本程式","登出", "結束程式"};
+	CharSequence[] title ={"回到首頁", "程式導覽", "成就系統介紹", "關於本程式","登出", "結束程式"};
+	//int[] iconName = {R.drawable.list_home,R.drawable.list_preference,R.drawable.list_navi,R.drawable.list_achiment,R.drawable.list_about,R.drawable.list_signout,R.drawable.list_leave};
+	int[] iconName = {R.drawable.list_home,R.drawable.list_navi,R.drawable.list_achiment,R.drawable.list_about,R.drawable.list_signout,R.drawable.list_leave};
 	Context context2;  
     
 	public ListviewAdapter(Context ctxt) {

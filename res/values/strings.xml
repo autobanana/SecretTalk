@@ -208,7 +208,7 @@
     <string name="Register_GenderText">Gender</string>
     <string name="Register_BloodTypeText">BloodType</string>
     <string name="Refresh">Refresh</string>
-    <string name="Signout_title">Signout</string>
+    <string name="Signout_title">SignOut</string>
     <string name="Signout_Button">登出</string>
     <string name="Signout_Nickname">暱稱</string>
     <string name="Signout_user_id">帳號</string>
