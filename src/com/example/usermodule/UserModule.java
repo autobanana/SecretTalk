@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.connection.HttpRequest;
 import com.example.secrettalk5.LoginActivity;
 import com.example.secrettalk5.RegisterActivity;
+import com.example.secrettalk5.Setting_MyFragment;
 
 public class UserModule extends AsyncTask<String,Void,String> {
 
@@ -20,6 +21,7 @@ public class UserModule extends AsyncTask<String,Void,String> {
 	private String url="http://140.116.234.174:8131/users/";
 	private String RequestOption;
 	public LoginActivity LA;
+	public Setting_MyFragment SF;
 	public RegisterActivity RA;
 	
 	@Override
@@ -122,7 +124,7 @@ public class UserModule extends AsyncTask<String,Void,String> {
 		}
 		if(RequestOption.equals("SetProfile")){
 			Log.v("UserModule","Start SetProfileFinish");
-			GetProfileFinish(resultObject);
+			SetProfileFinish(resultObject);
 			
 			
 		}
@@ -138,19 +140,15 @@ public class UserModule extends AsyncTask<String,Void,String> {
 			//Get Server Message
 			String message=resultObject.getString("Message");
 						
-
 			if(response.equals("0")){
-				
+				SF.SaveDataforSettingFragment();
+				Toast.makeText(context, "成功修改設定囉!!" , Toast.LENGTH_LONG).show();
 			}
-			
 			else{
 				//Show Login Fail Message
-				//Toast.makeText(context, message , Toast.LENGTH_LONG).show();
+				Toast.makeText(context, "錯誤!!沒有正確儲存!!!" , Toast.LENGTH_LONG).show();
 			}
-			
-			
 		} catch (JSONException e) {
-
 			e.printStackTrace();
 		}
 	}
@@ -170,12 +168,21 @@ public class UserModule extends AsyncTask<String,Void,String> {
 				String userProfile=resultObject.getString("UserProfile");
 				JSONObject userProfileJSONObject = new JSONObject(userProfile);
 				
-				UserInformation.Gender=userProfileJSONObject.getString("Gender");
 				UserInformation.BloodType=userProfileJSONObject.getString("BloodType");
-				UserInformation.Mood=userProfileJSONObject.getString("Mood");
+				UserInformation.Birthday=userProfileJSONObject.getString("Birthday");
+				UserInformation.CreatedTime=userProfileJSONObject.getString("created_at");
+				UserInformation.Gender=userProfileJSONObject.getString("Gender");
 				UserInformation.Interest=userProfileJSONObject.getString("Interest");
+				UserInformation.Level=userProfileJSONObject.getString("Level");
+				UserInformation.LoginDays = userProfileJSONObject.getString("LoginDays");
+				UserInformation.Mood=userProfileJSONObject.getString("Mood");
+				UserInformation.NickName=userProfileJSONObject.getString("Nickname");
 				UserInformation.Personality=userProfileJSONObject.getString("Personality");
-					
+				UserInformation.Sign=userProfileJSONObject.getString("Sign");
+				UserInformation.Score=userProfileJSONObject.getString("Score");
+				
+				LA.StartMainActivity();	
+				
 			}
 			
 			else{
@@ -204,7 +211,10 @@ public class UserModule extends AsyncTask<String,Void,String> {
 			//Change Page To MainActivity
 			if(response.equals("0")){
 				UserInformation.Username=resultObject.getString("Username");
-				LA.StartMainActivity();	
+				LA.GetInfoForSettingFragment();
+				
+				
+				
 			}
 			
 			else{

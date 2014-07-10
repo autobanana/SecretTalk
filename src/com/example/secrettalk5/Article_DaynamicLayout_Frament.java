@@ -14,6 +14,8 @@ import com.example.articlemodule.Reply;
 import com.example.articlemodule.ReplyModule;
 import com.example.usermodule.UserInformation;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -45,7 +47,7 @@ public class Article_DaynamicLayout_Frament extends Fragment {
 	private Handler handler = new Handler();
 	public DisplayMetrics dm;
 	public int screenW;
-	
+	public static Context test;
 	public static Article_DaynamicLayout_Frament newInstance( int num) {
 		Article_DaynamicLayout_Frament fragment = new Article_DaynamicLayout_Frament();
         return fragment;
@@ -54,27 +56,67 @@ public class Article_DaynamicLayout_Frament extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
+        if (null != savedInstanceState) {
+            // Restore state here
+        }
+        Log.d("AAAAAAAAAAAAAAAAAAAAAAAAAAAAa", "onCreate");
+        
+        
+    }
+    public void onAttach(Activity activity) { 
+        super.onAttach(activity);
+        Log.d("AAAAAAAAAAAAAAAAAAAAAAAAAAAAa", "onAttach");
+    }
+    
+    public void onActivityCreated(Bundle saved) { 
+        super.onActivityCreated(saved);
+    	Log.d("AAAAAAAAAAAAAAAAAAAAAAAAAAAAa", "onActivityCreated");
+    }
+    public void onStart() { 
+        super.onStart();
+        Log.d("AAAAAAAAAAAAAAAAAAAAAAAAAAAAa", "onStart");
+    }
+    public void onResume() { 
+        super.onResume();
+        Log.d("AAAAAAAAAAAAAAAAAAAAAAAAAAAAa", "onResume");
+    }
+    
+    public void onPause() { 
+        super.onPause();
+        Log.d("AAAAAAAAAAAAAAAAAAAAAAAAAAAAa","onPause");
+    }
+    public void onStop() { 
+        super.onStop();
+        Log.d("AAAAAAAAAAAAAAAAAAAAAAAAAAAAa", "onStop");
+    }
+    public void onSaveInstanceState(Bundle toSave) { 
+        super.onSaveInstanceState(toSave);
+    Log.d("AAAAAAAAAAAAAAAAAAAAAAAAAAAAa", "onSaveinstanceState");
     }
     /**為Fragment加載佈局時調用**/
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
     	view = inflater.inflate(R.layout.fragment_article_dynamiclayout,  container,false );
     	
+    	Log.d("AAAAAAAAAAAAAAAAAAAAAAAAAAAAa", "onCreateView");
     	
     	dm = new DisplayMetrics();
 		getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
 		screenW = dm.widthPixels;
+		
+		test = getActivity();
     	
-    	dynmaic_scrollview = (ScrollView)view.findViewById(R.id.scrollView1);
+		dynmaic_scrollview = (ScrollView)view.findViewById(R.id.scrollView1);
     	a = (LinearLayout)view.findViewById(R.id.insideScrollView);
     	reply_edittext = (EditText)view.findViewById(R.id.PostArticle_ContentEditText);
     	reply_button = (Button)view.findViewById(R.id.button3);
+    	
     	
     	reply_button.setOnClickListener( new OnClickListener(){      	
         	public void onClick(View view) {
         		reply_specific_article();
         	}     	        	
         });
-    	    	
+    	SetCheckNewReplyRunnable();    	
     	//測試用button /////////////////////////////////////////////
     	Button S = (Button)view.findViewById(R.id.PostArticle_PostButton1);
     	
@@ -132,6 +174,7 @@ public class Article_DaynamicLayout_Frament extends Fragment {
     		else{
     			isAuthor=1;
     		}
+    		
     		DynamicLayout(author_id,created_Time,content,isAuthor);	
     		
     	}
@@ -178,7 +221,7 @@ public class Article_DaynamicLayout_Frament extends Fragment {
 		String author_id=reply.author;
 		String created_Time=reply.created_Time.toString();
 		String content=reply.content;
-		
+		Log.v("ReplyModule",author_id+" "+created_Time+""+""+content);
 		DynamicLayout(author_id,created_Time,content,0);
 	}
 	
@@ -249,7 +292,7 @@ public class Article_DaynamicLayout_Frament extends Fragment {
 	public void DynamicLayout(String name,String time,String content ,int whotalk ) {
 		
 		
-		ListView t = new ListView(getActivity());     
+		ListView t = new ListView(getActivity());
 		t.setAdapter(new ArticleDynamicAdapter(getActivity(),name,time,content,whotalk,screenW));
 		
 		LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(     
@@ -273,7 +316,6 @@ public class Article_DaynamicLayout_Frament extends Fragment {
             }
         }).start();
 	}
-	
 	public void SortReplyList(){
 		Collections.sort(reply_ArrayList, new Comparator<Reply>(){
 			@Override

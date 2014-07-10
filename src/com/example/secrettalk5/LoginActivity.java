@@ -37,14 +37,18 @@ public class LoginActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		//setContentView(R.layout.activity_login);
 		
-		
 		account = getSharedPreferences("ACCOUNT", 0);	
 		
 		username = account.getString("USERNAME", "");
 		password = account.getString("PASSWORD", "");
 		
-        cd = new ConnectionDetector(this);
-                
+
+		
+		cd = new ConnectionDetector(this);
+
+        cd.showConnction();		
+			
+
         //未登入過,或沒有網路時,進入原本登入畫面
         if(username.isEmpty() || !cd.isConnectingToInternet()){   
 	        setContentView(R.layout.activity_login_new);
@@ -125,6 +129,7 @@ public class LoginActivity extends Activity {
 	}
 	
 	private void LoginEvent(String username,String password){
+
 		
 		//Initial HashMap 
 		HashMap hm=new HashMap<String, String>();
@@ -140,7 +145,7 @@ public class LoginActivity extends Activity {
 		um.LA=LoginActivity.this;
 	    um.context=LoginActivity.this;
 	    um.execute("Login",jo.toString());
-	
+
 	}
 	
 
@@ -194,6 +199,23 @@ public class LoginActivity extends Activity {
 		am.context=this;
 		am.execute("NewArticle",jo.toString());
 		
+	}
+	
+	public void GetInfoForSettingFragment(){
+		//Information for Setting Fragment 
+    	//Initial HashMap 
+    	HashMap hm=new HashMap<String, String>();
+		hm.put("username", UserInformation.Username);
+		
+		//Convert HashMap to JSONObject
+		JSONObject jo=new JSONObject(hm);
+		
+		//Send GetProfile Request
+		UserModule um=new UserModule();
+		um.LA=LoginActivity.this;
+	    um.context=LoginActivity.this;
+	    um.execute("GetProfile",jo.toString());
+    	
 	}
 	
 	public void StartMainActivity(){

@@ -90,10 +90,11 @@
                             android:id="@+id/user_id"
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
+                            android:layout_gravity="center"
                             android:layout_margin="3dp"
                             android:layout_weight="1"
                             android:background="@color/Banana"
-                            android:gravity="center|center_vertical|left"
+                            android:gravity="center"
                             android:paddingLeft="10dp"
                             android:paddingRight="10dp"
                             android:text="@string/Setting_test_user_id"
@@ -133,45 +134,13 @@
                                 android:id="@+id/birthday_year"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="left"
-                                android:layout_marginLeft="10dp"
-                                android:text="1993"
+                                android:gravity="center"
+                                android:paddingLeft="3dp"
+                                android:paddingRight="3dp"
                                 android:textColor="@color/Banana_White"
-                                android:textSize="20sp"
+                                android:textSize="21sp"
                                 android:textStyle="bold" />
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content" >
-
-                                <TextView
-                                    android:id="@+id/birthday_month"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="10dp"
-                                    android:text="10"
-                                    android:textColor="@color/Banana_White"
-                                    android:textSize="20sp"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:id="@+id/textView1"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="."
-                                    android:textColor="@color/Banana_White"
-                                    android:textSize="20sp"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:id="@+id/birthday_day"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="3"
-                                    android:textColor="@color/Banana_White"
-                                    android:textSize="20sp"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
                         </LinearLayout>
 
                         <ImageView
@@ -179,8 +148,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="3dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/bloodtype_a" />
+                            android:layout_weight="1" />
 
                         <ImageView
                             android:id="@+id/user_constellation"
