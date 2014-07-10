@@ -2,6 +2,7 @@ package com.example.secrettalk5;
 
 
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentManager.OnBackStackChangedListener;
@@ -120,7 +121,7 @@ public class MainActivity extends  FragmentActivity{
         initial_PageView();
         initial_ListView();
         
-        cd = new ConnectionDetector(getApplicationContext());
+        cd = new ConnectionDetector(this);
         
         cd.showConnction();
         
@@ -132,10 +133,18 @@ public class MainActivity extends  FragmentActivity{
                 int backCount = getSupportFragmentManager().getBackStackEntryCount();
                 if (backCount == 0){
                 	ViewPager_Show();
-                	// block where back has been pressed. since backstack is zero.
+                	title = "SecretTalk";
+	            	// block where back has been pressed. since backstack is zero.
                 }
+                else
+                {
+	             	title = getSupportFragmentManager().getBackStackEntryAt(backCount-1).getBreadCrumbShortTitle();
+                }  
+                getActionBar().setTitle(title); 
             }
         });
+        
+        
         
         
         getWindow().getDecorView().setSystemUiVisibility(
@@ -187,7 +196,7 @@ public class MainActivity extends  FragmentActivity{
             public void onDrawerClosed(View view) {
             	
             	super .onDrawerClosed(view);  
-                getActionBar().setTitle(title);  
+                
                 invalidateOptionsMenu();  
             }
 
@@ -207,6 +216,8 @@ public class MainActivity extends  FragmentActivity{
             @Override  
             public  void  onItemClick(AdapterView<?> adapterView, View view,  int  position,  long  l) {  
                 
+            	Fragment addFragment = new Fragment() ;
+            	
             	cd.showConnction();
             	
             	if(position == 0){
@@ -215,60 +226,41 @@ public class MainActivity extends  FragmentActivity{
             		ViewPager_Show();
             		getSupportFragmentManager().popBackStack( null , FragmentManager.POP_BACK_STACK_INCLUSIVE);
             		title = "SecretTalk";
+            	}else{
+            	            		
+	            	if(position == 1){
+	            		//偏好設定
+	 	            	addFragment = new PreferenceSetting_Fragment();
+	               	}
+	            	else if(position == 2){
+	            		addFragment = new Navigation_Fragment();
+	            	}
+	            	else if(position ==3){
+	            		//成就系統介紹		
+	            		addFragment = new Achievement_Fragment();     
+	            	}
+	            	else if(position == 4){
+	            		//關於本程式
+	            		addFragment =  new  AboutProgram_Fragment();  
+	            	}
+	            	else if(position == 5){       	
+	            		addFragment =  new  SignOut_Fragment();  
+	            	}
+	            	else{
+	            		//離開程式	
+	            		Leave_program();
+	            	}
+	            	
+	            	title = mStrings[position];
+	            	
+	            	ViewPager_Hide();
+	            	FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+	            	transaction.addToBackStack(null);   //保留先前的Fragment
+                    transaction.add(R.id.drawer_layout_second, addFragment).commit();
+                    transaction.setBreadCrumbShortTitle(title);       
+	            	 
             	}
-            	else if(position == 1){
-            		//偏好設定
-            		//getSupportFragmentManager().popBackStack( null , FragmentManager.POP_BACK_STACK_INCLUSIVE);
-            		ViewPager_Hide();
-
-            		preferencesetting =  new  PreferenceSetting_Fragment();  
-                    FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
-                    transaction1.addToBackStack(null);   //保留先前的Fragment
-                    transaction1.add(R.id.drawer_layout_second, preferencesetting).commit();
-                    title = mStrings[position];
-            	
-            	}
-            	else if(position == 2){
-            		ViewPager_Hide();
-            		navigation = new Navigation_Fragment();
-            		FragmentTransaction transaction2 = getSupportFragmentManager().beginTransaction();
-                    transaction2.addToBackStack(null);   //保留先前的Fragment
-                    transaction2.add(R.id.drawer_layout_second, navigation).commit();
-                    title = mStrings[position]; 
-            	}
-            	else if(position ==3){
-            		//成就系統介紹		
-            		ViewPager_Hide();
-            		achievement = new Achievement_Fragment();
-            		FragmentTransaction transaction3 = getSupportFragmentManager().beginTransaction();
-                    transaction3.addToBackStack(null);   //保留先前的Fragment
-                    transaction3.add(R.id.drawer_layout_second, achievement).commit();
-                    title = mStrings[position];
-                    
-            	}
-            	else if(position == 4){
-            		//關於本程式
-            		ViewPager_Hide();
-            		aboutprogram =  new  AboutProgram_Fragment();  
-                    FragmentTransaction transaction4 = getSupportFragmentManager().beginTransaction();
-                    transaction4.addToBackStack(null);   //保留先前的Fragment
-                    transaction4.add(R.id.drawer_layout_second, aboutprogram).commit();
-                    title = mStrings[position];
-            	
-            	}
-            	else if(position == 5){
-            		ViewPager_Hide();
-            		signout =  new  SignOut_Fragment();  
-                    FragmentTransaction transaction4 = getSupportFragmentManager().beginTransaction();
-                    transaction4.addToBackStack(null);   //保留先前的Fragment
-                    transaction4.add(R.id.drawer_layout_second, signout).commit();
-                    title = mStrings[position];
-            	}
-            	else{
-            		//離開程式	
-            		Leave_program();
-            	}
-               
+            	            	
 //            	Toast.makeText(MainActivity.this, "" + position, Toast.LENGTH_SHORT).show();
             	myListview.setItemChecked(position, true );  
                 drawerLayout.closeDrawer(myListview);  
@@ -292,7 +284,9 @@ public class MainActivity extends  FragmentActivity{
 		builder.setMessage(R.string.leavingprogram).setTitle(R.string.leave);
 		builder.setPositiveButton(R.string.no, new DialogInterface.OnClickListener() {
 	           public void onClick(DialogInterface dialog, int id) {
-	        	   //不進行處理
+	       		ViewPager_Show();
+	    		getSupportFragmentManager().popBackStack( null , FragmentManager.POP_BACK_STACK_INCLUSIVE);
+	    		getActionBar().setTitle("SecretTalk");  
 	           }
 	       }).
 		setNegativeButton(R.string.yes, new DialogInterface.OnClickListener() {
@@ -454,6 +448,7 @@ public class MainActivity extends  FragmentActivity{
 		public void onPageSelected(int arg0) {
 								
 			cd.showConnction();
+			doublleBackCheck = false;
 			
 			Animation animation = null;
 			
@@ -548,9 +543,6 @@ public class MainActivity extends  FragmentActivity{
 
 	@Override
 	public void onBackPressed() {
-		
-		
-		
 		if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
 			if (doublleBackCheck == true){
 				super.onBackPressed();
