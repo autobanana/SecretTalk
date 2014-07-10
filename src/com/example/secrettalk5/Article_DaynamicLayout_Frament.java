@@ -36,7 +36,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class Article_DaynamicLayout_Frament extends Fragment {
-
+	
+	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	public View view;
 	public LinearLayout a;
 	public ScrollView dynmaic_scrollview;
@@ -126,7 +127,7 @@ public class Article_DaynamicLayout_Frament extends Fragment {
     		
     		String author_id=reply.author;
     		String content=reply.content;
-    		String created_Time=reply.created_Time.toString();
+    		String created_Time=sdf.format(reply.created_Time);
     		
     		int isAuthor=0;
     		Log.v("Test", author_id);
@@ -235,7 +236,8 @@ public class Article_DaynamicLayout_Frament extends Fragment {
     		
     		String author_id=reply.author;
     		String content=reply.content;
-    		String created_Time=reply.created_Time.toString();
+    		
+    		String created_Time=sdf.format(reply.created_Time);
     		
     		int isAuthor=0;
     		
