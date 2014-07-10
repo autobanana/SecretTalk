@@ -198,8 +198,12 @@ public class ArticleModule extends AsyncTask<String,Void,String> {
 				
 				ArrayList<Article> articleArrayList=new ArrayList<Article>();
 				for(int i=0;i<articleListJSONArray.length();i++){
+					
+					String s_article=articleListJSONArray.getString(i);
+					Log.v("ArticleModule", s_article);
+					
 					//Get Article From Article List
-					JSONObject article =articleListJSONArray.getJSONObject(i);
+					JSONObject article =new JSONObject(s_article);
 					
 					//Get Author ID
 					String author_id=article.getString("author_id");
