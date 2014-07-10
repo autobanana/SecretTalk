@@ -2,7 +2,9 @@ package com.example.secrettalk5;
 
 
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.widget.Toast;
@@ -35,13 +37,29 @@ public class ConnectionDetector {
     public void showConnction(){
     	
     	if(!isConnectingToInternet()){
-    		Toast.makeText(_context, "Disconnction", Toast.LENGTH_LONG).show();
-    	}else{
-//    		Toast.makeText(_context, "Connction", Toast.LENGTH_LONG).show();
+
+//			Toast.makeText(_context, "disconnection", Toast.LENGTH_LONG).show();
+
+    		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(_context);
+    		
+    		alertDialogBuilder.setTitle("無法連接網路\n請先開啟無線上網或行動網路");
+    		alertDialogBuilder.setCancelable(true);
+    		alertDialogBuilder.setNegativeButton("確定",
+	    		new DialogInterface.OnClickListener() {
+	    			public void onClick(DialogInterface dialog,int id) {
+	    				// if this button is clicked, just close
+	    				// the dialog box and do nothing
+	    				dialog.cancel();
+	    			}
+    			});	
+    		AlertDialog alertDialog = alertDialogBuilder.create();
+       	 
+       		// show it
+       		alertDialog.show();
+    		
+
+			
     	}
-    	
-    	
-    	
     }
     
 }

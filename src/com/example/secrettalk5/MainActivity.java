@@ -68,7 +68,7 @@ public class MainActivity extends  FragmentActivity{
         
     private ConnectionDetector cd;
     
-    
+    private boolean doublleBackCheck = false;
     
     
     //testforbutton 
@@ -131,10 +131,12 @@ public class MainActivity extends  FragmentActivity{
         getSupportFragmentManager().addOnBackStackChangedListener(new OnBackStackChangedListener() {    
             public void onBackStackChanged() {
 
+            	doublleBackCheck = false;
+            	
                 int backCount = getSupportFragmentManager().getBackStackEntryCount();
                 if (backCount == 0){
                 	ViewPager_Show();
-                                   // block where back has been pressed. since backstack is zero.
+                	// block where back has been pressed. since backstack is zero.
                 }
             }
         });
@@ -451,10 +453,6 @@ public class MainActivity extends  FragmentActivity{
 
 	
 	
-	
-
-	
-	
 	public class MyOnPageChangeListener implements OnPageChangeListener {		
 		public void onPageSelected(int arg0) {
 								
@@ -525,39 +523,25 @@ public class MainActivity extends  FragmentActivity{
 	
 	
 	
-	
-	
-	
+	@Override
+	public void onBackPressed() {
+		
+		
+		
+		if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
+			if (doublleBackCheck == true){
+				super.onBackPressed();
+			}else{
+			Toast.makeText(this, "請在按一次 back 離開此程式", Toast.LENGTH_LONG).show();;
+			doublleBackCheck = true;
+			}
+		}
+		else{
+			super.onBackPressed();
+		}
+	}
 
 	
-
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-    // A placeholder fragment containing a simple view.
-     /*public static class PlaceholderFragment extends Fragment {
-
-        public PlaceholderFragment() {
-        }
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, true);
-            return rootView;
-        }
-    }*/
 }

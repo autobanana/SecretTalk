@@ -139,13 +139,13 @@ public class Talking_MyFragment extends Fragment {
 	}
     
     
-    public void SetArticleList(ArrayList<Article> article_ArrayList){
+    public void SetArticleList(ArrayList<Article> article_ArrayList) {
     	GlobalContainer.article_ArrayList=article_ArrayList;
     	RefreshListView();
     	
     }
     
-    private void RefreshListView(){
+    private void RefreshListView() {
     	
     	talking_listView.setAdapter(new ImageAdapter(getActivity(),GlobalContainer.article_ArrayList));
     	talking_listView.invalidateViews();
