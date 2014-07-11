@@ -65,8 +65,6 @@ public class Article_DaynamicLayout_Frament extends Fragment {
 		getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
 		screenW = dm.widthPixels;
 		
-		test = getActivity();
-    	
 		dynmaic_scrollview = (ScrollView)view.findViewById(R.id.scrollView1);
     	a = (LinearLayout)view.findViewById(R.id.insideScrollView);
     	reply_edittext = (EditText)view.findViewById(R.id.PostArticle_ContentEditText);
@@ -79,29 +77,33 @@ public class Article_DaynamicLayout_Frament extends Fragment {
         	}     	        	
         });
     	SetCheckNewReplyRunnable();    	
-    	
+    	//TestButton(); 現在不需要  
+    	GetHistoricalDialogue();
+        return view;
+    }
+
+    private void TestButton() {
     	//測試用button /////////////////////////////////////////////
     	Button S = (Button)view.findViewById(R.id.PostArticle_PostButton1);
     	
     	S.setOnClickListener( new OnClickListener(){      	
         	public void onClick(View view) {
-        		DynamicLayout("Vicky","2013.23.33 32:23:2","今天天是綠的，好奇怪好奇怪！今天天是綠的，好奇怪好奇怪！今天天是綠的好奇怪好奇怪！今天天是綠的，好奇怪好奇怪！今天天是綠的，好奇怪好奇怪！",1);
+        		DynamicLayout("Vicky","2013.23.33 32:23:2","今天天是綠的，好奇怪好奇怪！今天天是綠的，好奇怪好奇怪！今天天是綠的好奇怪好奇怪！今天天是綠的，好奇怪好奇怪！今天天是綠的，好奇怪好奇怪！",1,"1");
         	}     	        	
         });
     	Button S2 = (Button)view.findViewById(R.id.PostArticle_PostButton2);
     	
     	S2.setOnClickListener( new OnClickListener(){      	
         	public void onClick(View view) {
-        		DynamicLayout("Mark","2013.23.33 32:23:2","ddsdlkjs;dk;klf;fljk;alkfja;kfja;lsjkfl;ajkfkajfl;anvnzmcnzowieupoqwueqiuyeufhslkjlksnc;zlckxnlk",0);
+        		DynamicLayout("Mark","2013.23.33 32:23:2","ddsdlkjs;dk;klf;fljk;alkfja;kfja;lsjkfl;ajkfkajfl;anvnzmcnzowieupoqwueqiuyeufhslkjlksnc;zlckxnlk",0,"4");
         	}     	        	
         });
     	////////////////////////////////////////////////////////
-    	
-    	GetHistoricalDialogue();
-        return view;
-    }
+		
+	}
 
-    public void GetHistoricalDialogue(){
+
+	public void GetHistoricalDialogue(){
     	//Initial HashMap 
     	HashMap<String,String> hm=new HashMap<String, String>();
     	hm.put("username", UserInformation.Username);
@@ -128,8 +130,11 @@ public class Article_DaynamicLayout_Frament extends Fragment {
     		String author_id=reply.author;
     		String content=reply.content;
     		String created_Time=sdf.format(reply.created_Time);
+    		String level=reply.level;
+
     		
     		int isAuthor=0;
+    		Log.v("level", level);
     		Log.v("Test", author_id);
     		Log.v("Test", UserInformation.Username);
     		if(author_id.equals(UserInformation.Username)){
@@ -139,7 +144,7 @@ public class Article_DaynamicLayout_Frament extends Fragment {
     			isAuthor=1;
     		}
     		
-    		DynamicLayout(author_id,created_Time,content,isAuthor);	
+    		DynamicLayout(author_id,created_Time,content,isAuthor,level);	
     		
     	}
     	
@@ -185,8 +190,9 @@ public class Article_DaynamicLayout_Frament extends Fragment {
 		String author_id=reply.author;
 		String created_Time=reply.created_Time.toString();
 		String content=reply.content;
+		String level=reply.level;
 		Log.v("ReplyModule",author_id+" "+created_Time+""+""+content);
-		DynamicLayout(author_id,created_Time,content,0);
+		DynamicLayout(author_id,created_Time,content,0,level);
 	}
 	
 	private void SetCheckNewReplyRunnable(){
@@ -236,29 +242,31 @@ public class Article_DaynamicLayout_Frament extends Fragment {
     		
     		String author_id=reply.author;
     		String content=reply.content;
-    		
     		String created_Time=sdf.format(reply.created_Time);
-    		
+    		String level=reply.level;
+
     		int isAuthor=0;
     		
     		if(author_id.equals(UserInformation.Username)){
     			isAuthor=0; 
+    			level = UserInformation.Level;
     		}
     		else{
     			isAuthor=1;
+    			level=reply.level;
     		}
-    		DynamicLayout(author_id,created_Time,content,isAuthor);	
+    		DynamicLayout(author_id,created_Time,content,isAuthor,level);	
     		
     	}
 		Log.v("ReplyModule", "CheckNewReplyFinish");
 		SetCheckNewReplyRunnable();
 	}
 	
-	public void DynamicLayout(String name,String time,String content ,int whotalk ) {
+	public void DynamicLayout(String name,String time,String content ,int whotalk, String level ) {
 		
 		
 		ListView t = new ListView(getActivity());
-		t.setAdapter(new ArticleDynamicAdapter(getActivity(),name,time,content,whotalk,screenW));
+		t.setAdapter(new ArticleDynamicAdapter(getActivity(),name,time,content,whotalk,level,screenW));
 		
 		LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(     
 				LinearLayout.LayoutParams.MATCH_PARENT,     

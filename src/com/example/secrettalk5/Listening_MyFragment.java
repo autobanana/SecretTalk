@@ -7,6 +7,7 @@ import org.json.JSONObject;
 
 import com.example.articlemodule.Article;
 import com.example.articlemodule.ArticleModule;
+import com.example.globalcontainer.GlobalContainer;
 import com.example.usermodule.UserInformation;
 
 import android.app.NotificationManager;
@@ -15,12 +16,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -33,6 +36,7 @@ public class Listening_MyFragment extends Fragment {
 	private ArrayList<Article> articleArrayList;
 	private ListView listening_listView;
 	public int count;
+	public Article_DaynamicLayout_Frament article_daynamicLayout;
     public static Listening_MyFragment newInstance( int num) {
     	Listening_MyFragment fragment = new Listening_MyFragment();
         
@@ -43,6 +47,48 @@ public class Listening_MyFragment extends Fragment {
         super .onCreate(savedInstanceState);
         
     }
+    /**為Fragment加載佈局時調用**/
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+    	count =0;
+    	
+    	View view = inflater.inflate(R.layout.fragment_listening_my, container,false);
+    	t1 = (TextView) view.findViewById(R.id.content_talking);
+    	listening_listView=(ListView)view.findViewById(R.id.listening_ListView1);
+    	Initial_ListView();
+    	GetNewArticle();
+    	
+        return view;
+    }
+    public void Initial_ListView() {
+		    	
+    	
+    	listening_listView.setOnItemClickListener( new  AdapterView.OnItemClickListener() {  
+            @Override  
+            public  void  onItemClick(AdapterView<?> adapterView, View view,  int  position,  long  l) {  
+                
+            	
+            	Log.v("ReplyModule", String.valueOf(position));
+            	Log.v("ReplyModule", GlobalContainer.article_ArrayList_Listening.toString());
+            	Article artilce = GlobalContainer.article_ArrayList_Listening.get(position);
+            	Log.v("ReplyModule", artilce.toString());
+            	String article_id=artilce.article_id;
+            	Log.v("ReplyModule", article_id);
+            	article_daynamicLayout =  new  Article_DaynamicLayout_Frament();
+            	article_daynamicLayout.article_id=article_id;
+                FragmentTransaction transaction4 = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction4.addToBackStack(null);   //保留先前的Fragment
+                transaction4.add(R.id.drawer_layout_second, article_daynamicLayout).commit();
+                
+                View backView = getActivity().findViewById(R.id.L_main);
+                backView.setVisibility(View.INVISIBLE);
+
+                
+            }
+
+        });  
+	}
+    
     //建立新的 通知 
     public void newMessage(String detail_of_message,int count){
     	
@@ -97,8 +143,8 @@ public class Listening_MyFragment extends Fragment {
     }
     
     public void SetNewArticleListView(ArrayList<Article> articleArrayList){
-    	this.articleArrayList=articleArrayList;
-    	String count=String.valueOf(articleArrayList.size());
+    	GlobalContainer.article_ArrayList_Listening=articleArrayList;
+    	//String count =String.valueOf(articleArrayList.size());
     	Log.v("ListeningFragment", "StarRefreshListView");
     	Log.v("ListeningFragment", "StarRefreshListView");
     	RefreshListView();
@@ -106,34 +152,10 @@ public class Listening_MyFragment extends Fragment {
     }
     
     private void RefreshListView(){
-    	listening_listView.setAdapter(new ImageAdapter(getActivity(),articleArrayList));
+    	listening_listView.setAdapter(new ImageAdapter(getActivity(),GlobalContainer.article_ArrayList_Listening));
     	listening_listView.invalidateViews();
     }
     
-    /**為Fragment加載佈局時調用**/
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
-    	count =0;
-    	
-    	View view = inflater.inflate(R.layout.fragment_listening_my, container,false);
-    	t1 = (TextView) view.findViewById(R.id.content_talking);
-    	/*
-    	test_for_notification = (Button) view.findViewById(R.id.Login_PostButton);
-    	test_for_notification.setOnClickListener(new View.OnClickListener() {
-    		
-			@Override
-			public void onClick(View v) {
-					//t1.setText("iiii");
-					newMessage("今天我睡了一整天，感覺很空虛。",count);
-					count++;
-			}
-		});
-    */
-    	listening_listView=(ListView)view.findViewById(R.id.listening_ListView1);
-    	GetNewArticle();
-    	
-        return view;
-    }
     
     
     

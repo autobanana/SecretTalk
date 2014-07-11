@@ -18,12 +18,14 @@ public class ArticleDynamicAdapter extends BaseAdapter {
     public String Content = null;
     public String Time = null;
 	public int ScreenW=0;
+	public String Level =null;
     
-    public ArticleDynamicAdapter(Context ctxt, String name, String time,String content,int who,int screenW) {
+    public ArticleDynamicAdapter(Context ctxt, String name, String time,String content,int who,String level,int screenW) {
 		context2 = ctxt;
 		myInflater = LayoutInflater.from(ctxt);
 		
 		ScreenW = screenW;
+		Level = level;
 		who_say = who;
 		Name = name;
 		Content = content;
@@ -75,16 +77,22 @@ public class ArticleDynamicAdapter extends BaseAdapter {
         }
          
         //設定內容圖案
-        switch(position){
-            case 0:
-            	viewhoder.usericon.setImageResource(R.drawable.test_for_conversation);//.setResource(R.drawable.test_for_conversation);
-                break;
-            case 1:
-            	viewhoder.usericon.setImageResource(R.drawable.test_for_conversation);
-                break;
-            case 2:
-            	viewhoder.usericon.setImageResource(R.drawable.test_for_conversation);
-                break;
+        switch(Integer.valueOf(Level)){
+        case 0:
+        	viewhoder.usericon.setBackgroundResource(R.drawable.level_1);
+            break;
+        case 1:
+        	viewhoder.usericon.setBackgroundResource(R.drawable.level_2);
+            break;
+        case 2:
+        	viewhoder.usericon.setBackgroundResource(R.drawable.level_3);
+            break;
+        case 3:
+        	viewhoder.usericon.setBackgroundResource(R.drawable.level_4);
+            break;
+        case 4:
+        	viewhoder.usericon.setBackgroundResource(R.drawable.level_5);
+        	break;
        }
         
         viewhoder.content.setMaxWidth(ScreenW-(ScreenW*3/10));
