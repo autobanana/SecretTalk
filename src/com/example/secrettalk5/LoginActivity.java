@@ -9,6 +9,8 @@ import com.example.usermodule.UserInformation;
 import com.example.usermodule.UserModule;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.GpsStatus.Listener;
@@ -40,11 +42,13 @@ public class LoginActivity extends Activity {
 		username = account.getString("USERNAME", "");
 		password = account.getString("PASSWORD", "");
 		
+
 		
-		cd = new ConnectionDetector(getApplicationContext());
+		cd = new ConnectionDetector(this);
 
         cd.showConnction();		
 			
+
         //未登入過,或沒有網路時,進入原本登入畫面
         if(username.isEmpty() || !cd.isConnectingToInternet()){   
 	        setContentView(R.layout.activity_login_new);
@@ -65,7 +69,7 @@ public class LoginActivity extends Activity {
 					}
 				}
 			});
-		
+			
 			//Register Register Button OnClick Event
 			Button RegisterButton=(Button)findViewById(R.id.Login_RegisterButton);
 			RegisterButton.setOnClickListener(new Button.OnClickListener(){
@@ -83,6 +87,8 @@ public class LoginActivity extends Activity {
 	    }
         
         
+
+        cd.showConnction();		
 		
 		/*
 		//Post Article Button OnClick Event
