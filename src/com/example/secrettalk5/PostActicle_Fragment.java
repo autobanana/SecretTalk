@@ -86,6 +86,5 @@ public class PostActicle_Fragment extends Fragment {
         //¶¨¶^¡‰ΩL 
         ((InputMethodManager)getActivity().getSystemService(getActivity().INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);  
         
-        
     }
 }

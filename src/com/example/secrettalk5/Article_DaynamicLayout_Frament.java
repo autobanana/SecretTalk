@@ -22,6 +22,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,26 +77,34 @@ public class Article_DaynamicLayout_Frament extends Fragment {
         		reply_specific_article();
         	}     	        	
         });
+    	
+    	
     	SetCheckNewReplyRunnable();    	
     	//TestButton(); 現在不需要  
     	GetHistoricalDialogue();
         return view;
     }
+    public static void onBackPressed()
+    {
+        //Pop Fragments off backstack and do your other checks
+    }
+   
 
-    private void TestButton() {
+
+	private void TestButton() {
     	//測試用button /////////////////////////////////////////////
     	Button S = (Button)view.findViewById(R.id.PostArticle_PostButton1);
     	
     	S.setOnClickListener( new OnClickListener(){      	
         	public void onClick(View view) {
-        		DynamicLayout("Vicky","2013.23.33 32:23:2","今天天是綠的，好奇怪好奇怪！今天天是綠的，好奇怪好奇怪！今天天是綠的好奇怪好奇怪！今天天是綠的，好奇怪好奇怪！今天天是綠的，好奇怪好奇怪！",1,"1");
+        		DynamicLayout("維奇","Vicky","2013.23.33 32:23:2","今天天是綠的，好奇怪好奇怪！今天天是綠的，好奇怪好奇怪！今天天是綠的好奇怪好奇怪！今天天是綠的，好奇怪好奇怪！今天天是綠的，好奇怪好奇怪！",1,"1");
         	}     	        	
         });
     	Button S2 = (Button)view.findViewById(R.id.PostArticle_PostButton2);
     	
     	S2.setOnClickListener( new OnClickListener(){      	
         	public void onClick(View view) {
-        		DynamicLayout("Mark","2013.23.33 32:23:2","ddsdlkjs;dk;klf;fljk;alkfja;kfja;lsjkfl;ajkfkajfl;anvnzmcnzowieupoqwueqiuyeufhslkjlksnc;zlckxnlk",0,"4");
+        		DynamicLayout("馬克","Mark","2013.23.33 32:23:2","ddsdlkjs;dk;klf;fljk;alkfja;kfja;lsjkfl;ajkfkajfl;anvnzmcnzowieupoqwueqiuyeufhslkjlksnc;zlckxnlk",0,"4");
         	}     	        	
         });
     	////////////////////////////////////////////////////////
@@ -131,6 +140,7 @@ public class Article_DaynamicLayout_Frament extends Fragment {
     		String content=reply.content;
     		String created_Time=sdf.format(reply.created_Time);
     		String level=reply.level;
+    		String nickname=reply.nickname;
 
     		
     		int isAuthor=0;
@@ -144,7 +154,7 @@ public class Article_DaynamicLayout_Frament extends Fragment {
     			isAuthor=1;
     		}
     		
-    		DynamicLayout(author_id,created_Time,content,isAuthor,level);	
+    		DynamicLayout(nickname,author_id,created_Time,content,isAuthor,level);	
     		
     	}
     	
@@ -191,8 +201,9 @@ public class Article_DaynamicLayout_Frament extends Fragment {
 		String created_Time=reply.created_Time.toString();
 		String content=reply.content;
 		String level=reply.level;
+		String nickname=reply.nickname;
 		Log.v("ReplyModule",author_id+" "+created_Time+""+""+content);
-		DynamicLayout(author_id,created_Time,content,0,level);
+		DynamicLayout(nickname,author_id,created_Time,content,0,level);
 	}
 	
 	private void SetCheckNewReplyRunnable(){
@@ -200,12 +211,13 @@ public class Article_DaynamicLayout_Frament extends Fragment {
 			
 			@Override
 			public void run() {
-				CheckNewReply();
+				if(getActivity()!=null){
+					CheckNewReply();
+				}
 				
 			}
 		};
-		
-		handler.postDelayed(runnable,10000);
+		handler.postDelayed(runnable,500);
 	}
 	
 	public void CheckNewReply(){
@@ -244,6 +256,7 @@ public class Article_DaynamicLayout_Frament extends Fragment {
     		String content=reply.content;
     		String created_Time=sdf.format(reply.created_Time);
     		String level=reply.level;
+    		String nickname=reply.nickname;
 
     		int isAuthor=0;
     		
@@ -255,39 +268,40 @@ public class Article_DaynamicLayout_Frament extends Fragment {
     			isAuthor=1;
     			level=reply.level;
     		}
-    		DynamicLayout(author_id,created_Time,content,isAuthor,level);	
+    		DynamicLayout(nickname,author_id,created_Time,content,isAuthor,level);	
     		
     	}
 		Log.v("ReplyModule", "CheckNewReplyFinish");
 		SetCheckNewReplyRunnable();
 	}
 	
-	public void DynamicLayout(String name,String time,String content ,int whotalk, String level ) {
+	public void DynamicLayout(String nickname,String name,String time,String content ,int whotalk, String level ) {
 		
-		
-		ListView t = new ListView(getActivity());
-		t.setAdapter(new ArticleDynamicAdapter(getActivity(),name,time,content,whotalk,level,screenW));
-		
-		LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(     
-				LinearLayout.LayoutParams.MATCH_PARENT,     
-				LinearLayout.LayoutParams.MATCH_PARENT     
-        );
-        a.addView(t,p);   
-        
-        //給予延遲時間ScrollView才會來的及往下推
-        final Handler handler = new Handler();
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {Thread.sleep(100);} catch (InterruptedException e) {}
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                    	dynmaic_scrollview.fullScroll(View.FOCUS_DOWN);
-                    }
-                });
-            }
-        }).start();
+		if(getActivity()!=null){
+			ListView t = new ListView(getActivity());
+			t.setAdapter(new ArticleDynamicAdapter(getActivity(),nickname,name,time,content,whotalk,level,screenW));
+			
+			LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(     
+					LinearLayout.LayoutParams.MATCH_PARENT,     
+					LinearLayout.LayoutParams.MATCH_PARENT     
+	        );
+	        a.addView(t,p);   
+	        
+	        //給予延遲時間ScrollView才會來的及往下推
+	        final Handler handler = new Handler();
+	        new Thread(new Runnable() {
+	            @Override
+	            public void run() {
+	                try {Thread.sleep(100);} catch (InterruptedException e) {}
+	                handler.post(new Runnable() {
+	                    @Override
+	                    public void run() {
+	                    	dynmaic_scrollview.fullScroll(View.FOCUS_DOWN);
+	                    }
+	                });
+	            }
+	        }).start();
+		}
 	}
 	public void SortReplyList(){
 		Collections.sort(reply_ArrayList, new Comparator<Reply>(){

@@ -19,6 +19,7 @@ import android.content.SharedPreferences;
 public class SignOut_Fragment extends Fragment {
 	
 	int mNum; //­¶¸¹
+	public MainActivity MA;
     public static SignOut_Fragment newInstance( int num) {
     	SignOut_Fragment fragment = new SignOut_Fragment();
         return fragment;
@@ -73,19 +74,21 @@ public class SignOut_Fragment extends Fragment {
     }
     
     
-    private void Signout(){
+    public void Signout(){
     	
     	SharedPreferences account = this.getActivity().getSharedPreferences("ACCOUNT", 0);	
     	
 		account.edit().putString("USERNAME", "").commit();
 		account.edit().putString("PASSWORD", "").commit();
     	
-    	
+		
 	    Intent intent = new Intent();
 	    intent.setClass(this.getActivity(),LoginActivity.class);
-	  	//	intent.setClass(Begin_Prefence_Register_Anim.this,MainActivity.class);
 		startActivity(intent);
+		
 		this.getActivity().finish();
+		
+		
    	
     }
 }

@@ -53,8 +53,8 @@ public class ImageAdapter extends BaseAdapter {
             (ImageView)convertView.findViewById(R.id.level_author),
             (TextView)convertView.findViewById(R.id.Name),
             (TextView)convertView.findViewById(R.id.Time),
-            (TextView)convertView.findViewById(R.id.content_talking)
-            //(TextView)convertView.findViewById(R.id.NickName)
+            (TextView)convertView.findViewById(R.id.content_talking),
+            (TextView)convertView.findViewById(R.id.NickName)
              );
              
             //設置容器內容
@@ -75,8 +75,8 @@ public class ImageAdapter extends BaseAdapter {
         viewTag.time.setText(time);
         
         //填暱稱
-        //String nickname=article.nickname;
-        //viewTag.nickname.setText(nickname);
+        String nickname=article.nickname;
+        viewTag.nickname.setText(nickname);
         
         //設定內容文字
         String content=article.content;

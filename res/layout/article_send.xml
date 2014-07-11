@@ -38,8 +38,7 @@
                     android:layout_gravity="right"
                     android:gravity="right"
                     android:text="TextView"
-                    android:textColor="@color/Black"
-                    android:textStyle="bold" />
+                    android:textColor="@color/Banana_Setting_Gray" />
 
             </LinearLayout>
 
@@ -47,7 +46,8 @@
                 android:id="@+id/content1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right" />
+                android:layout_gravity="right"
+                android:textStyle="bold" />
 
         </LinearLayout>
 

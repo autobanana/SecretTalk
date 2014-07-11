@@ -54,7 +54,7 @@ public class MainActivity extends  FragmentActivity{
     public LinearLayout viewPager_layout;
     public DrawerLayout drawerLayout;  
     //public List<String> list;  
-    public CharSequence title;  
+    public CharSequence title="";  
     public CharSequence mTitle;
     public CharSequence mDrawerTitle;
     public ActionBarDrawerToggle drawerToggle;
@@ -133,13 +133,15 @@ public class MainActivity extends  FragmentActivity{
                 int backCount = getSupportFragmentManager().getBackStackEntryCount();
                 if (backCount == 0){
                 	ViewPager_Show();
-                	title = "SecretTalk";
-	            	// block where back has been pressed. since backstack is zero.
+                	
+    	           	title = "SecretTalk"; 	// block where back has been pressed. since backstack is zero.
                 }
-                else
-                {
+                else{
 	             	title = getSupportFragmentManager().getBackStackEntryAt(backCount-1).getBreadCrumbShortTitle();
-                }  
+	             	
+                }
+                
+                Toast.makeText(getApplicationContext(), "123", Toast.LENGTH_SHORT).show();
                 getActionBar().setTitle(title); 
             }
         });
@@ -158,6 +160,9 @@ public class MainActivity extends  FragmentActivity{
     
     }
     
+    public void FinishMainActivity(){
+    	this.finish();
+    }
 
     
     //當街到notification後會直接進入 並跳轉調正確的頁面
@@ -336,29 +341,27 @@ public class MainActivity extends  FragmentActivity{
             	}else{
             	            		
 	            	if(position == 1){
-	            		//偏好設定
-	 	            	addFragment = new PreferenceSetting_Fragment();
+	            		//程式導覽
+	            		addFragment = new Navigation_Fragment();
 	               	}
 	            	else if(position == 2){
-	            		addFragment = new Navigation_Fragment();
+	            		//成就系統介紹		
+	            		addFragment = new Achievement_Fragment();   
 	            	}
 	            	else if(position ==3){
-	            		//成就系統介紹		
-	            		addFragment = new Achievement_Fragment();     
-	            	}
-	            	else if(position == 4){
 	            		//關於本程式
 	            		addFragment =  new  AboutProgram_Fragment();  
 	            	}
-	            	else if(position == 5){       	
+	            	else if(position == 4){
+	            		//登出
 	            		addFragment =  new  SignOut_Fragment();  
 	            	}
-	            	else{
+	            	else {
 	            		//離開程式	
 	            		Leave_program();
 	            	}
 	            	
-	            	title = mStrings[position];
+	            	title = mStrings_NoPreference[position];
 	            	
 	            	ViewPager_Hide();
 	            	FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -654,6 +657,7 @@ public class MainActivity extends  FragmentActivity{
 			if (doublleBackCheck == true){
 				super.onBackPressed();
 			}else{
+				
 			Toast.makeText(this, "請在按一次 back 離開此程式", Toast.LENGTH_LONG).show();;
 			doublleBackCheck = true;
 			}

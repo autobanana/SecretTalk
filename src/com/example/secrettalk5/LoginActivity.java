@@ -31,21 +31,19 @@ public class LoginActivity extends Activity {
 	
 	private String username,password;
 	
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		//setContentView(R.layout.activity_login);
 		
+		//登入資料紀錄
 		account = getSharedPreferences("ACCOUNT", 0);	
-		
 		username = account.getString("USERNAME", "");
 		password = account.getString("PASSWORD", "");
 		
-
 		
+		//偵測網路連結
 		cd = new ConnectionDetector(this);
-
         cd.showConnction();		
 			
 

@@ -19,8 +19,9 @@ public class ArticleDynamicAdapter extends BaseAdapter {
     public String Time = null;
 	public int ScreenW=0;
 	public String Level =null;
+	public String NickName=null;
     
-    public ArticleDynamicAdapter(Context ctxt, String name, String time,String content,int who,String level,int screenW) {
+    public ArticleDynamicAdapter(Context ctxt,String nickname,String name, String time,String content,int who,String level,int screenW) {
 		context2 = ctxt;
 		myInflater = LayoutInflater.from(ctxt);
 		
@@ -30,6 +31,7 @@ public class ArticleDynamicAdapter extends BaseAdapter {
 		Name = name;
 		Content = content;
 		Time = time;
+		NickName=nickname;
 	}
 
 	@Override
@@ -98,7 +100,7 @@ public class ArticleDynamicAdapter extends BaseAdapter {
         viewhoder.content.setMaxWidth(ScreenW-(ScreenW*3/10));
 
         viewhoder.time.setText(Time);
-        viewhoder.name.setText(Name);
+        viewhoder.name.setText(NickName);
         viewhoder.content.setText(Content);
         
          

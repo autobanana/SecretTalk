@@ -125,6 +125,9 @@ public class ReplyModule extends AsyncTask<String,Void,String> {
 					//Get Level
 					String level = article.getString("level");
 					
+					//Get NickName
+					String nickname=article.getString("nickname");
+					
 					//Reply
 					Reply reply=new Reply();
 					
@@ -132,6 +135,7 @@ public class ReplyModule extends AsyncTask<String,Void,String> {
 					reply.content=content;
 					reply.created_Time=ConvertToDate(created_Time);
 					reply.level=level;
+					reply.nickname=nickname;
 					
 					reply_ArrayList.add(reply);
 				}
@@ -181,6 +185,7 @@ public class ReplyModule extends AsyncTask<String,Void,String> {
 				String author_id=replyObject.getString("author_id");
 				String created_at=replyObject.getString("created_at");
 				String level=replyObject.getString("level");
+				
 				//Add to Reply Object
 				reply.article_id=article_id;
 				reply.author=author_id;
@@ -206,8 +211,8 @@ public class ReplyModule extends AsyncTask<String,Void,String> {
 		
 	}
 	
-	
-	private void ContentFinish(JSONObject resultObject)
+	//填入 article_id 輸出所有對話
+	private void ContentFinish(JSONObject resultObject)  
 	{
 		try {
 			//Get Response
@@ -234,6 +239,8 @@ public class ReplyModule extends AsyncTask<String,Void,String> {
 					String created_Time=article.getString("created_at");
 					// Get Level
 					String level=article.getString("level");
+					//Get NickName
+					String nickname=article.getString("nickname");
 					
 					//Reply
 					Reply reply=new Reply();
@@ -242,6 +249,8 @@ public class ReplyModule extends AsyncTask<String,Void,String> {
 					reply.content=content;
 					reply.created_Time=ConvertToDate(created_Time);
 					reply.level=level;
+					reply.nickname=nickname;
+					
 					reply_ArrayList.add(reply);
 				}
 				

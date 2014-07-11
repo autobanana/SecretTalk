@@ -139,7 +139,6 @@ public class Listening_MyFragment extends Fragment {
     	am.context=getActivity();
     	am.listeningFragment=this;
     	am.execute("NewArticle",jo.toString());
-    	
     }
     
     public void SetNewArticleListView(ArrayList<Article> articleArrayList){

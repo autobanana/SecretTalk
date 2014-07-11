@@ -10,6 +10,7 @@ import com.example.connection.HttpRequest;
 import com.example.secrettalk5.Listening_MyFragment;
 import com.example.secrettalk5.PostActicle_Fragment;
 import com.example.secrettalk5.Talking_MyFragment;
+import com.example.usermodule.UserInformation;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -152,7 +153,7 @@ public class ArticleModule extends AsyncTask<String,Void,String> {
 					//Get Author Level
 					String level = article.getString("level");
 					//Get Nickname
-					String nickname=article.getString("nickname");
+					//String nickname=article.getString("nickname");
 					
 					Article articleInstance=new Article();
 					
@@ -161,7 +162,7 @@ public class ArticleModule extends AsyncTask<String,Void,String> {
 					articleInstance.content=content;
 					articleInstance.created_Time=created_Time;
 					articleInstance.level=level;
-					articleInstance.nickname=nickname;
+					articleInstance.nickname = UserInformation.NickName;
 					
 					article_ArrayList.add(articleInstance);
 				}

@@ -66,21 +66,20 @@ public class Talking_MyFragment extends Fragment {
         
         talking_button.setOnClickListener( new OnClickListener(){      	
         	public void onClick(View view) {
-        		       		
         		postacticle =  new  PostActicle_Fragment();  
                 FragmentTransaction transaction1 = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction1.addToBackStack(null);   //保留先前的Fragment
                 transaction1.add(R.id.drawer_layout_second, postacticle).commit();
                 getActivity().getActionBar().setTitle(R.string.PostActivity_dialog_title);  
+                
         	}    	        	
         });
         
         Initial_ListView();
         GetArticle();
-
         return view;
     }
-   
+
 	//
     public void Initial_ListView() {
 		    	
@@ -108,7 +107,8 @@ public class Talking_MyFragment extends Fragment {
                 
             }
 
-        });  
+        }); 
+    	
 	}
     //
     private void GetArticle(){
@@ -131,6 +131,7 @@ public class Talking_MyFragment extends Fragment {
     
 
     public void SetArticleList(ArrayList<Article> article_ArrayList){    	
+    	
     	GlobalContainer.article_ArrayList = article_ArrayList;
     	//Bulletin_AddToArrayList();
     	RefreshListView();
