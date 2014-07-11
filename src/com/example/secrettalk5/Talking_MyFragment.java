@@ -80,28 +80,11 @@ public class Talking_MyFragment extends Fragment {
 
         return view;
     }
-    public void Bulletin_AddToArrayList() {
-    	
-    	ArrayList<Article> article_ArrayList_for_TalkingFragment =new ArrayList<Article>();
-    	Article Bulletin = new Article();
-    	Bulletin.article_id = "";
-		Bulletin.author = "我是SecretTelk";
-		Bulletin.content = "TestTestTestTestTestTest";
-		Bulletin.created_Time= "最新更新時間";
-		article_ArrayList_for_TalkingFragment.add(Bulletin);
-    	article_ArrayList_for_TalkingFragment.addAll(GlobalContainer.article_ArrayList);
-    	GlobalContainer.article_ArrayList = article_ArrayList_for_TalkingFragment;
-    	
-	}
-
+   
 	//
     public void Initial_ListView() {
 		    	
     	
-    	//myListview.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, mStrings));
-        
-        // Set the drawer toggle as the DrawerListener
-        
     	talking_listView.setOnItemClickListener( new  AdapterView.OnItemClickListener() {  
             @Override  
             public  void  onItemClick(AdapterView<?> adapterView, View view,  int  position,  long  l) {  
@@ -161,6 +144,20 @@ public class Talking_MyFragment extends Fragment {
     	
     }
     
+    public void Bulletin_AddToArrayList() {
+    	
+    	ArrayList<Article> article_ArrayList_for_TalkingFragment =new ArrayList<Article>();
+    	Article Bulletin = new Article();
+    	Bulletin.article_id = "";
+		Bulletin.author = "我是SecretTelk";
+		Bulletin.content = "TestTestTestTestTestTest";
+		Bulletin.created_Time= "最新更新時間";
+		article_ArrayList_for_TalkingFragment.add(Bulletin);
+    	article_ArrayList_for_TalkingFragment.addAll(GlobalContainer.article_ArrayList);
+    	GlobalContainer.article_ArrayList = article_ArrayList_for_TalkingFragment;
+    	
+	}
+
     
 }
 

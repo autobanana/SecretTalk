@@ -64,8 +64,6 @@ public class Article_DaynamicLayout_Frament extends Fragment {
 		getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
 		screenW = dm.widthPixels;
 		
-		test = getActivity();
-    	
 		dynmaic_scrollview = (ScrollView)view.findViewById(R.id.scrollView1);
     	a = (LinearLayout)view.findViewById(R.id.insideScrollView);
     	reply_edittext = (EditText)view.findViewById(R.id.PostArticle_ContentEditText);
