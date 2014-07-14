@@ -89,7 +89,7 @@ public class Setting_MyFragment extends Fragment {
     	int level_drawableiD[] = {R.drawable.level_1,R.drawable.level_2,R.drawable.level_3,R.drawable.level_4,R.drawable.level_5};
     	int constellatioin_drawable[] = {R.drawable.constellation_aries,R.drawable.constellation_taurus,R.drawable.constellation_gemini
     			,R.drawable.constellation_cancer,R.drawable.constellation_leo,R.drawable.constellation_virgo,R.drawable.constellation_libra
-    			,R.drawable.constellation_scorpio,R.drawable.constellation_sagittarius,R.drawable.constellation_aquarius,R.drawable.constellation_pisces};
+    			,R.drawable.constellation_scorpio,R.drawable.constellation_sagittarius,R.drawable.constellation_capricorn,R.drawable.constellation_aquarius,R.drawable.constellation_pisces};
     	int interest_drawable[] = {R.drawable.setting_interest,R.drawable.interest_1,R.drawable.interest_2,R.drawable.interest_3,R.drawable.interest_4,R.drawable.interest_5
     			,R.drawable.interest_6,R.drawable.interest_7,R.drawable.interest_8,R.drawable.interest_9,R.drawable.interest_10
     			,R.drawable.interest_11,R.drawable.interest_12};

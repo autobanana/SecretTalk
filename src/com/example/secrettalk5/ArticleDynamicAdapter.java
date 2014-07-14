@@ -81,19 +81,19 @@ public class ArticleDynamicAdapter extends BaseAdapter {
         //設定內容圖案
         switch(Integer.valueOf(Level)){
         case 0:
-        	viewhoder.usericon.setBackgroundResource(R.drawable.level_1);
+        	viewhoder.usericon.setBackgroundResource(R.drawable.level_1_1);
             break;
         case 1:
-        	viewhoder.usericon.setBackgroundResource(R.drawable.level_2);
+        	viewhoder.usericon.setBackgroundResource(R.drawable.level_2_1);
             break;
         case 2:
-        	viewhoder.usericon.setBackgroundResource(R.drawable.level_3);
+        	viewhoder.usericon.setBackgroundResource(R.drawable.level_3_1);
             break;
         case 3:
-        	viewhoder.usericon.setBackgroundResource(R.drawable.level_4);
+        	viewhoder.usericon.setBackgroundResource(R.drawable.level_4_1);
             break;
         case 4:
-        	viewhoder.usericon.setBackgroundResource(R.drawable.level_5);
+        	viewhoder.usericon.setBackgroundResource(R.drawable.level_5_1);
         	break;
        }
         

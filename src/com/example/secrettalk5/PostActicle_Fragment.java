@@ -17,13 +17,14 @@ import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class PostActicle_Fragment extends Fragment {
 
 	int mNum; 
 	public View view;//頁號
-	
+	public ImageView ICON;
     public static PostActicle_Fragment newInstance( int num) {
     	PostActicle_Fragment fragment = new PostActicle_Fragment();
         return fragment;
@@ -33,13 +34,37 @@ public class PostActicle_Fragment extends Fragment {
         super.onCreate(savedInstanceState);
     
     }
-    
+    public void seticon(){
+    	ICON = (ImageView)view.findViewById(R.id.icon_postarticle);
+        String level = UserInformation.Level;
+        switch(Integer.valueOf(level)){
+	        case 0:
+	        	ICON.setBackgroundResource(R.drawable.level_1_1);
+	            break;
+	        case 1:
+	        	ICON.setBackgroundResource(R.drawable.level_2_1);
+	            break;
+	        case 2:
+	        	ICON.setBackgroundResource(R.drawable.level_3_1);
+	            break;
+	        case 3:
+	        	ICON.setBackgroundResource(R.drawable.level_4_1);
+	            break;
+	        case 4:
+	        	ICON.setBackgroundResource(R.drawable.level_5_1);
+	        	break;
+        }
+        	
+        
+    }
     /**為Fragment加載佈局時調用**/
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
                                                                                                                                                                                                                                                                                                                       
         view = inflater.inflate(R.layout.fragment_postacticle_my,  container,false );
         Button cancel = (Button)view.findViewById(R.id.PostArticle_PostButton_Cancel);
         Button post = (Button)view.findViewById(R.id.PostArticle_PostButton_Check);
+        ICON = (ImageView)view.findViewById(R.id.icon_postarticle);
+        seticon();
         cancel.setOnClickListener( new OnClickListener(){      	
         	public void onClick(View view) {
         		remove_Framgement_itself();
@@ -80,6 +105,7 @@ public class PostActicle_Fragment extends Fragment {
     
     
     public void remove_Framgement_itself(){
+    	
     	FragmentTransaction transaction1 = getActivity().getSupportFragmentManager().beginTransaction();
         // transaction1.addToBackStack(null);   //保留先前的Fragment
         transaction1.remove(this).commit();

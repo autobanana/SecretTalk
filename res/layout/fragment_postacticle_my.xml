@@ -13,10 +13,9 @@
         android:layout_weight="1" >
 
         <ImageView
-            android:id="@+id/icon_imageview"
+            android:id="@+id/icon_postarticle"
             android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/test_for_conversation" />
+            android:layout_height="50dp" />
 
         <EditText
             android:id="@+id/PostArticle_ContentEditText"

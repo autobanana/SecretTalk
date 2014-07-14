@@ -143,7 +143,8 @@
                 android:layout_weight="1"
                 android:background="@color/textview_background"
                 android:padding="6dp"
-                android:text="@string/login_try" />
+                android:text="@string/login_try"
+                android:visibility="gone" />
 
         </LinearLayout>
 

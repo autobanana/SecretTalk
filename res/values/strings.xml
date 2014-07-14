@@ -22,7 +22,28 @@
     <color name="Banana_light">#FFFFBB</color>
     <color name="Banana_Setting_Gray">#666666</color>
     <color name="Banana_Setting_Gray_light">#F5F5F5</color>
-
+	
+    <!-- 成就系統 -->
+    <string name="intorduce">親愛的使用者你好，在SecretTalk中成為優良的傾聽者可以累積成就!鼓勵大家維護良好的互動喔!</string>
+    <string name="introduce2">香蕉代表每個使用者的等級，\n香蕉越熟代表是愈優的傾聽者。</string>
+    <string name="introduce3">斷線後的評價將會影響對方的等級。</string>
+    <string name="level1">等級一：綠香蕉\n新手由此等開始</string>
+    <string name="level2">等級二：生香蕉</string>
+    <string name="level3">等級三：青香蕉</string>
+    <string name="level4">等級四：熟香蕉</string>
+    <string name="level5">等級五：甜香蕉</string>
+    <string name="level_form">↓ 香蕉分級表</string>
+    
+    <!-- 程式導覽 -->
+    <string name="nav_introduce">到底SecretTalk提供甚麼服務呢?\n這裡告訴你們如何使用SecretTalk?</string>
+    <string name="nav_Step1">Step1.請使用者到設定頁，選擇您的設定：</string>
+    <string name="nav_mood">心情</string>
+    <string name="nav_interest">興趣</string>
+    <string name="nav_personality">個性</string>
+    <string name="nav_setting_end">按下確認儲存後即完成設定囉~!</string>
+    <string name="nav_Step2">Step2.接著你可以到Talking頁面發文，與陌生人分享你的心事或煩惱。</string>
+    <string name="nav_Step3">Step3.也記得到Listening頁面，關心遠方的陌生人，如果獲得好的評價有機會提升等級，讓你的香蕉越來越熟喔!</string>
+    <string name="nav_rule">請記住！所有文章的連結將會在兩天後自動斷線！大家要把握48小時喔~!!</string>
     
     
     <!-- Setting 的標題 與內容  -->
@@ -139,6 +160,7 @@
     <string name="login_try">試玩看看</string>
     <string name="login_introduce">感謝你安裝本程式，趕快來體驗SecretTalk吧！</string>
     
+    
     <!-- register layout  -->
     <string name="Register_title">Register</string>
     <string name="Register_introduce">請填入以下資料註冊SecretTalk帳號。</string>
@@ -212,14 +234,21 @@
     <string name="Signout_Button">登出</string>
     <string name="Signout_Nickname">暱稱</string>
     <string name="Signout_user_id">帳號</string>
+    
+    <!-- 關於本程式 -->
     <string name="about_program_tittle">About</string>
     <string name="about_program_Version">Version</string>
     <string name="about_program_VersionTextView">V 1.0</string>
-    <string name="about_program_developer">Developer</string>
+    <string name="about_program_developer">Developer and Email</string>
     <string name="about_program_instructor">Instructor</string>
-    <string name="about_program_develpoer1">Vicky</string>
-    <string name="about_program_develpoer2">Frank</string>
-    <string name="about_program_develpoer3">Kieth</string>
+    <string name="about_program_develpoer1">Vicky\tmoeras16@gmail.com</string>
+    <string name="about_program_develpoer2">Frank\ts124210@gmail.com</string>
+    <string name="about_program_develpoer3">Kieth\th8990905@gmail.com</string>
     <string name="about_program_instructor1"></string>
+    <string name="about_program_updatetitile">Update</string>
+    <string name="about_program_updatetime">2014.7.18</string>
+    <string name="about_program_speaktouser">如果有任何問題與建議，歡迎使用者聯繫我們，謝謝指教。</string>
+    <string name="about_program_teamname">Team</string>
+    <string name="about_program_AutoBanana">AutoBanana</string>
 </resources>
 

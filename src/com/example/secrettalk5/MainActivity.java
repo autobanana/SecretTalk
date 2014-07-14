@@ -144,12 +144,13 @@ public class MainActivity extends  FragmentActivity{
 	             	title = getSupportFragmentManager().getBackStackEntryAt(backCount-1).getBreadCrumbShortTitle();
                 }
                 
-                Toast.makeText(getApplicationContext(), "123", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "123", Toast.LENGTH_SHORT).show();
                 getActionBar().setTitle(title); 
             }
         });
         
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION); // hide nav bar
+        Toast.makeText(getApplicationContext(), "哈囉!"+UserInformation.NickName+"可以到『設定』宿改喔。",Toast.LENGTH_LONG);
         //initial_Preference(); 保留 for偏好設定
     
     }
@@ -167,8 +168,6 @@ public class MainActivity extends  FragmentActivity{
     		mAdapter_main = new MyFragmentPageAdapter(getSupportFragmentManager());
     		mAdapter_main.notifyDataSetChanged();
     		mViewPager_main.setAdapter(mAdapter_main);
-    		//t3.performClick();
-        	//t2.performClick();
     	}
     	else{
     		t1.performClick();
@@ -538,7 +537,7 @@ public class MainActivity extends  FragmentActivity{
 		
 	}
 	private class MyOnClickListener implements View.OnClickListener {
-		private int index = 0;
+		private int index = 2;
 		
 		public MyOnClickListener(int i) {
 			index = i;
