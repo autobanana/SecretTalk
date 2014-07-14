@@ -183,8 +183,9 @@ public class Article_DaynamicLayout_Frament extends Fragment {
     		DynamicLayout(nickname,author_id,created_Time,content,isAuthor,level);	
     		
     	}
-    	
-    	SetCheckNewReplyRunnable();
+    	if(this.isInLayout()){
+    		SetCheckNewReplyRunnable();
+    	}
     	
     }
     

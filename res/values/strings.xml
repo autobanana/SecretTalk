@@ -148,7 +148,8 @@
     <string name="no">取消</string>
     <string name="post">分享</string>
     <string name="reply">回覆</string>
-    
+    <string name="server_talk">聽說和陌生人分享心情，\n是個不錯的舒壓辦法喔~!!</string>
+    <string name="server_talk2">認真聽聽別人的感受，\n也能從中學到一課呢!~!!</string>
     <!-- login layout  -->
     <string name="login_title">Login</string>
     <string name="login_user_id">帳號</string>

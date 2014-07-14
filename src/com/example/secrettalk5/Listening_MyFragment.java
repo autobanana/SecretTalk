@@ -23,10 +23,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.AbsListView.OnScrollListener;
 
 public class Listening_MyFragment extends Fragment {
 
@@ -36,7 +39,9 @@ public class Listening_MyFragment extends Fragment {
 	private ArrayList<Article> articleArrayList;
 	private ListView listening_listView;
 	public int count;
-	
+	public FrameLayout layoutA;
+	public TextView servertalk;
+	public View view;
 	public Article_DaynamicLayout_Frament article_daynamicLayout;
     public static Listening_MyFragment newInstance( int num) {
     	Listening_MyFragment fragment = new Listening_MyFragment();
@@ -53,14 +58,43 @@ public class Listening_MyFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
     	count =0;
     	
-    	View view = inflater.inflate(R.layout.fragment_listening_my, container,false);
+    	view = inflater.inflate(R.layout.fragment_listening_my, container,false);
     	t1 = (TextView) view.findViewById(R.id.content_talking);
     	listening_listView=(ListView)view.findViewById(R.id.listening_ListView1);
     	Initial_ListView();
     	GetNewArticle();
-    	
+    	Initial_scrollanddisspear();
         return view;
     }
+    
+    public void Initial_scrollanddisspear() {
+		layoutA=(FrameLayout)view.findViewById(R.id.aa);
+		layoutA.getBackground().setAlpha(200);
+		servertalk = (TextView)view.findViewById(R.id.server_talk);
+		servertalk.setText(R.string.server_talk2);
+		listening_listView.setOnScrollListener(new OnScrollListener() {
+			public void onScrollStateChanged(AbsListView view, int scrollState){
+    				switch (scrollState) {
+    				case SCROLL_STATE_IDLE:
+    					//layoutA.startAnimation(invisible_animation); 
+    					layoutA.setVisibility(view.VISIBLE);
+    					
+    					break;
+					default:
+						layoutA.setVisibility(view.GONE);
+						//layoutA.getBackground().setAlpha(0);
+						break;
+				}
+				
+			}
+			public void onScroll(AbsListView view, int firstVisibleItem,int visibleItemCount, int totalItemCount) {
+				//layoutA.setVisibility(view.INVISIBLE);
+			}
+	});
+	}
+
+    
+    
     public void Initial_ListView() {
 		    	
     	

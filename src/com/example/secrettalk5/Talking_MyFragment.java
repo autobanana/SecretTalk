@@ -10,6 +10,9 @@ import com.example.articlemodule.ArticleModule;
 import com.example.globalcontainer.GlobalContainer;
 import com.example.usermodule.UserInformation;
 
+import android.animation.Animator;
+import android.animation.LayoutTransition;
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,9 +26,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -40,10 +48,13 @@ public class Talking_MyFragment extends Fragment {
 	public ListView aa;
 	public Context a;
 	public ListView talking_listView;
-	
+	public FrameLayout layoutA;
 	public PostActicle_Fragment postacticle;
-	public Article_DaynamicLayout_Frament article_daynamicLayout;
+	public TextView servertalk;
 	
+	
+	public Article_DaynamicLayout_Frament article_daynamicLayout;
+	public Animation invisible_animation,visiable_animation ;
     public static Talking_MyFragment newInstance( int num) {
     	Talking_MyFragment fragment = new Talking_MyFragment();
         // Supply num input as an argument.
@@ -61,7 +72,7 @@ public class Talking_MyFragment extends Fragment {
             Bundle savedInstanceState) {
          
         view = inflater.inflate(R.layout.fragment_talking_my, container,false);
-        talking_button = (Button)view.findViewById(R.id.button_talking);
+        talking_button = (Button) view.findViewById(R.id.button_talking);
         talking_listView = (ListView) view.findViewById(R.id.Talking_ListView1);
         
         talking_button.setOnClickListener( new OnClickListener(){      	
@@ -77,8 +88,35 @@ public class Talking_MyFragment extends Fragment {
         
         Initial_ListView();
         GetArticle();
+        Initial_scrollanddisspear();
         return view;
     }
+
+	public void Initial_scrollanddisspear() {
+		layoutA=(FrameLayout)view.findViewById(R.id.aa);
+		layoutA.getBackground().setAlpha(200);
+		servertalk = (TextView)view.findViewById(R.id.server_talk);
+		servertalk.setText(R.string.server_talk);
+		talking_listView.setOnScrollListener(new OnScrollListener() {
+			public void onScrollStateChanged(AbsListView view, int scrollState){
+    				switch (scrollState) {
+    				case SCROLL_STATE_IDLE:
+    					//layoutA.startAnimation(invisible_animation); 
+    					layoutA.setVisibility(view.VISIBLE);
+    					
+    					break;
+					default:
+						layoutA.setVisibility(view.GONE);
+						//layoutA.getBackground().setAlpha(0);
+						break;
+				}
+				
+			}
+			public void onScroll(AbsListView view, int firstVisibleItem,int visibleItemCount, int totalItemCount) {
+				//layoutA.setVisibility(view.INVISIBLE);
+			}
+	});
+	}
 
 	//
     public void Initial_ListView() {

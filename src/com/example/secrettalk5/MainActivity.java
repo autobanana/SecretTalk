@@ -480,7 +480,10 @@ public class MainActivity extends  FragmentActivity{
 	public void initial_TextView() {  
 		// TODO Auto-generated method stub
 		int n;
-
+		DisplayMetrics dm = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(dm);
+		int SW = dm.widthPixels;
+		Log.d("PPPPPPPPPPPPPPPPPPPPPPPPP", "SW = "+SW);
 		t1 = (TextView) findViewById(R.id.content_talking);
 		t2 = (TextView) findViewById(R.id.Time);
 		t3 = (TextView) findViewById(R.id.about_version);
@@ -489,46 +492,57 @@ public class MainActivity extends  FragmentActivity{
 		t2.setOnClickListener(new MyOnClickListener(1));
 		t3.setOnClickListener(new MyOnClickListener(2));
 		
+		
+		
 		//###########  t1
+		int NewW1 = SW*92/480;
+		int NewH1 = NewW1*50/92;
+		Log.d("PPPPPPPPPPPPPPPPPPPPPPPPP", "NewW1 = "+NewW1);
 		viewpager_s1 = new SpannableString("abc");
 		Drawable img = getResources().getDrawable(R.drawable.viewpager_talking2);
-		img.setBounds(0, 0, 92, 50);
+		img.setBounds(0, 0, NewW1, NewH1);
 		//img.setBounds(0, 0, img.getIntrinsicWidth(), img.getIntrinsicHeight());
 		viewpager_s1.setSpan(new ImageSpan(img, ImageSpan.ALIGN_BASELINE), 0, 3, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
 		
 		viewpager_s1_press = new SpannableString("abc");
 		Drawable img1_1 = getResources().getDrawable(R.drawable.viewpager_talking_press2);
-		img1_1.setBounds(0, 0, 92, 50);
+		img1_1.setBounds(0, 0, NewW1, NewH1);
 		//img.setBounds(0, 0, img.getIntrinsicWidth(), img.getIntrinsicHeight());
 		viewpager_s1_press.setSpan(new ImageSpan(img1_1, ImageSpan.ALIGN_BASELINE), 0, 3, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
 		
 		t1.setText(viewpager_s1_press); 
 		
 		//###########  t2
+		int NewW2 = SW*90/480;
+		int NewH2 = NewW2*57/90;
+		
 		viewpager_s2 = new SpannableString("abc");
 		Drawable img2 = getResources().getDrawable(R.drawable.viewpager_listening2);
-		img2.setBounds(0, 0, 90, 57);
+		img2.setBounds(0, 0, NewW2, NewH2);
 		//img.setBounds(0, 0, img.getIntrinsicWidth(), img.getIntrinsicHeight());
 		viewpager_s2.setSpan(new ImageSpan(img2, ImageSpan.ALIGN_BASELINE), 0, 3, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
 		
 		viewpager_s2_press = new SpannableString("abc");
 		Drawable img2_1 = getResources().getDrawable(R.drawable.viewpager_listening_press2);
-		img2_1.setBounds(0, 0, 90, 57);
+		img2_1.setBounds(0, 0, NewW2, NewH2);
 		//img.setBounds(0, 0, img.getIntrinsicWidth(), img.getIntrinsicHeight());
 		viewpager_s2_press.setSpan(new ImageSpan(img2_1, ImageSpan.ALIGN_BASELINE), 0, 3, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
 		
 		t2.setText(viewpager_s2);
 		
 		//###########  t3
+		int NewW3 = SW*95/480;
+		int NewH3 = NewW3*53/95;
+		
 		viewpager_s3 = new SpannableString("abc");
 		Drawable img3 = getResources().getDrawable(R.drawable.viewpager_setting);
-		img3.setBounds(0, 0, 95, 53);
+		img3.setBounds(0, 0, NewW3, NewH3);
 		//img.setBounds(0, 0, img.getIntrinsicWidth(), img.getIntrinsicHeight());
 		viewpager_s3.setSpan(new ImageSpan(img3, ImageSpan.ALIGN_BASELINE), 0, 3, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
 		
 		viewpager_s3_press = new SpannableString("abc");
 		Drawable img3_1 = getResources().getDrawable(R.drawable.viewpager_settinga_press);
-		img3_1.setBounds(0, 0, 95, 53);
+		img3_1.setBounds(0, 0, NewW3, NewH3);
 		//img.setBounds(0, 0, img.getIntrinsicWidth(), img.getIntrinsicHeight());
 		viewpager_s3_press.setSpan(new ImageSpan(img3_1, ImageSpan.ALIGN_BASELINE), 0, 3, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
 
