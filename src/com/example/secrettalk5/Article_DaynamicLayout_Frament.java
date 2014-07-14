@@ -20,6 +20,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -74,21 +76,45 @@ public class Article_DaynamicLayout_Frament extends Fragment {
     	
     	reply_button.setOnClickListener( new OnClickListener(){      	
         	public void onClick(View view) {
+        		//收回鍵盤+清空Edittext
+        		reply_button.setClickable(false);
         		reply_specific_article();
+        		reply_edittext.setText("");
+        		reply_edittext.setFocusable(true);
+        		
+        		
         	}     	        	
         });
-    	
+    	reply_edittext.addTextChangedListener(new TextWatcher() {
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                //Check if 's' is empty 
+            	if(reply_edittext.getText().length()>0){
+            		reply_button.setClickable(true);
+            	}
+            }
+
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void afterTextChanged(Editable s) {
+				// TODO Auto-generated method stub
+				
+			}
+
+
+        });
     	
     	SetCheckNewReplyRunnable();    	
     	//TestButton(); 現在不需要  
     	GetHistoricalDialogue();
         return view;
     }
-    public static void onBackPressed()
-    {
-        //Pop Fragments off backstack and do your other checks
-    }
-   
 
 
 	private void TestButton() {
@@ -166,10 +192,11 @@ public class Article_DaynamicLayout_Frament extends Fragment {
 		//獲得內容
 		String replycontent = reply_edittext.getText().toString();
 		
+		
 		CreateNewReply(replycontent);
 	
-		//收回鍵盤+清空Edittext
-		reply_edittext.setText("");
+		
+		
 		//((InputMethodManager)getActivity().getSystemService(getActivity().INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);  
 		
 		

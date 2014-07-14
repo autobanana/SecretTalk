@@ -1,6 +1,13 @@
 package com.example.secrettalk5;
 
 
+import java.util.HashMap;
+
+import org.json.JSONObject;
+
+import com.example.articlemodule.ArticleModule;
+import com.example.usermodule.UserInformation;
+
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -23,6 +30,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
@@ -44,7 +52,7 @@ public class MainActivity extends  FragmentActivity{
 	public ImageView cursor;
 	public TextView t1, t2, t3;
 	public int offset = 0;
-	public int currIndex = 0,currIndex2 =0;
+	public int currIndex = 0;
 	public int bmpW;
     public int one,two;
     private static final int A=1,B=2,C=3,D=4,E=5;
@@ -69,7 +77,8 @@ public class MainActivity extends  FragmentActivity{
 
     private boolean doublleBackCheck = false;
     
-    
+    public Talking_MyFragment TF;
+    public Listening_MyFragment LF;
 
     //testforbutton 
     SpannableString viewpager_s1,viewpager_s2,viewpager_s3;
@@ -108,22 +117,18 @@ public class MainActivity extends  FragmentActivity{
         mViewPager_main.setAdapter(mAdapter_main);
         
         //mAdapter_main.notifyDataSetChanged();  ///
-        
         mViewPager_main.setOnPageChangeListener(new MyOnPageChangeListener());
-        
-        
-        
         viewPager_layout = (LinearLayout)findViewById(R.id.L_main);
         
+        //連線alert
+        cd = new ConnectionDetector(this);
+        cd.showConnction();
+
         /**初始化**/
         initial_TextView();
         initial_ImageView();
         initial_PageView();
         initial_ListView();
-        
-        cd = new ConnectionDetector(this);
-        
-        cd.showConnction();
         
         getSupportFragmentManager().addOnBackStackChangedListener(new OnBackStackChangedListener() {    
             public void onBackStackChanged() {
@@ -133,12 +138,10 @@ public class MainActivity extends  FragmentActivity{
                 int backCount = getSupportFragmentManager().getBackStackEntryCount();
                 if (backCount == 0){
                 	ViewPager_Show();
-                	
     	           	title = "SecretTalk"; 	// block where back has been pressed. since backstack is zero.
                 }
                 else{
 	             	title = getSupportFragmentManager().getBackStackEntryAt(backCount-1).getBreadCrumbShortTitle();
-	             	
                 }
                 
                 Toast.makeText(getApplicationContext(), "123", Toast.LENGTH_SHORT).show();
@@ -146,26 +149,39 @@ public class MainActivity extends  FragmentActivity{
             }
         });
         
-        
-        
-        
-        getWindow().getDecorView().setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
-                ); 
-        
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION); // hide nav bar
         //initial_Preference(); 保留 for偏好設定
-        
-        
-        
     
-    }
-    
-    public void FinishMainActivity(){
-    	this.finish();
     }
 
-    
-    //當街到notification後會直接進入 並跳轉調正確的頁面
+    public void RefreshButton_Initial(){
+    	
+        
+    	if(currIndex == 0){
+    		mAdapter_main = new MyFragmentPageAdapter(getSupportFragmentManager());
+    		mAdapter_main.notifyDataSetChanged();
+            mViewPager_main.setAdapter(mAdapter_main);
+    	}
+    	else if(currIndex==1){
+    		t1.performClick();
+    		mAdapter_main = new MyFragmentPageAdapter(getSupportFragmentManager());
+    		mAdapter_main.notifyDataSetChanged();
+    		mViewPager_main.setAdapter(mAdapter_main);
+    		//t3.performClick();
+        	//t2.performClick();
+    	}
+    	else{
+    		t1.performClick();
+    		mAdapter_main = new MyFragmentPageAdapter(getSupportFragmentManager());
+    		mAdapter_main.notifyDataSetChanged();
+    		mViewPager_main.setAdapter(mAdapter_main);
+    	}
+    	
+    	
+    }
+
+
+	//當街到notification後會直接進入 並跳轉調正確的頁面
     public void onResume() {   
         Bundle bundle = this.getIntent().getExtras();
         if( bundle != null) {
@@ -448,11 +464,8 @@ public class MainActivity extends  FragmentActivity{
     	if (item.getItemId() == R.id.action_refresh) {
     		
     		Toast.makeText(this, "do something", Toast.LENGTH_LONG).show();
-    		
+    		RefreshButton_Initial();
     	}
-    	
-    	
-    	
     	
         // Handle your other action bar items...
 
@@ -571,6 +584,10 @@ public class MainActivity extends  FragmentActivity{
 					animation = new TranslateAnimation(one, 0, 0, 0);
 					t1.setText(viewpager_s1_press); 
 					t2.setText(viewpager_s2);
+					//mAdapter_main = new MyFragmentPageAdapter(getSupportFragmentManager());
+					//mAdapter_main.notifyDataSetChanged();
+			        //mViewPager_main.setAdapter(mAdapter_main);
+			        
 				
 				} else if (currIndex == 2) {
 					animation = new TranslateAnimation(two, 0, 0, 0);

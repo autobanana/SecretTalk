@@ -36,6 +36,7 @@ public class Listening_MyFragment extends Fragment {
 	private ArrayList<Article> articleArrayList;
 	private ListView listening_listView;
 	public int count;
+	
 	public Article_DaynamicLayout_Frament article_daynamicLayout;
     public static Listening_MyFragment newInstance( int num) {
     	Listening_MyFragment fragment = new Listening_MyFragment();
@@ -126,7 +127,7 @@ public class Listening_MyFragment extends Fragment {
     
     }
     
-    private void GetNewArticle(){
+    public void GetNewArticle(){
     	//Initial HashMap 
     	HashMap hm=new HashMap<String, String>();
     	hm.put("username", UserInformation.Username);

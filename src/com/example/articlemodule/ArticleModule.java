@@ -94,6 +94,8 @@ public class ArticleModule extends AsyncTask<String,Void,String> {
 		
 	}
 	
+
+
 	private void CreateFinish(JSONObject resultObject){
 		try {
 			//Get Response

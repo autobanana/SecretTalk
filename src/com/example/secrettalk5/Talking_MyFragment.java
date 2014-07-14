@@ -111,7 +111,7 @@ public class Talking_MyFragment extends Fragment {
     	
 	}
     //
-    private void GetArticle(){
+    public void GetArticle(){
 		//Initial HashMap 
 		HashMap hm=new HashMap<String, String>();
 		hm.put("username", UserInformation.Username);
@@ -127,8 +127,6 @@ public class Talking_MyFragment extends Fragment {
 		
 		
 	}
-    
-    
 
     public void SetArticleList(ArrayList<Article> article_ArrayList){    	
     	
