@@ -150,7 +150,7 @@ public class MainActivity extends  FragmentActivity{
         });
         
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION); // hide nav bar
-        Toast.makeText(getApplicationContext(), "哈囉!"+UserInformation.NickName+"可以到『設定』宿改喔。",Toast.LENGTH_LONG);
+        Toast.makeText(this, "哈囉!"+UserInformation.NickName+"可以到『設定』宿改喔。",Toast.LENGTH_LONG).show();;
         //initial_Preference(); 保留 for偏好設定
     
     }
@@ -462,7 +462,7 @@ public class MainActivity extends  FragmentActivity{
         }
     	if (item.getItemId() == R.id.action_refresh) {
     		
-    		Toast.makeText(this, "do something", Toast.LENGTH_LONG).show();
+    		//Toast.makeText(this, "do something", Toast.LENGTH_LONG).show();
     		RefreshButton_Initial();
     	}
     	

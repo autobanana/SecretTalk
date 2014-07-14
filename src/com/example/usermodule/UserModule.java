@@ -142,11 +142,11 @@ public class UserModule extends AsyncTask<String,Void,String> {
 						
 			if(response.equals("0")){
 				SF.SaveDataforSettingFragment();
-				Toast.makeText(context, "成功修改設定囉!!" , Toast.LENGTH_LONG).show();
+				////Toast.makeText(context, "成功修改設定囉!!" , Toast.LENGTH_LONG).show();
 			}
 			else{
 				//Show Login Fail Message
-				Toast.makeText(context, "錯誤!!沒有正確儲存!!!" , Toast.LENGTH_LONG).show();
+				//Toast.makeText(context, "錯誤!!沒有正確儲存!!!" , Toast.LENGTH_LONG).show();
 			}
 		} catch (JSONException e) {
 			e.printStackTrace();
@@ -219,7 +219,7 @@ public class UserModule extends AsyncTask<String,Void,String> {
 			
 			else{
 				//Show Login Fail Message
-				Toast.makeText(context, message , Toast.LENGTH_LONG).show();
+				//Toast.makeText(context, message , Toast.LENGTH_LONG).show();
 			}
 			
 			
@@ -245,7 +245,7 @@ public class UserModule extends AsyncTask<String,Void,String> {
 				RA.RegisterSuccessEvent();
 			}
 			
-//			Toast.makeText(context, message , Toast.LENGTH_LONG).show();
+//			//Toast.makeText(context, message , Toast.LENGTH_LONG).show();
 			
 			
 			Log.v("UserModule",message);
@@ -253,7 +253,7 @@ public class UserModule extends AsyncTask<String,Void,String> {
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-//			Toast.makeText(context, e.toString() , Toast.LENGTH_LONG).show();
+//			//Toast.makeText(context, e.toString() , Toast.LENGTH_LONG).show();
 			
 		}
 		

@@ -70,7 +70,7 @@ public class ReplyModule extends AsyncTask<String,Void,String> {
 			
 		} catch (JSONException e) {
 			
-			Toast.makeText(context, "Error In Post Execute", Toast.LENGTH_LONG).show();
+			//Toast.makeText(context, "Error In Post Execute", Toast.LENGTH_LONG).show();
 			e.printStackTrace();
 			Log.v("ReplyModule","Get result:"+result.toString());
 		}
@@ -150,12 +150,12 @@ public class ReplyModule extends AsyncTask<String,Void,String> {
 			}
 			Log.v("ReplyModule", message);
 			if(context!=null){
-				Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+				//Toast.makeText(context, message, Toast.LENGTH_LONG).show();
 			}
 		}
 		catch(JSONException e){
 			Log.v("ReplyModule","Error In CheckNewReplyFinish");
-			Toast.makeText(context, "Error In Check New Reply", Toast.LENGTH_LONG).show();
+			//Toast.makeText(context, "Error In Check New Reply", Toast.LENGTH_LONG).show();
 			e.printStackTrace();
 			
 		}
@@ -200,11 +200,11 @@ public class ReplyModule extends AsyncTask<String,Void,String> {
 				
 			}
 			
-			Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+			//Toast.makeText(context, message, Toast.LENGTH_LONG).show();
 		}
 		catch(JSONException e){
 			
-			Toast.makeText(context, "Error In Create Finish", Toast.LENGTH_LONG).show();
+			//Toast.makeText(context, "Error In Create Finish", Toast.LENGTH_LONG).show();
 			e.printStackTrace();
 			
 		}
@@ -263,12 +263,12 @@ public class ReplyModule extends AsyncTask<String,Void,String> {
 				
 			}
 			Log.v("ReplyModule", message);
-			if(context!=null)
-				Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+			if(context!=null){}
+				//Toast.makeText(context, message, Toast.LENGTH_LONG).show();
 		}
 		catch(JSONException e){
 			
-			Toast.makeText(context, "Error In Create Finish", Toast.LENGTH_LONG).show();
+			//Toast.makeText(context, "Error In Create Finish", Toast.LENGTH_LONG).show();
 			e.printStackTrace();
 			
 		}
@@ -288,7 +288,7 @@ public class ReplyModule extends AsyncTask<String,Void,String> {
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			Toast.makeText(context, "Error In Create Finish Time Convert", Toast.LENGTH_LONG).show();
+			//Toast.makeText(context, "Error In Create Finish Time Convert", Toast.LENGTH_LONG).show();
 			Log.v("ReplyModule","ConvertDateTimeFail:"+dateString);
 		}
 			
