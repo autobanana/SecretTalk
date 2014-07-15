@@ -15,9 +15,10 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/button_talking"
         android:layout_alignParentLeft="true"
-        android:layout_alignTop="@+id/aa"
+        android:layout_alignParentTop="true"
         android:layout_weight="2"
         android:background="@color/Banana_Gray" >
+
     </ListView>
 
     <Button
@@ -33,6 +34,7 @@
         android:id="@+id/aa"
         android:layout_width="fill_parent"
         android:layout_height="60dp"
+        android:layout_above="@id/button_talking"
         android:animateLayoutChanges="true"
         android:background="@color/Banana_White" >
 

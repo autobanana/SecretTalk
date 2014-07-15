@@ -24,7 +24,7 @@
     <color name="Banana_Setting_Gray_light">#F5F5F5</color>
 	
     <!-- 成就系統 -->
-    <string name="intorduce">親愛的使用者你好，在SecretTalk中成為優良的傾聽者可以累積成就!鼓勵大家維護良好的互動喔!</string>
+    <string name="intorduce">親愛的使用者你好，在SecretTalk中成為優良的傾聽者可以累積成就喔!鼓勵大家維護良好的互動喔!</string>
     <string name="introduce2">香蕉代表每個使用者的等級，\n香蕉越熟代表是愈優的傾聽者。</string>
     <string name="introduce3">斷線後的評價將會影響對方的等級。</string>
     <string name="level1">等級一：綠香蕉\n新手由此等開始</string>

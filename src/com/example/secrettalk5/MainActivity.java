@@ -150,7 +150,7 @@ public class MainActivity extends  FragmentActivity{
         });
         
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION); // hide nav bar
-        Toast.makeText(this, "哈囉!"+UserInformation.NickName+"可以到『設定』宿改喔。",Toast.LENGTH_LONG).show();;
+        Toast.makeText(this, "哈囉!"+UserInformation.NickName+"可以到『設定』改喔喔~!",Toast.LENGTH_LONG).show();;
         //initial_Preference(); 保留 for偏好設定
     
     }
