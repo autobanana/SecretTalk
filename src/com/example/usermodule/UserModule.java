@@ -142,11 +142,11 @@ public class UserModule extends AsyncTask<String,Void,String> {
 						
 			if(response.equals("0")){
 				SF.SaveDataforSettingFragment();
-				////Toast.makeText(context, "成功修改設定囉!!" , Toast.LENGTH_LONG).show();
+				Toast.makeText(context, "成功修改設定囉!!" , Toast.LENGTH_LONG).show();
 			}
 			else{
 				//Show Login Fail Message
-				//Toast.makeText(context, "錯誤!!沒有正確儲存!!!" , Toast.LENGTH_LONG).show();
+				Toast.makeText(context, "錯誤!!沒有正確儲存，請再嘗試一次!!!" , Toast.LENGTH_LONG).show();
 			}
 		} catch (JSONException e) {
 			e.printStackTrace();

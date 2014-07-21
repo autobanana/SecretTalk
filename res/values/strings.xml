@@ -23,6 +23,13 @@
     <color name="Banana_Setting_Gray">#666666</color>
     <color name="Banana_Setting_Gray_light">#F5F5F5</color>
 	
+    <!--Bulletinboard -->
+    <string name="Bulletinboard_title">公告</string>
+    <string name="Bulletinboard_serverMessage">大家好！這裡是SecretTalk佈告欄，不定期會公布一些重要的訊息給使用者了解。</string>
+    
+    
+    
+    
     <!-- 成就系統 -->
     <string name="intorduce">親愛的使用者你好，在SecretTalk中成為優良的傾聽者可以累積成就喔!鼓勵大家維護良好的互動喔!</string>
     <string name="introduce2">香蕉代表每個使用者的等級，\n香蕉越熟代表是愈優的傾聽者。</string>

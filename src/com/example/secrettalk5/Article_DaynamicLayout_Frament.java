@@ -42,6 +42,7 @@ public class Article_DaynamicLayout_Frament extends Fragment {
 	
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	public View view;
+	private ConnectionDetector cd;
 	public LinearLayout a;
 	public ScrollView dynmaic_scrollview;
 	public Button reply_button;
@@ -63,7 +64,7 @@ public class Article_DaynamicLayout_Frament extends Fragment {
     	view = inflater.inflate(R.layout.fragment_article_dynamiclayout,  container,false );
     	
     	Log.d("AAAAAAAAAAAAAAAAAAAAAAAAAAAAa", "onCreateView");
-    	
+    	cd = new ConnectionDetector(getActivity());
     	dm = new DisplayMetrics();
 		getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
 		screenW = dm.widthPixels;
@@ -183,9 +184,11 @@ public class Article_DaynamicLayout_Frament extends Fragment {
     		DynamicLayout(nickname,author_id,created_Time,content,isAuthor,level);	
     		
     	}
+    	/*
     	if(this.isInLayout()){
     		SetCheckNewReplyRunnable();
     	}
+    	*/
     	
     }
     
@@ -234,6 +237,7 @@ public class Article_DaynamicLayout_Frament extends Fragment {
 		DynamicLayout(nickname,author_id,created_Time,content,0,level);
 	}
 	
+	
 	private void SetCheckNewReplyRunnable(){
 		Runnable runnable=new Runnable() {
 			
@@ -241,6 +245,9 @@ public class Article_DaynamicLayout_Frament extends Fragment {
 			public void run() {
 				if(getActivity()!=null){
 					CheckNewReply();
+					 //³s½ualert
+			       
+			        cd.showConnction();
 				}
 				
 			}

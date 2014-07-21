@@ -22,6 +22,7 @@ import android.text.SpannableString;
 import android.text.style.ImageSpan;
 import android.app.ActionBar;
 import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -69,8 +70,8 @@ public class MainActivity extends  FragmentActivity{
     public ArrayAdapter<String> adapter;
     public ActionBarDrawerToggle mDrawerToggle;
     private static final String[] viewpagertitle = new String[]{"說-Talking","聽-Listening","你 ? Who am I ?"};
-    private static final String[] mStrings = new String[] {"回到首頁","偏好設定", "程式導覽", "成就系統介紹", "關於本程式","登出", "結束程式"};
-    private static final String[] mStrings_NoPreference = new String[] {"回到首頁", "程式導覽", "成就系統介紹", "關於本程式","登出", "結束程式"};
+    private static final String[] mStrings = new String[] {"回到首頁","偏好設定", "程式導覽", "成就系統介紹", "公告","關於本程式","登出", "結束程式"};
+    private static final String[] mStrings_NoPreference = new String[] {"回到首頁", "程式導覽", "成就系統介紹","公告", "關於本程式","登出", "結束程式"};
         
     private ConnectionDetector cd;
     
@@ -95,7 +96,7 @@ public class MainActivity extends  FragmentActivity{
     public Navigation_Fragment navigation;
     public Achievement_Fragment achievement;
     public SignOut_Fragment signout;
-    
+    public Bulletinboard_Fragment bulletinboard;
     
     
     public void onCreate(Bundle savedInstanceState) {
@@ -129,8 +130,20 @@ public class MainActivity extends  FragmentActivity{
         initial_ImageView();
         initial_PageView();
         initial_ListView();
+        fragment_handle();
+        ShowBulletinBoard();
         
-        getSupportFragmentManager().addOnBackStackChangedListener(new OnBackStackChangedListener() {    
+        t3.performClick();  //直接進入設定頁
+        
+        
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION); // hide nav bar
+        Toast.makeText(this, "哈囉!"+",可以到『設定』修改設定喔~!",Toast.LENGTH_LONG).show();;
+        //initial_Preference(); 保留 for偏好設定
+    
+    }
+
+    public  void fragment_handle() {
+    	getSupportFragmentManager().addOnBackStackChangedListener(new OnBackStackChangedListener() {    
             public void onBackStackChanged() {
 
             	doublleBackCheck = false;
@@ -143,19 +156,12 @@ public class MainActivity extends  FragmentActivity{
                 else{
 	             	title = getSupportFragmentManager().getBackStackEntryAt(backCount-1).getBreadCrumbShortTitle();
                 }
-                
-                //Toast.makeText(getApplicationContext(), "123", Toast.LENGTH_SHORT).show();
                 getActionBar().setTitle(title); 
             }
         });
-        
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION); // hide nav bar
-        Toast.makeText(this, "哈囉!"+UserInformation.NickName+"可以到『設定』改喔喔~!",Toast.LENGTH_LONG).show();;
-        //initial_Preference(); 保留 for偏好設定
-    
-    }
+	}
 
-    public void RefreshButton_Initial(){
+	public void RefreshButton_Initial(){
     	
         
     	if(currIndex == 0){
@@ -197,8 +203,19 @@ public class MainActivity extends  FragmentActivity{
   		getMenuInflater().inflate(R.menu.main, menu);
   		return true;
   	}
-  	
+  	private void ShowBulletinBoard() {
+		Builder MyAlertDialog = new AlertDialog.Builder(this);
+		MyAlertDialog.setTitle("SecretTalk 公告");
+		MyAlertDialog.setMessage("小魏內容給你放喔~~ 滴ShowBulletinBoard嘉 ~~~");
+		DialogInterface.OnClickListener OkClick = new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+			}
+		};
+		;
+		MyAlertDialog.setNeutralButton("確定", OkClick);
+		MyAlertDialog.show();
 
+	}
 //    public void initial_ListView() {
 //		    	
 //    	
@@ -363,11 +380,15 @@ public class MainActivity extends  FragmentActivity{
 	            		//成就系統介紹		
 	            		addFragment = new Achievement_Fragment();   
 	            	}
-	            	else if(position ==3){
+	            	else if(position == 3){
+	            		//公告
+	            		addFragment = new Bulletinboard_Fragment();
+	            	}
+	            	else if(position ==4){
 	            		//關於本程式
 	            		addFragment =  new  AboutProgram_Fragment();  
 	            	}
-	            	else if(position == 4){
+	            	else if(position == 5){
 	            		//登出
 	            		addFragment =  new  SignOut_Fragment();  
 	            	}
