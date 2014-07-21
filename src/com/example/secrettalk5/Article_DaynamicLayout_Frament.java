@@ -16,6 +16,7 @@ import com.example.usermodule.UserInformation;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -184,6 +185,11 @@ public class Article_DaynamicLayout_Frament extends Fragment {
     		DynamicLayout(nickname,author_id,created_Time,content,isAuthor,level);	
     		
     	}
+    	Handler myHandler = new Handler();
+        myHandler.postDelayed(mMyRunnable,300);
+    	
+    	//SetCheckNewReplyRunnable();
+    	
     	/*
     	if(this.isInLayout()){
     		SetCheckNewReplyRunnable();
@@ -191,7 +197,11 @@ public class Article_DaynamicLayout_Frament extends Fragment {
     	*/
     	
     }
-    
+    private Runnable mMyRunnable = new Runnable(){
+        public void run(){
+        	SetCheckNewReplyRunnable();
+        }
+     };
 	public void reply_specific_article() {
 		//獲得內容
 		String replycontent = reply_edittext.getText().toString();
@@ -246,13 +256,12 @@ public class Article_DaynamicLayout_Frament extends Fragment {
 				if(getActivity()!=null){
 					CheckNewReply();
 					 //連線alert
-			       
 			        cd.showConnction();
 				}
 				
 			}
 		};
-		handler.postDelayed(runnable,500);
+		handler.postDelayed(runnable,1500);
 	}
 	
 	public void CheckNewReply(){
@@ -307,7 +316,12 @@ public class Article_DaynamicLayout_Frament extends Fragment {
     		
     	}
 		Log.v("ReplyModule", "CheckNewReplyFinish");
-		SetCheckNewReplyRunnable();
+		
+		Handler myHandler = new Handler();
+        myHandler.postDelayed(mMyRunnable,300);
+    	
+		
+		//SetCheckNewReplyRunnable();
 	}
 	
 	public void DynamicLayout(String nickname,String name,String time,String content ,int whotalk, String level ) {

@@ -26,7 +26,8 @@
     <!--Bulletinboard -->
     <string name="Bulletinboard_title">公告</string>
     <string name="Bulletinboard_serverMessage">大家好！這裡是SecretTalk佈告欄，不定期會公布一些重要的訊息給使用者了解。</string>
-    
+    <string name="ServerWarning">即將與陌生人對話的使用者您好！為了注意自身安全，請使用者在對話過程中切勿公
+        		開自己的個人資料(包括：地點、電話、真實姓名，甚至信用卡號等),以免有心人士使用。預祝您有良好的使用體驗。</string>
     
     
     

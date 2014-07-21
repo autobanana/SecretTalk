@@ -15,6 +15,7 @@ public class Achievement_Fragment extends Fragment {
 //        args.putInt( "num" , num);s
 //        fragment.setArguments(args);
         return fragment;
+        
     }
     
     public void onCreate(Bundle savedInstanceState) {
