@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import org.json.JSONObject;
 
+import com.example.announcement.AnnouncementModule;
 import com.example.articlemodule.ArticleModule;
 import com.example.usermodule.UserInformation;
 import com.example.usermodule.UserModule;
@@ -214,6 +215,13 @@ public class LoginActivity extends Activity {
 	    um.context=LoginActivity.this;
 	    um.execute("GetProfile",jo.toString());
     	
+	}
+	
+	public void GetAnnouncement(){
+		AnnouncementModule am=new AnnouncementModule();
+		am.LA=LoginActivity.this;
+		am.execute("Retrieve"," ");
+		
 	}
 	
 	public void StartMainActivity(){

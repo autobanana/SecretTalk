@@ -5,7 +5,9 @@ import java.util.HashMap;
 
 import org.json.JSONObject;
 
+import com.example.announcement.Announcement;
 import com.example.articlemodule.ArticleModule;
+import com.example.globalcontainer.GlobalContainer;
 import com.example.usermodule.UserInformation;
 
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -206,14 +208,18 @@ public class MainActivity extends  FragmentActivity{
   	private void ShowBulletinBoard() {
 		Builder MyAlertDialog = new AlertDialog.Builder(this);
 		MyAlertDialog.setTitle("SecretTalk 公告");
-		MyAlertDialog.setMessage("小魏內容給你放喔~~ 滴ShowBulletinBoard嘉 ~~~");
-		DialogInterface.OnClickListener OkClick = new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int which) {
-			}
-		};
-		;
-		MyAlertDialog.setNeutralButton("確定", OkClick);
-		MyAlertDialog.show();
+		if(GlobalContainer.announcemen_ArrayList.size()!=0){
+			Announcement ann=GlobalContainer.announcemen_ArrayList.get(GlobalContainer.announcemen_ArrayList.size()-1);
+		
+			MyAlertDialog.setMessage(ann.content);
+			DialogInterface.OnClickListener OkClick = new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+				}
+			};
+			;
+			MyAlertDialog.setNeutralButton("確定", OkClick);
+			MyAlertDialog.show();
+		}
 
 	}
 //    public void initial_ListView() {

@@ -181,7 +181,7 @@ public class UserModule extends AsyncTask<String,Void,String> {
 				UserInformation.Sign=userProfileJSONObject.getString("Sign");
 				UserInformation.Score=userProfileJSONObject.getString("Score");
 				
-				LA.StartMainActivity();	
+				LA.GetAnnouncement();	
 				
 			}
 			
