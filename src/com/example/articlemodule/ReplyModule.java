@@ -11,6 +11,7 @@ import org.json.JSONObject;
 
 import com.example.connection.HttpRequest;
 import com.example.secrettalk5.Article_DaynamicLayout_Frament;
+import com.example.usermodule.UserInformation;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -184,14 +185,14 @@ public class ReplyModule extends AsyncTask<String,Void,String> {
 				String article_id=replyObject.getString("article_id");
 				String author_id=replyObject.getString("author_id");
 				String created_at=replyObject.getString("created_at");
-				String level=replyObject.getString("level");
 				
 				//Add to Reply Object
 				reply.article_id=article_id;
 				reply.author=author_id;
 				reply.created_Time=ConvertToDate(created_at);
 				reply.content=content;
-				reply.level=level;
+				reply.level=UserInformation.Level;
+				reply.nickname=UserInformation.NickName;
 				
 				articleDynamicFragment.CreateNewReplyFinish(reply);
 			}

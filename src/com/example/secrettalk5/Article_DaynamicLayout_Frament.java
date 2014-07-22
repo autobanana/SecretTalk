@@ -43,6 +43,7 @@ public class Article_DaynamicLayout_Frament extends Fragment {
 	
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	public View view;
+	public int Dynamic_or_not =1; //0正在回覆    1:可以檢查回復
 	private ConnectionDetector cd;
 	public LinearLayout a;
 	public ScrollView dynmaic_scrollview;
@@ -80,11 +81,11 @@ public class Article_DaynamicLayout_Frament extends Fragment {
         	public void onClick(View view) {
         		//收回鍵盤+清空Edittext
         		reply_button.setClickable(false);
+        		Dynamic_or_not=0;
+        		cd.showConnction();
         		reply_specific_article();
         		reply_edittext.setText("");
         		reply_edittext.setFocusable(true);
-        		
-        		
         	}     	        	
         });
     	reply_edittext.addTextChangedListener(new TextWatcher() {
@@ -111,7 +112,8 @@ public class Article_DaynamicLayout_Frament extends Fragment {
 
 
         });
-    	
+    	//Handler myHandler = new Handler();
+        //myHandler.postDelayed(mMyRunnable,1000);
     	SetCheckNewReplyRunnable();    	
     	//TestButton(); 現在不需要  
     	GetHistoricalDialogue();
@@ -185,10 +187,10 @@ public class Article_DaynamicLayout_Frament extends Fragment {
     		DynamicLayout(nickname,author_id,created_Time,content,isAuthor,level);	
     		
     	}
-    	Handler myHandler = new Handler();
-        myHandler.postDelayed(mMyRunnable,300);
+    	//Handler myHandler = new Handler();
+        //myHandler.postDelayed(mMyRunnable,1000);
     	
-    	//SetCheckNewReplyRunnable();
+    	SetCheckNewReplyRunnable();
     	
     	/*
     	if(this.isInLayout()){
@@ -197,20 +199,10 @@ public class Article_DaynamicLayout_Frament extends Fragment {
     	*/
     	
     }
-    private Runnable mMyRunnable = new Runnable(){
-        public void run(){
-        	SetCheckNewReplyRunnable();
-        }
-     };
 	public void reply_specific_article() {
 		//獲得內容
 		String replycontent = reply_edittext.getText().toString();
-		
-		
 		CreateNewReply(replycontent);
-	
-		
-		
 		//((InputMethodManager)getActivity().getSystemService(getActivity().INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);  
 		
 		
@@ -239,12 +231,13 @@ public class Article_DaynamicLayout_Frament extends Fragment {
 		reply_ArrayList.add(reply);
 		
 		String author_id=reply.author;
-		String created_Time=reply.created_Time.toString();
+		String created_Time=sdf.format(reply.created_Time);
 		String content=reply.content;
 		String level=reply.level;
 		String nickname=reply.nickname;
 		Log.v("ReplyModule",author_id+" "+created_Time+""+""+content);
 		DynamicLayout(nickname,author_id,created_Time,content,0,level);
+		Dynamic_or_not=1;
 	}
 	
 	
@@ -253,15 +246,16 @@ public class Article_DaynamicLayout_Frament extends Fragment {
 			
 			@Override
 			public void run() {
-				if(getActivity()!=null){
-					CheckNewReply();
-					 //連線alert
-			        cd.showConnction();
-				}
+				
+					if(getActivity()!=null && Dynamic_or_not==1){
+						CheckNewReply();
+					}
+				
+				//SetCheckNewReplyRunnable();
 				
 			}
 		};
-		handler.postDelayed(runnable,1500);
+		handler.postDelayed(runnable,1000);
 	}
 	
 	public void CheckNewReply(){
@@ -317,11 +311,11 @@ public class Article_DaynamicLayout_Frament extends Fragment {
     	}
 		Log.v("ReplyModule", "CheckNewReplyFinish");
 		
-		Handler myHandler = new Handler();
-        myHandler.postDelayed(mMyRunnable,300);
+		//Handler myHandler = new Handler();
+        //myHandler.postDelayed(mMyRunnable,300);
     	
 		
-		//SetCheckNewReplyRunnable();
+		SetCheckNewReplyRunnable();
 	}
 	
 	public void DynamicLayout(String nickname,String name,String time,String content ,int whotalk, String level ) {
