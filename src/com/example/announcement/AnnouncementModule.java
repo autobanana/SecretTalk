@@ -83,17 +83,22 @@ public class AnnouncementModule extends AsyncTask<String,Void,String> {
 					JSONObject announcement =announcementList.getJSONObject(i);
 					
 					String content=announcement.getString("content");
+					
 					String created_Time=announcement.getString("created_at");
 					
 					Announcement announcementInstance=new Announcement();
+					
 					announcementInstance.content=content;
 					announcementInstance.created_at=created_Time;
 					
 					announcemen_ArrayList.add(announcementInstance);
 
 				}
+	
+				
 				Log.v("AnnouncementModule", getAnnouncementList);
 				GlobalContainer.announcemen_ArrayList=announcemen_ArrayList;
+
 				LA.StartMainActivity();
 			}
 			

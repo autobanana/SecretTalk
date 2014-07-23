@@ -4,6 +4,7 @@ import com.example.globalcontainer.GlobalContainer;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,14 +33,18 @@ public class Bulletinboard_Fragment extends Fragment {
         else
         	announcement_count=3;
         
+        
+
         for(int i=0;i<announcement_count;i++)
         {
         	if(i==0)
-        		message1.setText(GlobalContainer.announcemen_ArrayList.get(GlobalContainer.announcemen_ArrayList.size()-1).content);
+        		message1.setText(GlobalContainer.announcemen_ArrayList.get(i).content);
         	else if(i==1)
-        		message2.setText(GlobalContainer.announcemen_ArrayList.get(GlobalContainer.announcemen_ArrayList.size()-2).content);
+        		message2.setText(GlobalContainer.announcemen_ArrayList.get(i).content);
         	else
-        		message3.setText(GlobalContainer.announcemen_ArrayList.get(GlobalContainer.announcemen_ArrayList.size()-3).content);
+        		message3.setText(GlobalContainer.announcemen_ArrayList.get(i).content);
+        	
+        	
         }
         
         return view;
