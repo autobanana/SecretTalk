@@ -141,7 +141,7 @@ public class Talking_MyFragment extends Fragment {
                 
                 View backView = getActivity().findViewById(R.id.L_main);
                 backView.setVisibility(View.INVISIBLE);
-
+                GetArticle();
                 
             }
 

@@ -33,6 +33,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -43,6 +44,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -133,6 +135,8 @@ public class MainActivity extends  FragmentActivity{
         getSupportFragmentManager().addOnBackStackChangedListener(new OnBackStackChangedListener() {    
             public void onBackStackChanged() {
 
+            	cd.showConnction();
+            	
             	doublleBackCheck = false;
             	
                 int backCount = getSupportFragmentManager().getBackStackEntryCount();
@@ -199,111 +203,7 @@ public class MainActivity extends  FragmentActivity{
   	}
   	
 
-//    public void initial_ListView() {
-//		    	
-//    	
-//    	myListview.setAdapter(new ListviewAdapter(this));
-//    	//myListview.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, mStrings));
-//    	drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_main);
-//        mDrawerToggle = new ActionBarDrawerToggle(
-//                this,                  /* host Activity */
-//                drawerLayout,         /* DrawerLayout object */
-//                R.drawable.ic_drawer,  /* nav drawer icon to replace 'Up' caret */
-//                R.string.drawer_open,  /* "open drawer" description */
-//                R.string.drawer_close  /* "close drawer" description */
-//                ) {
-//
-//            /** Called when a drawer has settled in a completely closed state. */
-//            public void onDrawerClosed(View view) {
-//            	
-//            	super .onDrawerClosed(view);  
-//                getActionBar().setTitle(title);  
-//                invalidateOptionsMenu();  
-//            }
-//
-//            /** Called when a drawer has settled in a completely open state. */
-//            public void onDrawerOpened(View drawerView) {
-//            	super .onDrawerOpened(drawerView);  
-//                invalidateOptionsMenu();
-//            }
-//        };
-//
-//        // Set the drawer toggle as the DrawerListener
-//        drawerLayout.setDrawerListener(mDrawerToggle);
-//        getActionBar().setDisplayHomeAsUpEnabled(true);
-//        getActionBar().setHomeButtonEnabled(true);
-//        
-//        myListview.setOnItemClickListener( new  AdapterView.OnItemClickListener() {  
-//            @Override  
-//            public  void  onItemClick(AdapterView<?> adapterView, View view,  int  position,  long  l) {  
-//                
-//            	cd.showConnction();
-//            	
-//            	if(position == 0){
-//            		//回到首頁
-//            		//清空所有新加入的fragment
-//            		ViewPager_Show();
-//            		getSupportFragmentManager().popBackStack( null , FragmentManager.POP_BACK_STACK_INCLUSIVE);
-//            		title = "SecretTalk";
-//            	}
-//            	else if(position == 1){
-//            		//偏好設定
-//            		//getSupportFragmentManager().popBackStack( null , FragmentManager.POP_BACK_STACK_INCLUSIVE);
-//            		ViewPager_Hide();
-//            		preferencesetting =  new  PreferenceSetting_Fragment();  
-//                    FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
-//                    transaction1.addToBackStack(null);   //保留先前的Fragment
-//                    transaction1.add(R.id.drawer_layout_second, preferencesetting).commit();
-//                    title = mStrings[position];
-//            	
-//            	}
-//            	else if(position == 2){
-//            		ViewPager_Hide();
-//            		navigation = new Navigation_Fragment();
-//            		FragmentTransaction transaction2 = getSupportFragmentManager().beginTransaction();
-//                    transaction2.addToBackStack(null);   //保留先前的Fragment
-//                    transaction2.add(R.id.drawer_layout_second, navigation).commit();
-//                    title = mStrings[position]; 
-//            	}
-//            	else if(position ==3){
-//            		//成就系統介紹		
-//            		ViewPager_Hide();
-//            		achievement = new Achievement_Fragment();
-//            		FragmentTransaction transaction3 = getSupportFragmentManager().beginTransaction();
-//                    transaction3.addToBackStack(null);   //保留先前的Fragment
-//                    transaction3.add(R.id.drawer_layout_second, achievement).commit();
-//                    title = mStrings[position];
-//                    
-//            	}
-//            	else if(position == 4){
-//            		//關於本程式
-//            		ViewPager_Hide();
-//            		aboutprogram =  new  AboutProgram_Fragment();  
-//                    FragmentTransaction transaction4 = getSupportFragmentManager().beginTransaction();
-//                    transaction4.addToBackStack(null);   //保留先前的Fragment
-//                    transaction4.add(R.id.drawer_layout_second, aboutprogram).commit();
-//                    title = mStrings[position];
-//            	
-//            	}
-//            	else if(position == 5){
-//            		ViewPager_Hide();
-//            		signout =  new  SignOut_Fragment();  
-//                    FragmentTransaction transaction4 = getSupportFragmentManager().beginTransaction();
-//                    transaction4.addToBackStack(null);   //保留先前的Fragment
-//                    transaction4.add(R.id.drawer_layout_second, signout).commit();
-//                    title = mStrings[position];
-//            	}
-//            	else{
-//            		//離開程式	
-//            		Leave_program();
-//            	}
-//            	myListview.setItemChecked(position, true );  
-//                drawerLayout.closeDrawer(myListview);  
-//                
-//            }
-//
-//        });  
-//	}
+
   	
     public void initial_ListView() {
 		    	
@@ -313,7 +213,7 @@ public class MainActivity extends  FragmentActivity{
     	drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_main);
         mDrawerToggle = new ActionBarDrawerToggle(
                 this,                  /* host Activity */
-                drawerLayout,         /* DrawerLayout object */
+                drawerLayout,          /* DrawerLayout object */
                 R.drawable.ic_drawer,  /* nav drawer icon to replace 'Up' caret */
                 R.string.drawer_open,  /* "open drawer" description */
                 R.string.drawer_close  /* "close drawer" description */
@@ -345,7 +245,7 @@ public class MainActivity extends  FragmentActivity{
                 
             	Fragment addFragment = new Fragment() ;
             	
-            	cd.showConnction();
+            	
             	
             	if(position == 0){
             		//回到首頁
@@ -485,8 +385,8 @@ public class MainActivity extends  FragmentActivity{
 		int SW = dm.widthPixels;
 		Log.d("PPPPPPPPPPPPPPPPPPPPPPPPP", "SW = "+SW);
 		t1 = (TextView) findViewById(R.id.content_talking);
-		t2 = (TextView) findViewById(R.id.Time);
-		t3 = (TextView) findViewById(R.id.about_version);
+		t2 = (TextView) findViewById(R.id.content_listing);
+		t3 = (TextView) findViewById(R.id.content_setting);
 
 		t1.setOnClickListener(new MyOnClickListener(0));
 		t2.setOnClickListener(new MyOnClickListener(1));
@@ -578,6 +478,39 @@ public class MainActivity extends  FragmentActivity{
 		cursor.setImageMatrix(matrix);
 		one = offset * 2 + bmpW;
 		two = one * 2;
+		
+				
+		
+		TextView listing_notice = (TextView)findViewById(R.id.listing_notice_image);		
+		TextView talking_notice = (TextView)findViewById(R.id.talking_notice_image);
+	
+		RelativeLayout.LayoutParams p_listing =
+			    new RelativeLayout.LayoutParams(talking_notice.getLayoutParams());
+				
+		RelativeLayout.LayoutParams p_talking =
+			    new RelativeLayout.LayoutParams(listing_notice.getLayoutParams());
+		
+		p_listing.topMargin = 50/4;
+		p_listing.leftMargin = screenW/3/6;
+		
+				
+		p_talking.topMargin = 50/4;
+		p_talking.leftMargin = screenW/3/6;
+		
+		listing_notice.setLayoutParams(p_listing);
+		talking_notice.setLayoutParams(p_talking);
+		
+	
+		listing_notice.setTextSize(10);
+		listing_notice.setGravity(Gravity.CENTER);
+		
+		talking_notice.setTextSize(10);
+		talking_notice.setGravity(Gravity.CENTER);
+		
+		talking_notice.setVisibility(View.INVISIBLE);
+		listing_notice.setVisibility(View.INVISIBLE);
+		
+
 	}
 
 	public class MyOnPageChangeListener implements OnPageChangeListener {		
@@ -696,6 +629,17 @@ public class MainActivity extends  FragmentActivity{
 			super.onBackPressed();
 		}
 	}
+	
+	private int checkNewArticle(){
+		
+		
+		
+		
+		return 0;
+	}
+	
+	
+	
 
 }
 	

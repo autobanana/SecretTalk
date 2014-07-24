@@ -141,8 +141,12 @@ public class Article_DaynamicLayout_Frament extends Fragment {
 	public void GetHistoricalDialogue(){
     	//Initial HashMap 
     	HashMap<String,String> hm=new HashMap<String, String>();
+    	
+    	String currentTime = sdf.format(new Date());
+    	
     	hm.put("username", UserInformation.Username);
     	hm.put("article_id", article_id);
+    	hm.put("current_time", currentTime);
     		
     	//Convert HashMap to JSONObject
     	JSONObject jo=new JSONObject(hm);
@@ -183,9 +187,9 @@ public class Article_DaynamicLayout_Frament extends Fragment {
     		DynamicLayout(nickname,author_id,created_Time,content,isAuthor,level);	
     		
     	}
-    	if(this.isInLayout()){
+//    	if(this.isInLayout()){
     		SetCheckNewReplyRunnable();
-    	}
+//    	}
     	
     }
     
@@ -205,11 +209,16 @@ public class Article_DaynamicLayout_Frament extends Fragment {
 	
 	public void CreateNewReply(String content){
 		//Initial HashMap 
+		
+		String currentTime = sdf.format(new Date());
+		
     	HashMap<String,String> hm=new HashMap<String, String>();
     	hm.put("username", UserInformation.Username);
     	hm.put("article_id", article_id);
     	hm.put("content", content);
-    		
+    	hm.put("current_time", currentTime);
+    	
+    	
     	//Convert HashMap to JSONObject
     	JSONObject jo=new JSONObject(hm);
     			
@@ -354,6 +363,13 @@ public class Article_DaynamicLayout_Frament extends Fragment {
 		return latestTime;
 		
 	}
+	
+
+	
+	
+	
+	
+	
 	
 	 public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
