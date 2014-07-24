@@ -156,6 +156,9 @@ public class ArticleModule extends AsyncTask<String,Void,String> {
 					String level = article.getString("level");
 					//Get Nickname
 					//String nickname=article.getString("nickname");
+					String article_isnew=article.getString("isNew");
+					
+										
 					
 					Article articleInstance=new Article();
 					
@@ -165,6 +168,7 @@ public class ArticleModule extends AsyncTask<String,Void,String> {
 					articleInstance.created_Time=created_Time;
 					articleInstance.level=level;
 					articleInstance.nickname = UserInformation.NickName;
+					articleInstance.is_new = article_isnew;
 					
 					article_ArrayList.add(articleInstance);
 				}
@@ -223,6 +227,8 @@ public class ArticleModule extends AsyncTask<String,Void,String> {
 					String nickname=article.getString("nickname");
 					//Get Article ID
 					String article_id=article.getString("id");
+					//Get isNew
+					String article_isnew=article.getString("isNew");
 					
 					Article articleInstance=new Article();
 					
@@ -232,6 +238,8 @@ public class ArticleModule extends AsyncTask<String,Void,String> {
 					articleInstance.created_Time=created_Time;
 					articleInstance.level=level;
 					articleInstance.nickname=nickname;
+					articleInstance.is_new = article_isnew;
+					
 					articleArrayList.add(articleInstance);
 				}
 				Log.v("ArticleModule","Send Set New Article");

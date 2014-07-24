@@ -81,7 +81,7 @@
                 android:background="@color/Banana_Setting_Gray_light" >
 
                 <TextView
-                    android:id="@+id/about_version"
+                    android:id="@+id/content_setting"
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"

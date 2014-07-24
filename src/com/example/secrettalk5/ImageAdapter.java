@@ -52,9 +52,11 @@ public class ImageAdapter extends BaseAdapter {
             viewTag = new ViewHolder(
             (ImageView)convertView.findViewById(R.id.level_author),
             (TextView)convertView.findViewById(R.id.Name),
-            (TextView)convertView.findViewById(R.id.Time),
+            (TextView)convertView.findViewById(R.id.content_listing),
             (TextView)convertView.findViewById(R.id.content_talking),
-            (TextView)convertView.findViewById(R.id.NickName)
+            (TextView)convertView.findViewById(R.id.NickName),
+            (TextView)convertView.findViewById(R.id.conversaiton_notice)
+            
              );
              
             //設置容器內容
@@ -101,6 +103,21 @@ public class ImageAdapter extends BaseAdapter {
                 viewTag.author_level.setBackgroundResource(R.drawable.level_5);
             	break;
        }
+        
+        
+        
+        if (article.is_new.equals("true")){
+        	viewTag.notice.setVisibility(View.VISIBLE);
+        	        	
+        }else{
+        	viewTag.notice.setVisibility(View.INVISIBLE);
+        }
+        
+        
+        
+        
+        
+        
        return convertView;
     	
     } 

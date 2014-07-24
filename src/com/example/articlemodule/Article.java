@@ -8,5 +8,5 @@ public class Article {
 	public String created_Time;
 	public String level;
 	public String nickname;
-	
+	public String is_new;
 }
