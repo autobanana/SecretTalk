@@ -1,12 +1,15 @@
 package com.example.secrettalk5;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.json.JSONObject;
 
+import com.example.articlemodule.Article;
 import com.example.articlemodule.ArticleModule;
 import com.example.usermodule.UserInformation;
+import com.example.globalcontainer.GlobalContainer;
 
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
@@ -128,9 +131,9 @@ public class MainActivity extends  FragmentActivity{
 
         /**ªì©l¤Æ**/
         initial_TextView();
-        initial_ImageView();
         initial_PageView();
         initial_ListView();
+        initial_ImageView();
         
         getSupportFragmentManager().addOnBackStackChangedListener(new OnBackStackChangedListener() {    
             public void onBackStackChanged() {
@@ -138,7 +141,7 @@ public class MainActivity extends  FragmentActivity{
             	cd.showConnction();
             	
             	doublleBackCheck = false;
-            	
+            	            	           	
                 int backCount = getSupportFragmentManager().getBackStackEntryCount();
                 if (backCount == 0){
                 	ViewPager_Show();
@@ -150,6 +153,9 @@ public class MainActivity extends  FragmentActivity{
                 
                 //Toast.makeText(getApplicationContext(), "123", Toast.LENGTH_SHORT).show();
                 getActionBar().setTitle(title); 
+                
+                setTalkingNotice();
+        		setListeningNotice();
             }
         });
         
@@ -364,6 +370,8 @@ public class MainActivity extends  FragmentActivity{
     		
     		//Toast.makeText(this, "do something", Toast.LENGTH_LONG).show();
     		RefreshButton_Initial();
+            setTalkingNotice();
+    		setListeningNotice();
     	}
     	
         // Handle your other action bar items...
@@ -481,7 +489,7 @@ public class MainActivity extends  FragmentActivity{
 		
 				
 		
-		TextView listing_notice = (TextView)findViewById(R.id.listing_notice_image);		
+		TextView listing_notice = (TextView)findViewById(R.id.listening_notice_image);		
 		TextView talking_notice = (TextView)findViewById(R.id.talking_notice_image);
 	
 		RelativeLayout.LayoutParams p_listing =
@@ -507,8 +515,11 @@ public class MainActivity extends  FragmentActivity{
 		talking_notice.setTextSize(10);
 		talking_notice.setGravity(Gravity.CENTER);
 		
-		talking_notice.setVisibility(View.INVISIBLE);
-		listing_notice.setVisibility(View.INVISIBLE);
+
+		
+		setTalkingNotice();
+		setListeningNotice();
+		
 		
 
 	}
@@ -518,6 +529,10 @@ public class MainActivity extends  FragmentActivity{
 								
 			cd.showConnction();
 			doublleBackCheck = false;
+		
+            setTalkingNotice();
+    		setListeningNotice();
+			
 			
 			Animation animation = null;
 			
@@ -630,14 +645,80 @@ public class MainActivity extends  FragmentActivity{
 		}
 	}
 	
-	private int checkNewArticle(){
+	private int checkTalkingNewArticle(){
+		
+		int articleSize = GlobalContainer.article_ArrayList.size();
+		int outCount = 0;
+		Article artilce = null;
+		
+		for(int i = 0; i < articleSize; i++){
+			artilce = GlobalContainer.article_ArrayList.get(i);
+			if (artilce.is_new.equals("true")) {
+				outCount++;
+			}
+		}
 		
 		
 		
 		
-		return 0;
+		return outCount;
 	}
 	
+	private int checkListeningNewArticle(){
+		
+		int articleSize = GlobalContainer.article_ArrayList_Listening.size();
+		Article artilce = null;
+		int outCount = 0;
+			
+		for(int i = 0; i < articleSize; i++){
+			artilce = GlobalContainer.article_ArrayList_Listening.get(i);
+			if (artilce.is_new.equals("true")) {
+				outCount++;
+			}
+		}
+				
+		return outCount;
+		
+	}
+	
+	
+	
+	private void setTalkingNotice() {
+			
+		TextView talking_notice = (TextView)findViewById(R.id.talking_notice_image);
+		
+		int newArticleNum = checkTalkingNewArticle();
+		
+		if (newArticleNum!=0){
+			talking_notice.setVisibility(View.VISIBLE);
+			talking_notice.setText(Integer.toString(newArticleNum));
+			
+			
+		}else{
+			talking_notice.setVisibility(View.INVISIBLE);
+			
+		}
+	}
+	
+	
+	
+	private void setListeningNotice(){
+		
+		TextView listening_notice = (TextView)findViewById(R.id.listening_notice_image);
+		
+		int newArticleNum = checkListeningNewArticle();
+		
+		
+		if (newArticleNum!=0){
+			listening_notice.setVisibility(View.VISIBLE);
+			listening_notice.setText(Integer.toString(newArticleNum));
+
+		}else{
+			listening_notice.setVisibility(View.INVISIBLE);
+			
+		}
+			
+	}
 	
 	
 
