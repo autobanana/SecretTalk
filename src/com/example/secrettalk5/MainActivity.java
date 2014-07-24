@@ -405,6 +405,12 @@ public class MainActivity extends  FragmentActivity{
 		//###########  t1
 		int NewW1 = SW*92/480;
 		int NewH1 = NewW1*50/92;
+		
+		if(NewW1>=150){
+			NewH1 = 50;
+			NewW1 = NewH1/50*92;
+		}
+		
 		Log.d("PPPPPPPPPPPPPPPPPPPPPPPPP", "NewW1 = "+NewW1);
 		viewpager_s1 = new SpannableString("abc");
 		Drawable img = getResources().getDrawable(R.drawable.viewpager_talking2);
@@ -423,6 +429,12 @@ public class MainActivity extends  FragmentActivity{
 		//###########  t2
 		int NewW2 = SW*90/480;
 		int NewH2 = NewW2*57/90;
+		if(NewW2>=150){
+			NewH2 = 50;
+			NewW2 = NewH2/50*92;
+		}
+		
+		
 		
 		viewpager_s2 = new SpannableString("abc");
 		Drawable img2 = getResources().getDrawable(R.drawable.viewpager_listening2);
@@ -441,6 +453,11 @@ public class MainActivity extends  FragmentActivity{
 		//###########  t3
 		int NewW3 = SW*95/480;
 		int NewH3 = NewW3*53/95;
+		if(NewW3>=150){
+			NewH3 = 50;
+			NewW3 = NewH3/50*92;
+		}
+		
 		
 		viewpager_s3 = new SpannableString("abc");
 		Drawable img3 = getResources().getDrawable(R.drawable.viewpager_setting);
